@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Odoo 指南 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="升级接口(Upgrade API)" href="upgrade_api.html" />
+    <link rel="prev" title="混入类(Mixins)和有用的类们" href="mixins.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">Odoo 指南</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/odoo_guideline.jpg');"></span>
+      <div class="container text-center">
+        <h1> Odoo 指南 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#id1" class="ripple internal reference">模块结构</a><ul ><li class="list-group-item"><a href="#id2" class="ripple internal reference">目录</a></li><li class="list-group-item"><a href="#id3" class="ripple internal reference">文件命名</a></li></ul></li><li class="list-group-item"><a href="#xml" class="ripple internal reference">XML 文件</a><ul ><li class="list-group-item"><a href="#id4" class="ripple internal reference">格式</a></li><li class="list-group-item"><a href="#xml-id" class="ripple internal reference">命名 xml_id</a><ul ><li class="list-group-item"><a href="#id5" class="ripple internal reference">安全，视图和动作</a></li><li class="list-group-item"><a href="#id6" class="ripple internal reference">继承 XML</a></li></ul></li></ul></li><li class="list-group-item"><a href="#python" class="ripple internal reference">Python</a><ul ><li class="list-group-item"><a href="#pep8" class="ripple internal reference">PEP8 选项</a></li><li class="list-group-item"><a href="#imports" class="ripple internal reference">Imports</a></li><li class="list-group-item"><a href="#id7" class="ripple internal reference">Python编程习惯</a></li><li class="list-group-item"><a href="#id8" class="ripple internal reference">在Odoo中编程</a><ul ><li class="list-group-item"><a href="#id9" class="ripple internal reference">使您的方法批量工作</a></li><li class="list-group-item"><a href="#id10" class="ripple internal reference">传播上下文</a></li><li class="list-group-item"><a href="#orm" class="ripple internal reference">不要绕过ORM</a></li><li class="list-group-item"><a href="#no-sql" class="ripple internal reference">No SQL 注入!</a></li><li class="list-group-item"><a href="#id11" class="ripple internal reference">尽可能保持您的方法简短/简单</a></li><li class="list-group-item"><a href="#id12" class="ripple internal reference">不要提交事务</a></li><li class="list-group-item"><a href="#id13" class="ripple internal reference">正确使用翻译方法</a></li></ul></li><li class="list-group-item"><a href="#id14" class="ripple internal reference">符号和约定</a></li></ul></li><li class="list-group-item"><a href="#javascript-css" class="ripple internal reference">Javascript 和 CSS</a></li><li class="list-group-item"><a href="#git" class="ripple internal reference">Git</a><ul ><li class="list-group-item"><a href="#id15" class="ripple internal reference">提交信息</a></li></ul></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/guidelines.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="odoo"><p >本页介绍了新的Odoo编码指南。 这些旨在提高代码的质量（例如源代码更好的可读性）和Odoo应用程序。 事实上，正确的代码简化了维护，帮助调试，降低复杂性，提高可靠性。</p><p >这些指南应适用于每个新模块和新开发。 这些指南 <em >仅</em> 在代码重构（迁移到新的API，大重构，...）将应用于旧模块</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >这些指南是用新模块和新文件编写的。 修改现有文件时，文件的原始样式将严格取代任何其他样式指南。 换句话说，不要修改现有文件以应用这些准则，以避免中断每行的修订历史记录。 有关更多详细信息，
+请参阅我们的 <a href="https://odoo.com/submit-pr" class="external reference alert-link">pull request guide</a> 。</p></div></section><section id="id1"><h2 >模块结构</h2></section><section id="id2"><h3 >目录</h3><p >模块被组织在重要的目录中。那些包含业务逻辑; 看看它们应该明白模块的目的。</p><ul ><li ><em >data/</em> : 演示和数据xml</li><li ><em >models/</em> : 模型定义</li><li ><em >controllers/</em> : 包含控制器（HTTP路由）</li><li ><em >views/</em> : 包含视图和模板</li><li ><em >static/</em> : 包含web资源，放置在 <em >css/, js/, img/, lib/, ...</em></li></ul><p >其他可选目录组成模块。</p><ul ><li ><em >wizard/</em> : 重新分组短暂的模型（以前的 <em >osv_memory</em>）及其视图。</li><li ><em >report/</em> : 包含报表（RML报表 <strong >[已弃用]</strong> ，基于SQL视图的模型（用于报表）和其他复杂报表）。 Python目录和XML视图包含在此目录中。</li><li ><em >tests/</em> : 包含Python/YML测试</li></ul></section><section id="id3"><h3 >文件命名</h3><p >对于 <em >views</em> 声明，在2个不同的文件中从（前端）模板拆分后端视图</p><p >对于 <em >models</em> ，将业务逻辑按模型集拆分，在每个集合中选择一个主模型，此模型将其名称赋给集合。 如果只有一个模型，其名称与模块名称相同。 对于每个名为&lt;main_model&gt;的集可以创建以下文件:</p><ul ><li ><code class="file">models/<em >&lt;main_model&gt;</em>.py</code></li><li ><code class="file">models/<em >&lt;inherited_main_model&gt;</em>.py</code></li><li ><code class="file">views/<em >&lt;main_model&gt;</em>_templates.xml</code></li><li ><code class="file">views/<em >&lt;main_model&gt;</em>_views.xml</code></li></ul><p >例如， <em >sale</em> 模块引入  <code >sale_order</code> 和 <code >sale_order_line</code> ， <code >sale_order</code>  是主导的。
+所以  <code >&lt;main_model&gt;</code>  文件将命名为 <code class="file">models / sale_order.py</code> 和 <code class="file">views / sale_order_views.py</code> 。</p><p >对于 <em >data</em> ，按目的分割：演示或数据。 文件名将为
+main_model名称，后缀为 <em >_demo.xml</em> 或 <em >_data.xml</em> 。</p><p >对于 <em >controllers</em> ，唯一的文件应该命名为 <em >main.py</em> 。否则，如果您需要从另一个模块继承现有控制器，
+则其名称将为 <em >&lt;module_name&gt;.py</em> 。 与 <em >models</em> 不同，每个控制器类应该包含在一个单独的文件中。</p><p >对于 <em >static文件</em> ，由于资源可以在不同的上下文（前端，后端，两者）中使用，它们将只包含在一个bundle中。因此，
+CSS/Less，JavaScript和XML文件应该使用bundle类型的名称作为后缀。即：“assets_common”包的 <em >im_chat_common.css</em> ，
+<em >im_chat_common.js</em> ，“assets_backend”包的 <em >im_chat_backend.css</em> ， <em >im_chat_backend.js</em>  。
+如果模块只有一个文件，那么约定将是 <em >&lt;module_name&gt;.ext</em> （即：<em >project.js</em> ）。
+不要链接Odoo之外的数据（图像，库）：不要使用图像的URL，而是将其复制到我们的代码库中。</p><p >关于 <em >data</em> ，按目的分割：数据或演示。 文件名将为 <em >main_model</em> 名称，后缀为 <em >_data.xml</em> 或 <em >_demo.xml</em> 。</p><p >关于 <em >wizards</em> ，命名约定是：</p><ul ><li ><code class="file"><em >&lt;main_transient&gt;</em>.py</code></li><li ><code class="file"><em >&lt;main_transient&gt;</em>_views.xml</code></li></ul><p >Where <em >&lt;main_transient&gt;</em> is the name of the dominant transient model, just like for <em >models</em>. &lt;main_transient&gt;.py can contains the models 'model.action' and 'model.action.line'.</p><p >其中 <em >&lt;main_transient&gt;</em> 是主导短暂模型的名称，就像 <em >models</em> 一样。
+&lt;main_transient&gt;.py可以包含模型'model.action'和'model.action.line'</p><p >对于 <em >统计报告</em> ，其名称应如下所示：</p><ul ><li ><code class="file"><em >&lt;report_name_A&gt;</em>_report.py</code></li><li ><code class="file"><em >&lt;report_name_A&gt;</em>_report_views.py</code> (pivot和graph视图)</li></ul><p >对于 <em >可打印的报告</em> ，你应该有 :</p><ul ><li ><code class="file"><em >&lt;print_report_name&gt;</em>_reports.py</code> (报表动作，纸格格式定义， ...)</li><li ><code class="file"><em >&lt;print_report_name&gt;</em>_templates.xml</code> (xml 报表模板)</li></ul><p >完整的目录结构应该看起来像：</p><div class="highlight-text"><div class="highlight"><pre><span></span>addons/&lt;my_module_name&gt;/
+|-- __init__.py
+|-- __manifest__.py
+|-- controllers/
+|   |-- __init__.py
+|   |-- &lt;inherited_module_name&gt;.py
+|   `-- main.py
+|-- data/
+|   |-- &lt;main_model&gt;_data.xml
+|   `-- &lt;inherited_main_model&gt;_demo.xml
+|-- models/
+|   |-- __init__.py
+|   |-- &lt;main_model&gt;.py
+|   `-- &lt;inherited_main_model&gt;.py
+|-- report/
+|   |-- __init__.py
+|   |-- &lt;main_stat_report_model&gt;.py
+|   |-- &lt;main_stat_report_model&gt;_views.xml
+|   |-- &lt;main_print_report&gt;_reports.xml
+|   `-- &lt;main_print_report&gt;_templates.xml
+|-- security/
+|   |-- ir.model.access.csv
+|   `-- &lt;main_model&gt;_security.xml
+|-- static/
+|   |-- img/
+|   |   |-- my_little_kitten.png
+|   |   `-- troll.jpg
+|   |-- lib/
+|   |   `-- external_lib/
+|   `-- src/
+|       |-- js/
+|       |   `-- &lt;my_module_name&gt;.js
+|       |-- css/
+|       |   `-- &lt;my_module_name&gt;.css
+|       |-- less/
+|       |   `-- &lt;my_module_name&gt;.less
+|       `-- xml/
+|           `-- &lt;my_module_name&gt;.xml
+|-- views/
+|   |-- &lt;main_model&gt;_templates.xml
+|   |-- &lt;main_model&gt;_views.xml
+|   |-- &lt;inherited_main_model&gt;_templates.xml
+|   `-- &lt;inherited_main_model&gt;_views.xml
+`-- wizard/
+    |-- &lt;main_transient_A&gt;.py
+    |-- &lt;main_transient_A&gt;_views.xml
+    |-- &lt;main_transient_B&gt;.py
+    `-- &lt;main_transient_B&gt;_views.xml
+</pre></div>
+</div>
+<div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >文件名只能包含  <code >[a-z0-9_]</code> （小写字母数字和 <code >_</code>  ）</p></div><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >使用正确的文件权限：文件夹755和文件644。</p></div></section><section id="xml"><h2 >XML 文件</h2></section><section id="id4"><h3 >格式</h3><p >要以XML格式声明记录，建议使用 <strong >record</strong> 符号（使用 <em >&lt;record&gt;</em> ）：</p><ul ><li >在  <code >model</code> 之前放置 <code >id</code>  属性</li><li >对于字段声明， <code >name</code> 属性是第一个。 然后将 <em >值</em> 放在 <code >field</code> 标签中，
+或者在 <code >eval</code>  属性中，最后是其他按重要性排序的属性（widget，options，...）。</li><li >尝试按模型分组记录。 如果操作/菜单/视图之间存在依赖关系，则此约定可能不适用。</li><li >使用在下一点定义的命名约定</li><li >标签 <em >&lt;data&gt;</em> 仅用于设置不可更新的数据  <code >noupdate=1</code></li></ul><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;view_id&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>view.name<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>object_name<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;priority&quot;</span> <span class="na">eval=</span><span class="s">&quot;16&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tree&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;my_field_1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;my_field_2&quot;</span> <span class="na">string=</span><span class="s">&quot;My Label&quot;</span> <span class="na">widget=</span><span class="s">&quot;statusbar&quot;</span> <span class="na">statusbar_visible=</span><span class="s">&quot;draft,sent,progress,done&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/tree&gt;</span>
+    <span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >Odoo支持充当语法糖的自定义标签：</p><ul ><li >menuitem: 使用它作为一个快捷方式来声明一个  <code >ir.ui.menu</code></li><li >workflow: &lt;workflow&gt;标签会向现有工作流发送信号。</li><li >template: 使用它来声明一个QWeb视图只需要 <code >arch</code> 部分的视图。</li><li >report: 使用声明 <a href="actions.html#reference-actions-report" class="internal reference"><span class="std std-ref">report action</span></a></li><li >act_window: 使用它，如果record符号不能做你想要的</li></ul><p >这4个第一标签优先于 <em >record</em> 符号。</p></section><section id="xml-id"><h3 >命名 xml_id</h3></section><section id="id5"><h4 >安全，视图和动作</h4><p >使用以下模式 :</p><ul ><li >菜单: <code class="samp"><em >&lt;model_name&gt;</em>_menu</code></li><li ><dl ><dt >视图: <code class="samp"><em >&lt;model_name&gt;</em>_view_<em >&lt;view_type&gt;</em></code> ， <em >view_type</em> 是</dt><dd ><code >kanban</code>, <code >form</code>, <code >tree</code>, <code >search</code>  ， ...</dd></dl></li><li >动作: 主要动作方面 <code class="samp"><em >&lt;model_name&gt;</em>_action</code>.
+其他有后缀 <code class="samp">_<em >&lt;detail&gt;</em></code>,其中 <em >detail</em> 是简短解释动作的小写字符串。
+仅当为模型声明多个动作时，才使用此选项.</li><li >组: <code class="samp"><em >&lt;model_name&gt;</em>_group_<em >&lt;group_name&gt;</em></code> 其中
+<em >group_name</em> 是组的名称，通常是'user'，'manager'</li><li >规则: <code class="samp"><em >&lt;model_name&gt;</em>_rule_<em >&lt;concerned_group&gt;</em></code> 其中 <em >concerned_group</em>
+是相关组的简称（'model_name_group_user'的'user'，公共用户的'public'，多公司规则的'company'...）</li></ul><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- views and menus --&gt;</span>
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_view_form&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_view_kanban&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;menuitem</span>
+    <span class="na">id=</span><span class="s">&quot;model_name_menu_root&quot;</span>
+    <span class="na">name=</span><span class="s">&quot;Main Menu&quot;</span>
+    <span class="na">sequence=</span><span class="s">&quot;5&quot;</span>
+<span class="nt">/&gt;</span>
+<span class="nt">&lt;menuitem</span>
+    <span class="na">id=</span><span class="s">&quot;model_name_menu_action&quot;</span>
+    <span class="na">name=</span><span class="s">&quot;Sub Menu 1&quot;</span>
+    <span class="na">parent=</span><span class="s">&quot;module_name.module_name_menu_root&quot;</span>
+    <span class="na">action=</span><span class="s">&quot;model_name_action&quot;</span>
+    <span class="na">sequence=</span><span class="s">&quot;10&quot;</span>
+<span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- actions --&gt;</span>
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_action&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_action_child_list&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="c">&lt;!-- security --&gt;</span>
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;module_name_group_user&quot;</span> <span class="na">model=</span><span class="s">&quot;res.groups&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_rule_public&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.rule&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;model_name_rule_company&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.rule&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >视图名称使用点符号  <code >my.model.view_type</code> 或 <code >my.model.view_type.inherit</code>
+代替 <em >“这是我的模型的表单视图”</em> 。</p></div></section><section id="id6"><h4 >继承 XML</h4><p >继承视图的命名模式是 <code class="samp"><em >&lt;base_view&gt;</em> _ inherit _ <em >&lt;current_module_name&gt;</em></code> 。
+模块只能扩展一次视图。 后缀名为 <code class="samp">_inherit _ <em >&lt;current_module_name&gt;</em></code> 其中
+<em >current_module_name</em> 是扩展视图的模块的技术名称。</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;inherited_model_view_form_inherit_my_module&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+</section><section id="python"><h2 >Python</h2></section><section id="pep8"><h3 >PEP8 选项</h3><p >使用linter可以帮助显示语法和语义警告或错误。 Odoo源代码试图尊照Python标准，但其中一些可以忽略。</p><ul ><li >E501: 行太长</li><li >E301: 期待1个空行，发现0个</li><li >E302: 期待2个空行，发现1个</li><li >E126: continuation line over-indented for hanging indent</li><li >E123: 闭括号与开括号的行缩进不匹配</li><li >E127: continuation line over-indented for visual indent</li><li >E128: continuation line under-indented for visual indent</li><li >E265: 块注释应以“＃ ”开头</li></ul></section><section id="imports"><h3 >Imports</h3><p >import 排序为</p><ol ><li >外部库（每行一个，在python stdlib中排序和拆分）</li><li >导入  <code >odoo</code></li><li >从Odoo模块导入（很少，只有在必要时）</li></ol><p >在这3组中，导入的行按字母顺序排序。</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># 1 : imports of python lib</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="c1"># 2 :  imports of odoo</span>
+<span class="kn">import</span> <span class="nn">odoo</span>
+<span class="kn">from</span> <span class="nn">odoo</span> <span class="kn">import</span> <span class="n">api</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span> <span class="c1"># alphabetically ordered</span>
+<span class="kn">from</span> <span class="nn">odoo.tools.safe_eval</span> <span class="kn">import</span> <span class="n">safe_eval</span> <span class="k">as</span> <span class="nb">eval</span>
+<span class="kn">from</span> <span class="nn">odoo.tools.translate</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="c1"># 3 :  imports from odoo modules</span>
+<span class="kn">from</span> <span class="nn">odoo.addons.website.models.website</span> <span class="kn">import</span> <span class="n">slug</span>
+<span class="kn">from</span> <span class="nn">odoo.addons.web.controllers.main</span> <span class="kn">import</span> <span class="n">login_redirect</span>
+</pre></div>
+</div>
+</section><section id="id7"><h3 >Python编程习惯</h3><ul ><li >每个python文件应该有 <code ># -*- coding：utf-8 -*-</code>  作为第一行。</li><li >Always favor <em >readability</em> over <em >conciseness</em> or using the language features or idioms.</li><li >总是支持*可读性*超过*简洁性*或使用语言特性或惯用语法。</li><li >不要使用  <code >.clone()</code></li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># bad</span>
+<span class="n">new_dict</span> <span class="o">=</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">new_list</span> <span class="o">=</span> <span class="n">old_list</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="c1"># good</span>
+<span class="n">new_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+<span class="n">new_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">old_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul ><li >Python字典：创建和更新</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- creation empty dict</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">my_dict2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="c1"># -- creation with values</span>
+<span class="c1"># bad</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="c1"># good</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+
+<span class="c1"># -- update dict</span>
+<span class="c1"># bad</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># good</span>
+<span class="n">my_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bar</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">baz</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">my_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">my_dict2</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul ><li >使用有意义的变量/类/方法名称</li><li >无用变量：临时变量可以通过为对象赋予名称来使代码更清晰，
+但这并不意味着您应该始终创建临时变量：</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># pointless</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">kw</span><span class="p">[</span><span class="s1">&#39;schema&#39;</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="n">schema</span><span class="p">}</span>
+<span class="c1"># simpler</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="n">kw</span><span class="p">[</span><span class="s1">&#39;schema&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<ul ><li >多个返回点是可以的，当它们更简单</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># a bit complex and with a redundant temp variable</span>
+<span class="k">def</span> <span class="nf">axes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">([]):</span>
+                <span class="n">axes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+                <span class="n">axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">axes</span>
+
+ <span class="c1"># clearer</span>
+<span class="k">def</span> <span class="nf">axes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">([]):</span>
+                <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="c1"># clone the axis</span>
+        <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="c1"># single-element list</span>
+</pre></div>
+</div>
+<ul ><li >了解内建函数：你至少应该对所有的Python内建有一个基本的了解（<a href="http://docs.python.org/library/functions.html" class="external reference">http://docs.python.org/library/functions.html</a>）</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="c1"># very very redundant</span>
+<span class="n">value</span><span class="o">=</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span> <span class="c1"># good</span>
+</pre></div>
+</div>
+<p >同时， <code >if 'key' in my_dict</code> 和 <code >if my_dict.get('key')</code> 具有非常不同的意义，
+要确保你使用的是正确的。</p><ul ><li >学习列表解析：使用列表解析，字典解析，和基本的操作使用  <code >map</code> ， <code >filter</code> ， <code >sum</code>  ，
+他们使代码更容易阅读。</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># not very good</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+        <span class="n">cube</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+<span class="c1"># better</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">res</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul ><li >集合也是布尔值：在python中，许多对象在布尔上下文（例如if）中求值时具有“boolean-ish”值。
+其中当集合为空时是“false” 和 包含项目时的“truthy”的集合（列表，字典，集合...）</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">([])</span> <span class="ow">is</span> <span class="bp">False</span>
+<span class="nb">bool</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> <span class="ow">is</span> <span class="bp">True</span>
+<span class="nb">bool</span><span class="p">([</span><span class="bp">False</span><span class="p">])</span> <span class="ow">is</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p >因此，你可以写 <code >if some_collection:</code> 替代 <code >if len(some_collection):</code>  .</p><ul ><li >迭代</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># creates a temporary list and looks bar</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="s2">&quot;do something...&quot;</span>
+<span class="c1"># better</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="p">:</span>
+        <span class="s2">&quot;do something...&quot;</span>
+<span class="c1"># creates a temporary list</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="s2">&quot;do something...&quot;</span>
+<span class="c1"># only iterates</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="s2">&quot;do something...&quot;</span>
+</pre></div>
+</div>
+<ul ><li >使用 dict.setdefault</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># longer.. harder to read</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">element</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">values</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">values</span><span class="p">[</span><span class="n">element</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">other_value</span><span class="p">)</span>
+
+<span class="c1"># better.. use dict.setdefault method</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">values</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">other_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul ><li >作为一个好的开发人员，记录你的代码（文档字符串的方法，简单注释棘手的代码部分）</li><li >除了这些指南，您还可以找到以下有趣链接：
+<a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html" class="external reference">http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html</a></li></ul><p >&nbsp;&nbsp;（有点过时，但相当相关）</p></section><section id="id8"><h3 >在Odoo中编程</h3><ul ><li >避免创建生成器和装饰器：只使用Odoo API提供的。</li><li >在python中，使用  <code >filtered</code>，<code >mapped</code>，<code >sorted</code>  ,...方法来简化代码读取和性能 。</li></ul></section><section id="id9"><h4 >使您的方法批量工作</h4><p >添加函数时，请确保它可以处理多个记录。 通常，这样的方法是用 <code >api.multi</code> 装饰器装饰的
+（或者如果在旧的api中写的话，就是一个 <em >id</em> 的列表）。 然后你必须在 <code >self</code> 上进行迭代来处理每个记录。</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@api.multi</span>
+<span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">do_cool_stuff</span><span class="p">()</span>
+</pre></div>
+</div>
+<p >避免使用 <code >api.one</code> 装饰器：这可能不会做你想要的，扩展一个这样的方法不如 <em >api.multi</em> 方法那么容易，因为它返回一个结果列表（按记录集排序ids）。</p><p >对于性能问题，当开发“stat按钮”（例如）时，不要在  <code >api.multi</code> 方法中循环执行 <code >search</code> 或 <code >search_count</code> 。
+建议使用 <code >read_group</code> 方法，只计算一个请求中的所有值。</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@api.multi</span>
+<span class="k">def</span> <span class="nf">_compute_equipment_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot; Count the number of equipement per category &quot;&quot;&quot;</span>
+    <span class="n">equipment_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;hr.equipment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read_group</span><span class="p">([(</span><span class="s1">&#39;category_id&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">)],</span> <span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">])</span>
+    <span class="n">mapped_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;category_id&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;category_id_count&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">equipment_data</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">category</span><span class="o">.</span><span class="n">equipment_count</span> <span class="o">=</span> <span class="n">mapped_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">category</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section><section id="id10"><h4 >传播上下文</h4><p >在新的API中，上下文是一个 <code >frozendict</code> ，不能被修改。 要调用具有不同上下文的方法，
+应该使用 <code >with_context</code> 方法:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">records</span><span class="o">.</span><span class="n">with_context</span><span class="p">(</span><span class="n">new_context</span><span class="p">)</span><span class="o">.</span><span class="n">do_stuff</span><span class="p">()</span> <span class="c1"># all the context is replaced</span>
+<span class="n">records</span><span class="o">.</span><span class="n">with_context</span><span class="p">(</span><span class="o">**</span><span class="n">additionnal_context</span><span class="p">)</span><span class="o">.</span><span class="n">do_other_stuff</span><span class="p">()</span> <span class="c1"># additionnal_context values override native context ones</span>
+</pre></div>
+</div>
+<p >在上下文中传递参数可能具有危险的副作用。 由于值是自动传播的，因此可能会出现一些行为。
+在上下文中调用具有 <em >default_my_field</em> 键的模型的  <code >create()</code>  方法将为相关模型 <em >my_field</em> 字段设置默认值。 但如果固化此创建，其他对象（如sale.order.line，在sale.order上创建）具有字段名称 <em >my_field</em> ，它们的默认值也将设置。</p><p >如果您需要创建影响某个对象行为的关键上下文，请选择一个好的名称，最后使用模块名称作为前缀，
+以隔离其影响。 一个很好的例子是 <code >mail</code> 模块的键 <em >mail_create_nosubscribe</em> ， <em >mail_notrack</em> ，
+<em >mail_notify_user_signature</em> ...：</p></section><section id="orm"><h4 >不要绕过ORM</h4><p >当ORM可以做同样的事情时，你不应该直接使用数据库游标！ 通过这样做，您将绕过所有的ORM功能，可能的事务，访问权限等。</p><p >And chances are that you are also making the code harder to read and probably
+less secure.
+并且造成使代码更难读，可能不安全的可能。</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># very very wrong</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT id FROM auction_lots WHERE auction_id in (&#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">ids</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;) AND state=</span><span class="si">%s</span><span class="s1"> AND obj_price &gt; 0&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;draft&#39;</span><span class="p">,))</span>
+<span class="n">auction_lots_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
+
+<span class="c1"># no injection, but still wrong</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT id FROM auction_lots WHERE auction_id in </span><span class="si">%s</span><span class="s1"> &#39;</span>\
+           <span class="s1">&#39;AND state=</span><span class="si">%s</span><span class="s1"> AND obj_price &gt; 0&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="s1">&#39;draft&#39;</span><span class="p">,))</span>
+<span class="n">auction_lots_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
+
+<span class="c1"># better</span>
+<span class="n">auction_lots_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search</span><span class="p">([(</span><span class="s1">&#39;auction_id&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">ids</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;draft&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;obj_price&#39;</span><span class="p">,</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section><section id="no-sql"><h4 >No SQL 注入!</h4><p >当使用手动SQL查询时，必须注意不要引入SQL注入漏洞。 当用户输入未正确过滤或引用不当时，会出现漏洞，允许攻击者向SQL查询引入不合意的子句
+（例如绕过过滤器或执行UPDATE或DELETE命令）。</p><p >最安全的方法是永远不要使用Python字符串连接（+）或字符串参数插值（％）将变量传递给SQL查询字符串。</p><p >第二个原因，几乎同样重要，是数据库抽象层（psycopg2）的工作决定如何格式化查询参数，而不是你的工作！ 例如psycopg2知道当你传递一个值的列表，它需要将它们格式化为逗号分隔的列表，括在括号中！</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># the following is very bad:</span>
+<span class="c1">#   - it&#39;s a SQL injection vulnerability</span>
+<span class="c1">#   - it&#39;s unreadable</span>
+<span class="c1">#   - it&#39;s not your job to format the list of ids</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT distinct child_id FROM account_account_consol_rel &#39;</span> <span class="o">+</span>
+           <span class="s1">&#39;WHERE parent_id IN (&#39;</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">ids</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="c1"># better</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT DISTINCT child_id &#39;</span>\
+           <span class="s1">&#39;FROM account_account_consol_rel &#39;</span>\
+           <span class="s1">&#39;WHERE parent_id IN </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+           <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ids</span><span class="p">),))</span>
+</pre></div>
+</div>
+<p >这是非常重要的，所以在重构时请小心，最重要的是不要复制这些模式！</p><p >这里是一个难忘的例子，帮助你记住问题是什么（但不要复制代码）。
+继续之前，请务必阅读pyscopg2的在线文档，以了解如何正确使用它：</p><ul ><li >查询参数的问题 (<a href="http://initd.org/psycopg/docs/usage.html#the-problem-with-the-query-parameters" class="external reference">http://initd.org/psycopg/docs/usage.html#the-problem-with-the-query-parameters</a>)</li><li >如何使用psycopg2传递参数 (<a href="http://initd.org/psycopg/docs/usage.html#passing-parameters-to-sql-queries" class="external reference">http://initd.org/psycopg/docs/usage.html#passing-parameters-to-sql-queries</a>)</li><li >高级参数类型 (<a href="http://initd.org/psycopg/docs/usage.html#adaptation-of-python-values-to-sql-types" class="external reference">http://initd.org/psycopg/docs/usage.html#adaptation-of-python-values-to-sql-types</a>)</li></ul></section><section id="id11"><h4 >尽可能保持您的方法简短/简单</h4><p >函数和方法不应该包含太多的逻辑：拥有很多小而简单的方法比使用少量大而复杂的方法更可取。
+一个好的经验法则是尽快拆分方法：
+- 它有不止一个作用 (参阅 <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle" class="external reference">http://en.wikipedia.org/wiki/Single_responsibility_principle</a>)
+- 它太大，不适合在一个屏幕上。</p><p >此外，相应地命名函数：小的和正确命名的函数是可读/可维护代码和更严格的文档的起点。</p><p >此建议也与类，文件，模块和包相关。(参阅 <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity" class="external reference">http://en.wikipedia.org/wiki/Cyclomatic_complexity</a>)</p></section><section id="id12"><h4 >不要提交事务</h4><p >Odoo框架负责为所有RPC调用提供事务上下文。 原理是在每个RPC调用开始时打开一个新的数据库游标，并在调用返回时提交，就在将响应发送到RPC客户端之前，
+大致如下：</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="n">db</span><span class="p">,</span> <span class="n">pool</span> <span class="o">=</span> <span class="n">pooler</span><span class="o">.</span><span class="n">get_db_and_pool</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
+    <span class="c1"># create transaction cursor</span>
+    <span class="n">cr</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">execute_cr</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="n">cr</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span> <span class="c1"># all good, we commit</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">cr</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span> <span class="c1"># error, rollback everything atomically</span>
+        <span class="k">raise</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">cr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># always close cursor opened manually</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p >如果在执行RPC调用期间发生任何错误，则会以原子方式回滚事务，从而保留系统的状态。</p><p >类似地，系统还在测试套件执行期间提供专用事务，因此可以根据服务器启动选项进行回滚或不回滚。</p><p >结果是，如果你手动调用  <code >cr.commit()</code>  在任何地方有很高的可能，你会以各种方式打破系统，
+因为你会导致部分提交，因此部分和不完整的回滚，导致 其他：</p><ol ><li >不一致的业务数据，通常是数据丢失</li><li >工作流去同步，文档永久停滞</li><li >无法完全回滚的测试，并且将开始污染数据库，并触发错误（即使在事务期间没有发生错误，也是如此）</li></ol><dl ><dt >这里是非常简单的规则：</dt><dd >你应该 <em >永远不要</em> 自己调用  <code >cr.commit()</code>  ， <strong >除非</strong> 你已经创建了你自己的数据库游标！
+而你需要做的那些情况是例外！
+顺便说一下，如果你创建了自己的游标，那么你需要处理错误情况和适当的回滚，
+以及在你完成后正确关闭光标。</dd></dl><p >与人们的信念相反，你甚至不需要在下面的情况下调用 <code >cr.commit()</code> ：
+- 在 <em >models.Model</em> 对象的  <code >_auto_init()</code>  方法中：
+这是由插件初始化方法或创建自定义模型时的ORM事务处理的
+- 在报表中： <code >commit（）</code> 也是由框架处理的，所以你甚至在报表中可以更新数据库。
+- 在 <em >models.Transient</em> 方法中：这些方法在一个事务中类似于普通 <em >models.Model</em> 那样被调用，并在最后对应  <code >cr.commit()/rollback()</code>
+- 其他. (看到上述规则如果你有疑问！)</p><p >所有  <code >cr.commit()</code>  从现在开始在服务器框架之外调用必须有一个 <strong >显式注释</strong> 解释为什么它们是绝对必要的，为什么它们确实是正确的，以及为什么他们不打破事务。 否则他们可以和将被删除！</p></section><section id="id13"><h4 >正确使用翻译方法</h4><p >Odoo使用名为“下划线”  <code >_()</code>  的类似GetText方法表示代码中使用的静态字符串需要在运行时
+使用上下文的语言进行翻译。 这个伪方法在代码中通过导入访问，如下所示：</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">odoo.tools.translate</span> <span class="kn">import</span> <span class="n">_</span>
+</pre></div>
+</div>
+<p >在使用它时，必须遵循一些非常重要的规则，以便它工作，并避免用无用的垃圾填充翻译。</p><p >基本上，此方法只应用于在代码中手动编写的静态字符串，它不会用于翻译字段值，例如产品名称等。
+这必须使用在使用translate标志的相应字段上。</p><p >规则很简单：对下划线方法的调用应该始终是  <code >_('literal string')</code>  的形式，没有其他的：</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># good: plain strings</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;This record is locked!&#39;</span><span class="p">)</span>
+
+<span class="c1"># good: strings with formatting patterns included</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Record </span><span class="si">%s</span><span class="s1"> cannot be modified!&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">record</span>
+
+<span class="c1"># ok too: multi-line literal strings</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This is a bad multiline example</span>
+<span class="s2">             about record </span><span class="si">%s</span><span class="s2">!&quot;&quot;&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">record</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Record </span><span class="si">%s</span><span class="s1"> cannot be modified&#39;</span> \
+          <span class="s1">&#39;after being validated!&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="n">record</span>
+
+<span class="c1"># bad: tries to translate after string formatting</span>
+<span class="c1">#      (pay attention to brackets!)</span>
+<span class="c1"># This does NOT work and messes up the translations!</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Record </span><span class="si">%s</span><span class="s1"> cannot be modified!&#39;</span> <span class="o">%</span> <span class="n">record</span><span class="p">)</span>
+
+<span class="c1"># bad: dynamic string, string concatenation, etc are forbidden!</span>
+<span class="c1"># This does NOT work and messes up the translations!</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">que_rec</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;&#39; </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># bad: field values are automatically translated by the framework</span>
+<span class="c1"># This is useless and will not work the way you think:</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Product </span><span class="si">%s</span><span class="s2"> is out of stock!&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">_</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># and the following will of course not work as already explained:</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Product </span><span class="si">%s</span><span class="s2"> is out of stock!&quot;</span> <span class="o">%</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># bad: field values are automatically translated by the framework</span>
+<span class="c1"># This is useless and will not work the way you think:</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Product </span><span class="si">%s</span><span class="s2"> is not available!&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">_</span><span class="p">(</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># and the following will of course not work as already explained:</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Product </span><span class="si">%s</span><span class="s2"> is not available!&quot;</span> <span class="o">%</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Instead you can do the following and everything will be translated,</span>
+<span class="c1"># including the product name if its field definition has the</span>
+<span class="c1"># translate flag properly set:</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Product </span><span class="si">%s</span><span class="s2"> is not available!&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p >另外，请记住，翻译者必须使用传递给下划线函数的文字值，因此请尽量让它们易于理解，
+并将伪字符和格式设置为最小。 翻译者必须注意格式化模式（如％s或％d，换行符等）需要保留，
+但重要的是以明智的方式使用这些模式：</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Bad: makes the translations hard to work with</span>
+<span class="n">error</span> <span class="o">=</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">question</span> <span class="o">+</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;&#39; </span><span class="se">\n</span><span class="s2">Please enter an integer value &quot;</span><span class="p">)</span>
+
+<span class="c1"># Better (pay attention to position of the brackets too!)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Answer to question </span><span class="si">%s</span><span class="s2"> is not valid.</span><span class="se">\n</span><span class="s2">&quot;</span> \
+          <span class="s2">&quot;Please enter an integer value.&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">question</span>
+</pre></div>
+</div>
+<p >一般在Odoo中，当操作字符串时，喜欢 <code >%</code> 大于 <code >.format()</code> （当在字符串中只有一个要替换的变量），
+并且喜欢 <code >％(varname)</code>  当多个变量必须被替换时）。 这使得翻译更容易为社区翻译。</p></section><section id="id14"><h3 >符号和约定</h3><ul ><li ><dl ><dt >模型名称（使用点符号，前缀由模块名称）:</dt><dd ><ul ><li >定义Odoo模型时：使用名称的单数形式（ <em >res.partner</em> 和 <em >sale.order</em> 而不是
+<em >res.partnerS</em> 和 <em >saleS.orderS</em> ）</li><li >当定义一个Odoo Transient（向导）：使用 <code >&lt;related_base_model&gt;.&lt;action&gt;</code> 其中 <em >related_base_model</em>
+是与瞬态相关的基本模型（在 <em >models/</em> 中定义），<em >action</em> 的瞬态做什么。 例如：  <code >account.invoice.make</code>  ，
+<code >project.task.delegate.batch</code> ，...</li><li >当定义 <em >report</em> 模块（SQL视图）：使用  <code >&lt;related_base_model&gt;.report.&lt;action&gt;</code>  ，基于瞬态约定。</li></ul></dd></dl></li><li >Odoo Python类：在api v8（面向对象样式）中使用camelcase代码，为旧api（SQL样式）使用下划线小写符号。</li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountInvoice</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">account_invoice</span><span class="p">(</span><span class="n">osv</span><span class="o">.</span><span class="n">osv</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<ul ><li ><dl ><dt >变量名 :</dt><dd ><ul ><li >使用驼峰模型变量</li><li >对公共变量使用下划线小写符号。</li><li >因为新API与记录或记录集而不是id列表一起使用，如果变量名不包含id或id列表，
+请不要使用 <em >_id</em> 或 <em >_ids</em> 后缀变量名。</li></ul></dd></dl></li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ResPartner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span>
+<span class="n">partners</span> <span class="o">=</span> <span class="n">ResPartner</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+<span class="n">partner_id</span> <span class="o">=</span> <span class="n">partners</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+</pre></div>
+</div>
+<ul ><li ><code >One2Many</code> 和 <code >Many2Many</code>  字段应该总是有 <em >_ids</em> 作为后缀（例如：sale_order_line_ids）</li><li ><code >Many2One</code>  字段应该有 <em >_id</em> 作为后缀（例如：partner_id，user_id，...）</li><li ><dl ><dt >方法约定</dt><dd ><ul ><li >计算字段 : 计算方法模式为 <em >_compute_&lt;field_name&gt;</em></li></ul></dd></dl></li></ul><p >&nbsp;&nbsp;&nbsp;&nbsp;- 搜索方法 : 搜索方法模式为 <em >_search_&lt;field_name&gt;</em>
+&nbsp;&nbsp;&nbsp;&nbsp;- 默认方法 : 默认方法模式为 <em >_default_&lt;field_name&gt;</em>
+&nbsp;&nbsp;&nbsp;&nbsp;- Onchange方法 : onchange方法模式为 <em >_onchange_&lt;field_name&gt;</em>
+&nbsp;&nbsp;&nbsp;&nbsp;- 约束方法 : 约束方法模式为 <em >_check_&lt;constraint_name&gt;</em>
+&nbsp;&nbsp;&nbsp;&nbsp;- 操作方法 : 对象操作方法是带 <em >action_</em> 的前缀。 它的装饰是 <code >@api.multi</code> ，但由于它只使用一个记录，添加 <code >self.ensure_one()</code> 在方法的开始。</p><ul ><li ><dl ><dt >在一个Model属性顺序应该是</dt><dd ><ol ><li >私有属性（  <code >_name</code> ， <code >_description</code> ， <code >_inherit</code>  ，...）</li><li >默认方法和  <code >_default_get</code></li><li >字段声明</li><li >以与字段声明相同的顺序计算和搜索方法</li><li >约束方法（  <code >@api.constrains</code> ）和onchange方法（ <code >@api.onchange</code>  ）</li><li >CRUD方法（ORM覆盖）</li><li >动作方法</li><li >最后，其他的业务方法。</li></ol></dd></dl></li></ul><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># Private attributes</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;event.event&#39;</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Event&#39;</span>
+
+    <span class="c1"># Default methods</span>
+    <span class="k">def</span> <span class="nf">_default_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="c1"># Fields declaration</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_default_name</span><span class="p">)</span>
+    <span class="n">seats_reserved</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">oldname</span><span class="o">=</span><span class="s1">&#39;register_current&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s1">&#39;Reserved Seats&#39;</span><span class="p">,</span>
+        <span class="n">store</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_compute_seats&#39;</span><span class="p">)</span>
+    <span class="n">seats_available</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">oldname</span><span class="o">=</span><span class="s1">&#39;register_avail&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s1">&#39;Available Seats&#39;</span><span class="p">,</span>
+        <span class="n">store</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_compute_seats&#39;</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;Price&#39;</span><span class="p">)</span>
+
+    <span class="c1"># compute and search fields, in the same order of fields declaration</span>
+    <span class="nd">@api.multi</span>
+    <span class="nd">@api.depends</span><span class="p">(</span><span class="s1">&#39;seats_max&#39;</span><span class="p">,</span> <span class="s1">&#39;registration_ids.state&#39;</span><span class="p">,</span> <span class="s1">&#39;registration_ids.nb_register&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_compute_seats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="c1"># Constraints and onchanges</span>
+    <span class="nd">@api.constrains</span><span class="p">(</span><span class="s1">&#39;seats_max&#39;</span><span class="p">,</span> <span class="s1">&#39;seats_available&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_check_seats_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="nd">@api.onchange</span><span class="p">(</span><span class="s1">&#39;date_begin&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_onchange_date_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="c1"># CRUD methods (and name_get, name_search, ...) overrides</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="o">...</span>
+
+    <span class="c1"># Action methods</span>
+    <span class="nd">@api.multi</span>
+    <span class="k">def</span> <span class="nf">action_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_one</span><span class="p">()</span>
+        <span class="o">...</span>
+
+    <span class="c1"># Business methods</span>
+    <span class="k">def</span> <span class="nf">mail_user_confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+</section><section id="javascript-css"><h2 >Javascript 和 CSS</h2><p ><strong >对于javascript :</strong></p><ul ><li ><code >use strict;</code>  推荐用于所有的javascript文件</li><li >使用linter（jshint，...）</li><li >不要添加缩小的Javascript库</li><li >使用camelcase进行类声明</li><li >除非你的代码应该在每一页上运行，使用网站模块的  <code >if_dom_contains</code>  函数来定位特定的页面。
+定位特定于您的代码需要使用JQuery运行的页面的元素。</li></ul><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">odoo</span><span class="p">.</span><span class="nx">website</span><span class="p">.</span><span class="nx">if_dom_contains</span><span class="p">(</span><span class="s1">&#39;.jquery_class_selector&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/*your code here*/</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p ><strong >对于 CSS :</strong></p><ul ><li >所有类前缀用 <em >o_&lt;module_name&gt;</em> 其中 <em >module_name</em>
+是模块的技术名称（'sale'，'im_chat'，...）或模块保留的主要路由（对于网站模块主要，
+'o_forum' 针对 <em >website_forum</em> 模块）。 这个规则的唯一例外是webclient：它只使用 <em >o_</em> 前缀。</li><li >避免使用id</li><li >使用Bootstrap本地类</li><li >使用下划线小写符号命名类</li></ul></section><section id="git"><h2 >Git</h2></section><section id="id15"><h3 >提交信息</h3><p >你的提交前缀</p><ul ><li ><strong >[IMP]</strong> 改进</li><li ><strong >[FIX]</strong> 修复错误</li><li ><strong >[REF]</strong> 重构</li><li ><strong >[ADD]</strong> 用于添加新资源</li><li ><strong >[REM]</strong> 用于移除资源</li><li ><strong >[MOV]</strong> 移动文件（不要改变移动文件的内容，否则Git会松动轨迹，历史会丢失！），或者简单地将代码从一个文件移动到另一个文件。</li><li ><strong >[MERGE]</strong> 用于合并提交（仅用于前向/后端口）</li><li ><strong >[CLA]</strong> 用于签署Odoo个人贡献者许可证</li></ul><p >然后，在消息本身中，指定受更改影响的代码部分（模块名称，库，横向对象，...）和更改的描述。</p><ul ><li >始终包含有意义的提交消息：它应该是自解释（足够长），包括已更改的模块的名称和更改的原因。
+不要使用单词，如“bugfix”或“改善”。</li><li >避免同时影响多个模块的提交。 尝试分裂到不同的提交，其中受影响的模块是不同的（如果我们需要单独恢复模块将是有帮助的）。</li></ul><div class="highlight-text"><div class="highlight"><pre><span></span>[FIX] website, website_mail: remove unused alert div, fixes look of input-group-btn
+
+Bootstrap&#39;s CSS depends on the input-group-btn
+element being the first/last child of its parent.
+This was not the case because of the invisible
+and useless alert.
+
+[IMP] fields: reduce memory footprint of list/set field attributes
+
+[REF] web: add module system to the web client
+
+This commit introduces a new module system for the javascript code.
+Instead of using global ...
+</pre></div>
+</div>
+<div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >使用长描述来解释 <em >why</em> 而不是 <em >what</em>，<em >what</em> 可以在diff中看到</p></div></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

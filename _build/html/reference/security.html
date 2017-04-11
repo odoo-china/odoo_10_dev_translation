@@ -1,0 +1,346 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Odoo中的安全性 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="测试模块" href="testing.html" />
+    <link rel="prev" title="命令行界面: odoo-bin" href="cmdline.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">Odoo中的安全性</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/security.jpg');"></span>
+      <div class="container text-center">
+        <h1> Odoo中的安全性 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#reference-security-acl" class="ripple internal reference">访问控制</a></li><li class="list-group-item"><a href="#reference-security-rules" class="ripple internal reference">记录规则</a></li><li class="list-group-item"><a href="#reference-security-fields" class="ripple internal reference">字段访问</a></li><li class="list-group-item"><a href="#id4" class="ripple internal reference">工作流转移规则</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/security.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="odoo"><i id="reference-security"></i><p >除了使用自定义的代码手动管理访问之外，Odoo还提供了两个主要的数据驱动机制来管理或限制对数据的访问。</p><p >这两种机制通过 <em >分组</em> 链接到特定的用户：用户属于任何数量的组，并且安全机制与组相关联，因此向用户应用安全机制。</p></section><section id="reference-security-acl"><i id="id1"></i><h2 >访问控制</h2><p >由 <code >ir.model.access</code> 记录管理，定义对整个模型的访问。</p><p >每个访问控制都有一个授予权限的模型，授予的权限以及可选的组</p><p >访问控制是累加的，对于给定的模型，用户具有访问对其任何组授予的所有权限：如果用户在允许写入的组中，并且另一个允许删除，则他们可以写入和删除。</p><p >如果未指定组，则访问控制适用于所有用户，否则仅适用于给定组的成员。</p><p >可用的权限是创建(<code >perm_create</code>)，搜索和阅读(<code >perm_read</code>)，更新现有记录(<code >perm_write</code>)删除现有记录(<code >perm_unlink</code>)</p></section><section id="reference-security-rules"><i id="id2"></i><h2 >记录规则</h2><p >记录规则是记录允许操作（创建，读取，更新或删除）必须满足的条件。在应用访问控制之后，它将跟随记录应用。</p><p >记录规则具有：</p><ul ><li >适用的模型</li><li >它应用的权限(例如，如果设置了 <code >perm_read</code> ，只有在读取记录时 才会检查规则)</li><li >规则应用于用户组，如果未指定组，规则为 <em >global</em></li><li ><a href="orm.html#reference-orm-domains" class="internal reference"><span class="std std-ref">domain</span></a> 用于检查给定的记录匹配规则（可访问）或不匹配（不可访问）。上下文中使用两个变量计算域: <code >user</code> 是当前用户的记录，<code >time</code> 是 <a href="https://docs.python.org/2/library/time.html" class="external reference">time module</a></li></ul><p >全局规则和组规则（限于特定组的规则与应用于所有用户的组）的使用方式大不相同:</p><ul ><li >全局规则是减法，他们 <em >必须全部</em> 匹配以获得可访问的记录</li><li >组规则是累加的，如果它们 <em >任意</em> 匹配（并且所有全局规则匹配），则记录是可访问的</li></ul><p >这意味着第一个 <em >组规则</em> 限制访问，但任意 <em >组规则</em> 进一步扩展它，而 <em >全局规则</em> 只能限制访问（或没有效果）。</p></section><section id="reference-security-fields"><i id="id3"></i><h2 >字段访问</h2><div class="versionadded"><p ><span class="versionmodified">New in version 7.0.</span></p></div><p >ORM <code class="py xref py-class">Field</code> 可以有一个 <code >groups</code> 属性提供组列表（以逗号分隔的字符串 <a href="../glossary.html#term-external-identifiers" class="internal reference"><span class="std std-term xref">external identifiers</span></a>)。</p><p >如果当前用户不在列出的组中，他将无权访问该字段</p><ul ><li >受限字段将从请求的视图中自动删除</li><li >限制字段从 <code class="py py-meth xref">fields_get()</code> 响应中删除</li><li >尝试（显示）读取或写入受限字段会导致访问错误</li></ul></section><section id="id4"><h2 >工作流转移规则</h2><p >工作流转换可以限制到特定组。群组外的用户不能触发转换</p></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

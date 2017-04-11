@@ -1,0 +1,365 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>命令行界面: odoo-bin &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="Odoo中的安全性" href="security.html" />
+    <link rel="prev" title="模块" href="module.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">命令行界面: odoo-bin</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/cmdline.jpg');"></span>
+      <div class="container text-center">
+        <h1> 命令行界面: odoo-bin </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#server" class="ripple internal reference">启动server</a><ul ><li class="list-group-item"><a href="#database" class="ripple internal reference">database</a></li><li class="list-group-item"><a href="#built-in-http" class="ripple internal reference">built-in HTTP</a></li><li class="list-group-item"><a href="#id1" class="ripple internal reference">日志</a></li></ul></li><li class="list-group-item"><a href="#scaffolding" class="ripple internal reference">Scaffolding</a></li><li class="list-group-item"><a href="#reference-cmdline-config" class="ripple internal reference">配置文件</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/cmdline.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="odoo-bin"><i id="reference-cmdline"></i></section><section id="server"><i id="reference-cmdline-server"></i><h2 >启动server</h2><section class="code-option"><h6 id="cmdoption-odoo-bin-d"><i id="cmdoption-odoo-bin--database"></i><code>-d &lt;数据库名&gt;, --database &lt;数据库名&gt;</code></h6><p >当安装或更新模块是使用数据库。</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-i"><i id="cmdoption-odoo-bin--init"></i><code>-i &lt;模块&gt;, --init &lt;模块&gt;</code></h6><p >在运行服务之前用逗号分隔一系列安装的模块
+(要求 <a href="#cmdoption-odoo-bin-d" class="internal alert-link reference"><code class="std xref std-option">-d</code></a>).</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-u"><i id="cmdoption-odoo-bin--update"></i><code>-u &lt;模块&gt;, --update &lt;模块&gt;</code></h6><p >在运行服务之前逗号分隔一系列模块来更新
+(要求 <a href="#cmdoption-odoo-bin-d" class="internal alert-link reference"><code class="std xref std-option">-d</code></a> ).</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--addons-path"><code>--addons-path &lt;目录&gt;</code></h6><p >逗号分隔存储模块的目录。扫描这些目录中的模块</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--workers"><code>--workers &lt;数目&gt;</code></h6><p >如果 <code >计数</code> 不是0（默认），使多处理器和设置指定数量的HTTP角色（子流程处理HTTP和RPC请求）</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >多处理器模式仅在基于Unix系统下可用</p></div><p >一系列选项允许限制和循环角色:</p><section class="code-option"><h6 id="cmdoption-odoo-bin--limit-request"><code>--limit-request &lt;限制数目&gt;</code></h6><p >在回收和重启之前，一个角色要处理的请求数。</p><p >默认是 8196.</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--limit-memory-soft"><code>--limit-memory-soft &lt;限制内存&gt;</code></h6><p >每个角色允许最大限度的虚拟内存。如果限制被超出，这个角色将被停止并且在当前请求的最后被再回收。</p><p >默认是 640MB.</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--limit-memory-hard"><code>--limit-memory-hard &lt;限制内存&gt;</code></h6><p >强制限制虚拟内存，并且任意角色超出限制将被立刻停止而不必等待当前请求进程的结束处理。</p><p >默认是 768MB.</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--limit-time-cpu"><code>--limit-time-cpu &lt;限制秒数&gt;</code></h6><p >防止该角色使用每个请求超过限制CPU的秒数。如果超出限额，角色将被停止。</p><p >默认是 60.</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--limit-time-real"><code>--limit-time-real &lt;限制时间&gt;</code></h6><p >防止角色花费超过限制秒数的处理请求。如果超出限额，角色将被停止。</p><p >不同于 <a href="#cmdoption-odoo-bin--limit-time-cpu" class="internal alert-link reference"><code class="std xref std-option">--limit-time-cpu</code></a> ，这是一个&quot;硬性时间&quot;限制包括例如 SQL查询。</p><p >默认是 120.</p></section></section><section class="code-option"><h6 id="cmdoption-odoo-bin--max-cron-threads"><code>--max-cron-threads &lt;count&gt;</code></h6><p >一系列角色专用于计划任务。默认是2。这些角色在多线程模式下是线程，在多进程模式下是进程。</p><p >针对多进程模式，这被加入到HTTP角色进程中。</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-c"><i id="cmdoption-odoo-bin--config"></i><code>-c &lt;配置文件&gt;, --config &lt;配置文件&gt;</code></h6><p >通过一个转换的配置文件</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-s"><i id="cmdoption-odoo-bin--save"></i><code>-s, --save</code></h6><p >保存服务器配置到当前的配置文件中(默认是 <code class="file"><em >$HOME</em>/.odoorc</code> ，并且使用
+:option: [UNKNOWN NODE title_reference] 被覆盖)</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--proxy-mode"><code>--proxy-mode</code></h6><p >enables the use of <code >X-Forwarded-*</code> headers through [UNKNOWN NODE problematic].</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >proxy mode <em >must not</em> be enabled outside of a reverse proxy
+scenario</p></div></section><section class="code-option"><h6 id="cmdoption-odoo-bin--test-enable"><code>--test-enable</code></h6><p >安装模块后运行测试</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--dev"><code>--dev &lt;feature,feature,...,feature&gt;</code></h6><ul ><li ><code >all</code>: 以下的所有功能特性被激活</li><li ><code >xml</code>: 从xml文件直接读取qweb模板，而不是从数据库中。一旦一个模板在数据库中被改动，它将不会从
+xml文件中被读取到直至下次更新/初始化。</li><li ><code >reload</code>: 当python文件被更新重启服务(可能无法检测取决于使用的文本编辑器)</li><li ><code >qweb</code>: 当一个节点包含 <code >t-debug='debugger'</code> 时相关的qweb模板被中断。</li><li ><code >(i)p(u)db</code>:当一个意外的错误出现而日志返回这个错误之前启动一个python的调试器。</li></ul></section></section><section id="database"><i id="reference-cmdline-server-database"></i><h3 >database</h3><section class="code-option"><h6 id="cmdoption-odoo-bin-r"><i id="cmdoption-odoo-bin--db_user"></i><code>-r &lt;数据库用户&gt;, --db_user &lt;数据库用户&gt;</code></h6><p >用户连接PostgreSQL的数据库用户。</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-w"><i id="cmdoption-odoo-bin--db_password"></i><code>-w &lt;数据库密码&gt;, --db_password &lt;数据库密码&gt;</code></h6><p >如果使用 [UNKNOWN NODE title_reference] ，提供数据库密码。</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--db_host"><code>--db_host &lt;主机地址&gt;</code></h6><p >数据库服务器地址</p><ul ><li ><code >localhost</code> on Windows</li><li >UNIX socket otherwise</li></ul></section><section class="code-option"><h6 id="cmdoption-odoo-bin--db_port"><code>--db_port &lt;端口号&gt;</code></h6><p >数据库监听端口号，默认是 5432</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--db-filter"><code>--db-filter &lt;筛选器&gt;</code></h6><p >隐藏不匹配&lt;筛选器&gt; 的数据库。过滤器是一种 [UNKNOWN NODE title_reference] ，补充:</p><ul ><li ><code >%h</code> 被请求的整个主机名替换</li><li ><code >%d</code> 被替换为请求中除www以外的子域名(因此域odoo.com和www.odoo.com都将匹配odoo数据库)</li></ul></section><section class="code-option"><h6 id="cmdoption-odoo-bin--db-template"><code>--db-template &lt;模板&gt;</code></h6><p >当从数据库管理界面创建一个新的数据库，使用指定的 [UNKNOWN NODE title_reference] 。
+默认是 <code >template1</code> 。</p></section></section><section id="built-in-http"><h3 >built-in HTTP</h3><section class="code-option"><h6 id="cmdoption-odoo-bin--no-xmlrpc"><code>--no-xmlrpc</code></h6><p >不要启动HTTP或长轮询工作（可能仍启动cron工作）</p><blockquote ><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >如果设置了 <a href="#cmdoption-odoo-bin--test-enable" class="internal alert-link reference"><code class="std xref std-option">--test-enable</code></a> ，则没有效果，
+因为测试需要一个可访问的HTTP服务器</p></div></blockquote></section><section class="code-option"><h6 id="cmdoption-odoo-bin--xmlrpc-interface"><code>--xmlrpc-interface &lt;interface&gt;</code></h6><p >HTTP服务器监听的TCP/IP地址，默认为 <code >0.0.0.0</code> （所有地址）</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--xmlrpc-port"><code>--xmlrpc-port &lt;port&gt;</code></h6><p >HTTP服务器监听的端口，默认是8069</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--longpolling-port"><code>--longpolling-port &lt;port&gt;</code></h6><p >用于多进程或gevent模式下长轮询连接的TCP端口，默认为8072.默认（线程）模式下不使用。</p></section></section><section id="id1"><h3 >日志</h3><p >默认情况下，Odoo显示 [UNKNOWN NODE problematic] <code >info</code> 的所有了工作流日志记录（仅 <code >warning</code> ）日志记录，
+并且日志输出发送到 <code >stdout</code> 。各种选项可用于将日志重定向到其他目的地并自定义日志输出量</p><section class="code-option"><h6 id="cmdoption-odoo-bin--logfile"><code>--logfile &lt;file&gt;</code></h6><p >将日志输出发送到指定的文件，而不是stdout。 在Unix上，
+文件 [UNKNOWN NODE title_reference] ，并且在替换时将自动重新打开</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--logrotate"><code>--logrotate</code></h6><p >启用 <a href="https://docs.python.org/2/library/logging.handlers.html#timedrotatingfilehandler" class="external reference alert-link">日志循环</a> daily，保留30个备份。 日志循环频率和备份数量不可配置。</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--syslog"><code>--syslog</code></h6><p >日志到系统的事件记录器：[UNKNOWN NODE title_reference] 和 [UNKNOWN NODE problematic] 。</p><p >两者都不可配置</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-db"><code>--log-db &lt;dbname&gt;</code></h6><p >日志到指定数据库的 <code >ir.logging</code> 模型（ <code >ir_logging</code> 表）。
+数据库可以是“当前”PostgreSQL中的数据库的名称，或者例如 <a href="http://www.postgresql.org/docs/9.2/static/libpq-connect.html#AEN38208" class="external reference alert-link">a PostgreSQL URI</a> 。 例如 日志聚合</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-handler"><code>--log-handler &lt;handler-spec&gt;</code></h6><p ><code class="samp"><em >LOGGER</em>:<em >LEVEL</em></code> ，在提供 <code >LEVE</code> 下启用 <code >LOGGER</code> 。
+<code >odoo.models:DEBUG</code> 将在模型中启用 <code >DEBUG</code> 级别的所有日志消息。</p><ul ><li >冒号 <code >:</code> 是必须的</li><li >可以省略记录器来配置根处理程序</li><li >如果级别被省略，则设置为 <code >INFO</code></li></ul><p >可以重复该选项以配置多个记录器 例如</p><div class="highlight-控制台"><div class="highlight"><pre><span></span>$ odoo-bin --log-handler :DEBUG --log-handler werkzeug:CRITICAL --log-handler odoo.fields:WARNING
+</pre></div>
+</div>
+</section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-request"><code>--log-request</code></h6><p >对RPC请求启用DEBUG日志记录，等效于 <code >--log-handler=odoo.http.rpc.request:DEBUG</code></p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-response"><code>--log-response</code></h6><p >为RPC响应启用DEBUG日志记录，等效于 <code >--log-handler=odoo.http.rpc.response:DEBUG</code></p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-web"><code>--log-web</code></h6><p >启用DEBUG日志记录HTTP请求和响应，等效于 [UNKNOWN NODE title_reference]</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-sql"><code>--log-sql</code></h6><p >启用SQL查询的DEBUG日志记录，等效于 <code >--log-handler=odoo.sql_db:DEBUG</code></p></section><section class="code-option"><h6 id="cmdoption-odoo-bin--log-level"><code>--log-level &lt;level&gt;</code></h6><p >在特定记录器上更容易设置预定义级别的快捷方式。 在 <code >odoo</code> 和 <code >werkzeug</code> 记录器上设置
+“真正的”级别（<code >critical</code>，<code >error</code>，<code >warn</code>，<code >debug</code>），
+（除了 <code >debug</code>，它只在 <code >odoo</code> 设置）。</p><p >Odoo还提供了适用于不同记录器集合的调试伪级别：</p><dl ><dt ><code >debug_sql</code></dt><dd ><p >将SQL记录器设置为 <code >debug</code></p><p >等效于 <code >--log-sql</code></p></dd><dt ><code >debug_rpc</code></dt><dd ><p >将 <code >odoo</code> 和HTTP请求记录器设置为 <code >debug</code></p><p >等效于 <code >--log-level debug --log-request</code></p></dd><dt ><code >debug_rpc_answer</code></dt><dd ><p >设置 <code >odoo</code> 和HTTP请求和响应记录器 <code >debug</code></p><p >等效于 <code >--log-level debug --log-request --log-response</code></p></dd></dl><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >如果 <a href="#cmdoption-odoo-bin--log-level" class="internal alert-link reference"><code class="std xref std-option">--log-level</code></a> 和 <a href="#cmdoption-odoo-bin--log-handler" class="internal alert-link reference"><code class="std xref std-option">--log-handler</code></a> 发生冲突，后者被使用</p></div></section></section><section id="scaffolding"><i id="reference-cmdline-scaffold"></i><h2 >Scaffolding</h2><p >Scaffolding是自动创建的骨架结构，以简化（新模块，在Odoo的情况下）引导。 虽然不必要，但它避免了设置基本结构和查找所有起始要求的烦琐。</p><p >Scaffolding可通过 <strong class="command">odoo-bin scaffold</strong> 子命令。</p><section class="code-option"><h6 id="cmdoption-odoo-bin-scaffold-t"><code>-t &lt;template&gt;</code></h6><p >一个模板目录，文件通过jinja2_传递，然后复制到 <code >destination</code> 目录</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-scaffold-arg-name"><code>name</code></h6><p >要创建的模块的名称，可以以各种方式来生成程序化名称（例如模块目录名称，型号名称，_）</p></section><section class="code-option"><h6 id="cmdoption-odoo-bin-scaffold-arg-destination"><code>destination</code></h6><p >在哪个目录中创建新模块，默认为当前目录</p></section></section><section id="reference-cmdline-config"><i id="id3"></i><h2 >配置文件</h2><p >大多数命令行选项也可以通过配置文件指定。 大多数时候，他们使用类似的名称，
+前缀 <code >-</code> 被删除，其他 <code >-</code> 被替换为 <code >_</code> 。 <code class="std xref std-option">--db-template</code> 成为 <code >db_template</code> 。</p><p >某些转化与模式不匹配：</p><ul ><li ><code class="std xref std-option">--db-filter</code> 变成 <code >dbfilter</code></li><li ><code class="std xref std-option">--no-xmlrpc</code> 对应于 <code >xmlrpc</code> 布尔值</li><li >记录预设（所有选项以 <code >--log-</code> 开头除了 :option: [UNKNOWN NODE title_reference] 和 :option: [UNKNOWN NODE title_reference] ）
+只是直接在配置文件中添加内容到 <code >log_handler</code></li><li ><code class="std xref std-option">--smtp</code> 被存储为 <code >smtp_server</code></li><li ><code class="std xref std-option">--database</code> 被存储为 <code >db_name</code></li><li ><code class="std xref std-option">--debug</code> 被存储为 <code >debug_mode</code> (布尔值)</li><li ><code class="std xref std-option">--i18n-import</code> 和 <code class="std xref std-option">--i18n-export</code> 根本不可用于配置文件</li></ul><p >默认配置文件是 <code class="file"><em >$ HOME</em> /.odoorc</code> ，可以使用 <a href="#cmdoption-odoo-bin-c" class="internal reference"><code class="std xref std-option">--config</code></a> 重写。
+指定 <a href="#cmdoption-odoo-bin-s" class="internal reference"><code class="std xref std-option">--save</code></a> 会将当前配置状态保存回该文件。</p></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

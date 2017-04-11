@@ -1,0 +1,388 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>数据文件 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="动作" href="actions.html" />
+    <link rel="prev" title="ORM API" href="orm.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">数据文件</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/data_files.jpg');"></span>
+      <div class="container text-center">
+        <h1> 数据文件 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#id2" class="ripple internal reference">结构</a></li><li class="list-group-item"><a href="#id3" class="ripple internal reference">核心操作</a><ul ><li class="list-group-item"><a href="#record" class="ripple internal reference"><code >记录(record)</code></a><ul ><li class="list-group-item"><a href="#field" class="ripple internal reference"><code >字段(field)</code></a></li></ul></li><li class="list-group-item"><a href="#delete" class="ripple internal reference"><code >删除(delete)</code></a></li><li class="list-group-item"><a href="#function" class="ripple internal reference"><code >函数(function)</code></a></li><li class="list-group-item"><a href="#workflow" class="ripple internal reference"><code >工作流(workflow)</code></a></li></ul></li><li class="list-group-item"><a href="#shortcuts" class="ripple internal reference">快捷方式(Shortcuts)</a><ul ><li class="list-group-item"><a href="#menuitem" class="ripple internal reference"><code >菜单项(menuitem)</code></a></li><li class="list-group-item"><a href="#template" class="ripple internal reference"><code >模板(template)</code></a></li><li class="list-group-item"><a href="#report" class="ripple internal reference"><code >报告(report)</code></a></li></ul></li><li class="list-group-item"><a href="#csv" class="ripple internal reference">CSV 数据文件</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/data.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="reference-data"><i id="id1"></i><p >Odoo在很大程度上是数据驱动的, 并且很大一部分的模块定义就是它管理的不同的记录(record)的定义
+: 用户界面 (菜单和视图), 安全 (访问权限和访问规则), 报表和基础数据的定义都是通过记录(record).</p></section><section id="id2"><h2 >结构</h2><p >在Odoo中定义数据的主要方式是通过 XML 数据文件: 一个XML数据文件的大致结构如下:</p><ul ><li >在根元素 <code >odoo</code> 下有任意多的操作元素</li></ul><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- 数据文件的根元素 --&gt;</span>
+<span class="nt">&lt;odoo&gt;</span>
+  <span class="nt">&lt;operation/&gt;</span>
+  ...
+<span class="nt">&lt;/odoo&gt;</span>
+</pre></div>
+</div>
+<p >数据文件是被按顺序进行处理的, 进行的操作只能够指向到之前已经定义好的操作</p></section><section id="id3"><h2 >核心操作</h2></section><section id="record"><i id="reference-data-record"></i><h3 ><code >记录(record)</code></h3><p ><code >记录(record)</code> 适当的定义或者更新一个数据库的记录, 它有如下的属性:</p><dl ><dt ><code >模型(model)</code> (必须的)</dt><dd >增加(或更新)的模型(model)的名字</dd><dt ><code >id</code></dt><dd ><p >记录(record)的 <span class="std std-term xref">外部标识</span> . 强烈建议提供一个这样的标识</p><ul ><li >在增加记录(record)时, 允许后续的定义来修改或者参考这个记录(record)</li><li >在修改记录(record)是, 指向要修改的记录(record)</li></ul></dd><dt ><code >内容(context)</code></dt><dd >在增加记录(record)时使用的 context</dd><dt ><code >强制更新(forcecreate)</code></dt><dd ><p >在更新模式中, 如果记录(record)不存在的话是否创建它</p><p >需要一个 <span class="std std-term xref">外部id</span>, 默认为 <code >True</code>.</p></dd></dl></section><section id="field"><h4 ><code >字段(field)</code></h4><p >每个记录(record)都可以由 <code >字段(field)</code> 标签组成, 定义在创建记录(record)时设置的值.
+一个 <code >记录(record)</code> 如果没有 <code >字段(field)</code> 的话会使用所有默认值(创建时)
+或者设么也不做(更新时).</p><p >一个 <code >字段(field)</code> 有一个必须的 <code >name</code> 属性, 设置字段(field)的名字,
+和各种方法来定义它自己:</p><dl ><dt >空</dt><dd >如果没有给这个字段(field)提供值, 一个隐藏的 <code >False</code> 会设置进去.
+可以用于清空一个字段(field), 或者避免使用这个字段(field)的默认值.</dd><dt ><code >查找(search)</code></dt><dd ><p >用于 <a href="orm.html#reference-orm-fields-relational" class="internal reference"><span class="std std-ref">关系字段(field)</span></a>,
+在这个字段(field)的model上需要一个 <a href="orm.html#reference-orm-domains" class="internal reference"><span class="std std-ref">domain</span></a> .</p><p >将会评估这个 domain, 查找使用这个字段(field)的模型(model)并且设置search的结果作为这个字段(field)的值.
+如果返回的结果是一个 <code class="py xref py-class">Many2one</code> 则只会使用第一个结果</p></dd><dt ><code >引用(ref)</code></dt><dd ><p >如果提供了一个 <code >ref</code> 属性, 他的值必须是有效值的 <span class="std std-term xref">外部id</span>,
+其会被查找到并且设置为字段(field)的值.</p><p >大部分都是为了 <code class="py xref py-class">Many2one</code> 和
+<code class="py xref py-class">Reference</code> 字段(field)</p></dd><dt ><code >类型(type)</code></dt><dd ><p >如果提供了一个 <code >type</code> 属性, 他会被用于解释和转换字段(field)的内容.
+这个字段(field)的内容会提供给一个使用 <code >file</code> 属性的外部文件,
+或者提供给这个节点的内部.</p><p >可用的 type 有:</p><dl ><dt ><code >xml</code>, <code >html</code></dt><dd >提取这个 <code >字段(field)</code> 的子类作为一个单独的文件, 评估任何指定为这种
+<code >%(external_id)s</code> 形式的 <span class="std std-term xref">外部id</span> .
+<code >%%</code> 能够用于输出 <em >%</em> 标识.</dd><dt ><code >file</code></dt><dd >确保字段(field)的内容是在当前模型(model)下一个有效的文件路径,
+报春一对 <code class="samp"><em >module</em>,<em >path</em></code> 作为字段(field)的值</dd><dt ><code >char</code></dt><dd >设置这个字段(field)的内容不做修改的直接作为这个字段(field)的值</dd><dt ><code >base64</code></dt><dd ><a href="http://tools.ietf.org/html/rfc3548.html#section-3" class="external reference">base64</a>-编码了这个字段(field)的内容, 结合 <code >file</code>
+<em >属性</em> 来载入, 例如图片等, 数据到附件中</dd><dt ><code >int</code></dt><dd >转换这个字段(field)的内容为一个整数并设置它作为字段(field)的值</dd><dt ><code >float</code></dt><dd >转换这个字段(field)的内容为一个浮点数并设置它作为字段(field)的值</dd><dt ><code >list</code>, <code >tuple</code></dt><dd >应该包含任意数量有相同性质的 <code >值(value)</code> 元素作为 <code >字段(field)</code>,
+每个元素分解为一个生成的元组或者列表的元素, 并且生成的集合被设置为字段(field)的值.</dd></dl></dd><dt ><code >评估(eval)</code></dt><dd ><p >在前面方法不合适的情况下, <code >eval</code> 属性简单的评估提供给他的python表达式并且设置
+其结果为字段(field)的值.</p><p >这个评估的内容包含很多的的模块 (<code >time</code>, <code >datetime</code>,
+<code >timedelta</code>, <code >relativedelta</code>), 一个解析 <span class="std std-term xref">外部标识</span> (<code >ref</code>)
+的函数和当前字段(field)的模型(model) 对象如果其是可应用的 (<code >obj</code>)</p></dd></dl></section><section id="delete"><h3 ><code >删除(delete)</code></h3><p ><code >删除(delete)</code> 标签可以移除任何数目之前定义的记录(record). 它有如下的属性:</p><dl ><dt ><code >模型(model)</code> (必须)</dt><dd >需要删除的记录(record)所位于的模型(model)</dd><dt ><code >id</code></dt><dd >需要删除的记录(record)的 <span class="std std-term xref">外部id</span></dd><dt ><code >查找(search)</code></dt><dd >一个用于查找要删除的记录(record)的 <a href="orm.html#reference-orm-domains" class="internal reference"><span class="std std-ref">domain</span></a></dd></dl><p ><code >id</code> 和 <code >查找(search)</code> 是互斥的</p></section><section id="function"><h3 ><code >函数(function)</code></h3><p ><code >函数(function)</code> 标签用提供的参数来调用一个model的方法.
+它有两个强制参数 <code >模型(model)</code> 和 <code >name</code> 用于指定调用的模型(model)和其名字.</p><p >参数可以用 <code >eval</code> 来提供(应该计算一系列参数来调用方法)
+或者 <code >值(value)</code> 元素 (参照 <code >list</code> 的值).</p></section><section id="workflow"><h3 ><code >工作流(workflow)</code></h3><p ><code >工作流(workflow)</code> 标签给一个存在的工作流发送一个信号. 这个工作流可以通过一个 <code >ref</code> 属性来被指定
+(一个存在的工作流的 <span class="std std-term xref">外部id</span>) 或者一个 <code >值(value)</code> 标签来返回一个工作流的id.</p><p >这个标签有两个强制的属性 <code >模型(model)</code> (模型(model) 链接至的工作流) 和 <code >action</code>
+(发送至工作流的信号名字).</p></section><section id="shortcuts"><h2 >快捷方式(Shortcuts)</h2><p >因为一些Odoo的重要的结构性模型(模型(model))是复杂且关联的,
+数据文件提供更短的替代名称使用 <a href="#reference-data-record" class="internal reference"><span class="std std-ref">记录(record)标签</span></a> 来定义他们:</p></section><section id="menuitem"><h3 ><code >菜单项(menuitem)</code></h3><p >用默认值和备用值(fallbacks)定义一个 <code >ir.ui.menu</code> 记录(record):</p><dl ><dt >父(Parent)菜单</dt><dd ><ul ><li >如果设置了一个 <code >parent</code> 属性, 它应该是另一个菜单项的 <span class="std std-term xref">外部id</span>,</li></ul><p >作为这个新的项目的上级(parent)
+* 如果没有提供 <code >parent</code> , 系统会尝试解析 <code >name</code> 属性作为一个
+<code >/</code>-不同的菜单名队列并且在这个菜单层级中中找到一个地方.
+在编译中, 中间菜单会被自动创建
+* 否则菜单会被定义为一个 &quot;顶级&quot; 的菜单项 (<em >并不是</em> 一个没有父的菜单项)</p></dd><dt >菜单名字</dt><dd >如果没有 <code >名字</code> 属性, 如果有的话，会尝试从一个链接的动作(action)来获得这个菜单名字.
+否则则使用这个记录(record)的 <code >id</code></dd><dt >组(Groups)</dt><dd >一个 <code >组(groups)</code> 属性会被编译成为一个逗号分隔的
+用于 <code >res.groups</code> 模型的 <span class="std std-term xref">外部标识</span> . 如果一个
+<span class="std std-term xref">外部标识</span> 有一个减号 (<code >-</code>) 作为前缀, 这个组会被从这个菜单组中 <em >移除</em></dd><dt ><code >动作(action)</code></dt><dd >如果指定了, <code >action</code> 属性应该是在菜单打开时执行的action的 <span class="std std-term xref">外部id</span></dd><dt ><code >id</code></dt><dd >菜单项的 <span class="std std-term xref">外部id</span></dd></dl></section><section id="template"><i id="reference-data-template"></i><h3 ><code >模板(template)</code></h3><p >创建一个 <a href="views.html#reference-views-qweb" class="internal reference"><span class="std std-ref">QWeb 视图</span></a> 只需要视图的 <code >arch</code> 部分,
+并且语序少量 <em >可选</em> 属性:</p><dl ><dt ><code >id</code></dt><dd >这个视图的 <span class="std std-term xref">外部标识</span></dd><dt ><code >名字(name)</code>, <code >inherit_id</code>, <code >优先级(priority)</code></dt><dd >跟 <code >ir.ui.view</code> 相应的字段意义相同 (注意: <code >inherit_id</code>
+应该是一个 <span class="std std-term xref">外部标识</span>)</dd><dt ><code >主项(primary)</code></dt><dd >如果设置为 <code >True</code> 并且结合了一个 <code >inherit_id</code>, 就定义这个视图为主视图</dd><dt ><code >组(groups)</code></dt><dd >逗号分隔的组的 <span class="std std-term xref">外部标识</span> 列表</dd><dt ><code >页面(page)</code></dt><dd >如果设置为 <code >&quot;True&quot;</code>, 这个模板是会一个网页 (可链接, 可删除)</dd><dt ><code >可选(optional)</code></dt><dd ><code >enabled</code> 或者 <code >disabled</code>, 决定了这个视图是不是可以被禁用 ( 在网站接口)
+和他的默认状态. 如果没设置的话, 视图总是启用的.</dd></dl></section><section id="report"><h3 ><code >报告(report)</code></h3><p >创建一个有少量默认值的 <code >ir.actions.report.xml</code> 记录(record).</p><p >到部分只是 <code >ir.actions.report.xml</code> 相应字段的代理属性,
+但会在报告(report)的 <code >模型(model)</code> 的 <span class="guilabel">更多(More)</span> 菜单中自动创建项目.</p></section><section id="csv"><h2 >CSV 数据文件</h2><p >XML 数据文件是灵活且能自我描述的, 但在创建大量相同模型上的简单记录的时候就会显得冗长.</p><p >在这种情况中, 数据文件可以使用 <a href="http://en.wikipedia.org/wiki/Comma-separated_values" class="external reference">csv</a>, 这是 <a href="security.html#reference-security-acl" class="internal reference"><span class="std std-ref">权限管理</span></a> 的常见情况:</p><ul ><li >文件名是 <code class="file"><em >model_name</em>.csv</code></li><li >第一行列出了需要写的字段, 有指定的字段 <code >id</code> 作为 <span class="std std-term xref">外部标识</span> (用于创建或更新)</li><li >以后的每行创建一个新的记录(record)</li></ul><p >这是定义了美国州的数据文件的第一行 <code >res.country.state.csv</code></p><p >用一个更易读的格式渲染后的效果:</p><p >对于每一行 (记录):</p><ul ><li >第一列是要创建或更新的记录的 <span class="std std-term xref">外部id</span></li><li >第二列是要链接道德国家对象的 <span class="std std-term xref">外部id</span> (国家对象必须在之前定义好)</li><li >第三列是 <code >res.country.state</code> 的 <code >name</code> 字段</li><li >第四列是 <code >res.country.state</code> 的 <code >code</code> 字段</li></ul></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

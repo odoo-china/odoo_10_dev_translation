@@ -1,0 +1,420 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>动作 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="视图" href="views.html" />
+    <link rel="prev" title="数据文件" href="data.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">动作</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/actions.jpg');"></span>
+      <div class="container text-center">
+        <h1> 动作 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#ir-actions-act-window" class="ripple internal reference">窗口动作 (<code >ir.actions.act_window</code>)</a></li><li class="list-group-item"><a href="#url-ir-actions-act-url" class="ripple internal reference">URL 动作 (<code >ir.actions.act_url</code>)</a></li><li class="list-group-item"><a href="#ir-actions-server" class="ripple internal reference">服务器动作 (<code >ir.actions.server</code>)</a><ul ><li class="list-group-item"><a href="#code" class="ripple internal reference"><code >code</code></a></li><li class="list-group-item"><a href="#object-create" class="ripple internal reference"><code >object_create</code></a></li><li class="list-group-item"><a href="#object-write" class="ripple internal reference"><code >object_write</code></a></li><li class="list-group-item"><a href="#multi" class="ripple internal reference"><code >multi</code></a></li><li class="list-group-item"><a href="#trigger" class="ripple internal reference"><code >trigger</code></a></li><li class="list-group-item"><a href="#client-action" class="ripple internal reference"><code >client_action</code></a></li><li class="list-group-item"><a href="#reference-actions-server-context" class="ripple internal reference">求值上下文</a></li></ul></li><li class="list-group-item"><a href="#ir-actions-report-xml" class="ripple internal reference">报表动作 (<code >ir.actions.report.xml</code>)</a></li><li class="list-group-item"><a href="#ir-actions-client" class="ripple internal reference">客户端动作 (<code >ir.actions.client</code>)</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/actions.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="reference-actions"><i id="id1"></i><p >动作定义 系统响应用户动作的行为: 登录,
+动作按钮, 选择发票, ......</p><p >动作可以存储在数据库中或直接作为字典返回
+例如 按钮方法. 所有动作共享的两个必要属性:</p><dl ><dt ><code >type</code></dt><dd >当前动作的类别，确定可以使用哪些字段以及如何解释动作</dd><dt ><code >name</code></dt><dd >简要用户可读描述的动作, 可能会显示在客户端的界面中客户端可以采用以下4种形式获取动作:</dd><dt ><code >False</code></dt><dd >如果当前有打开任何的动作对话框，请将其关闭</dd><dt >字符串</dt><dd >如果 <a href="#reference-actions-client" class="internal reference"><span class="std std-ref">客户端动作</span></a> 匹配，解释为客户端动作的标签，否则视为数字</dd><dt >数字</dt><dd >从数据库中读取相应的动作记录,可以是数据库标识符或者一个 <a href="../glossary.html#term-external-id" class="internal reference"><span class="std std-term xref">external id</span></a></dd><dt >字典</dt><dd >视为客户端动作描述符并执行</dd></dl></section><section id="ir-actions-act-window"><i id="reference-actions-window"></i><h2 >窗口动作 (<code >ir.actions.act_window</code>)</h2><p >最常见的动作类型，用于通过视图呈现模型的可视化
+<a href="views.html#reference-views" class="internal reference"><span class="std std-ref">视图</span></a>: 窗口动作定义模型
+(以及可能的模型的特定记录) 的一组视图类型 (以及可能的特定视图)。</p><p >字段有:</p><dl ><dt ><code >res_model</code></dt><dd >模型来呈现视图</dd><dt ><code >views</code></dt><dd >成对的列表 <code >(view_id, view_type)</code> 。每对的第二个元素是视图的类别(tree, form, graph, ...) 第一个是可选数据库id (或 <code >False</code>)。如果没有提供id, 客户端应该获取所请求模型的指定类型的默认视图(这是通过 <code class="py py-meth xref">fields_view_get()</code> 自动完成的）。列表的第一种类型是默认视图类型，并且将在执行动作时默认打开。每个视图类型在列表中最多只能出现一次</dd><dt ><code >res_id</code> (选填)</dt><dd >如果默认视图是 <code >form</code>， 则指定要加载的记录 (否则应创建一个新纪录)</dd><dt ><code >search_view_id</code> (选填)</dt><dd >成对的 <code >(id, name)</code> ，<code >id</code> 是要为动作加载特定的搜索视图的数据库标识符。默认为获取模型的默认搜索视图</dd><dt ><code >target</code> (选填)</dt><dd >是否应该在主内容区域打开视图 (<code >current</code>)，
+全局模式 (<code >fullscreen</code>) 或在一个对话框/弹出窗口 (<code >new</code>)中打开视图。 使用
+<code >main</code> 而不是 <code >current</code> 清除面包屑。默认值为
+<code >current</code>。</dd><dt ><code >context</code> (选填)</dt><dd >附加上下文数据传递给视图</dd><dt ><code >domain</code> (选填)</dt><dd >域名过滤以隐式添加到所有的视图搜索查询中</dd><dt ><code >limit</code> (选填)</dt><dd >默认情况下，列表显示的记录数，在web客户端中默认为80</dd><dt ><code >auto_search</code> (选填)</dt><dd >是否应在加载默认视图后立即执行搜索视图。默认为 <code >True</code></dd></dl><p >例如，打开客户使用的 (与 <code >customer</code> 标志设置的合作伙伴) 列表和表单视图:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.act_window&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;res_model&quot;</span><span class="p">:</span> <span class="s2">&quot;res.partner&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;tree&quot;</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;form&quot;</span><span class="p">]],</span>
+    <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;customer&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">]],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p >或者在新的对话框中打开特定产品（单独获得）的表单视图:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.act_window&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;res_model&quot;</span><span class="p">:</span> <span class="s2">&quot;product.product&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;form&quot;</span><span class="p">]],</span>
+    <span class="s2">&quot;res_id&quot;</span><span class="p">:</span> <span class="n">a_product_id</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p >数据库中窗口操作有一些不同的字段，客户端应该忽略，主要用于组合 <code >views</code> 列表：</p><dl ><dt ><code >view_mode</code></dt><dd >逗号分隔的视图类型列表作为字符串。 所有这些类型将存在于生成的 <code >views</code> 列表中 (至少具有 <code >False</code> view_id)</dd><dt ><code >view_ids</code></dt><dd >M2M1查看对象, 定义 <code >views</code> 的初始内容</dd><dt ><code >view_id</code></dt><dd >特定视图添加到 <code >views</code> 列表中，如果它的类型是 <code >view_mode</code> 列表的一部分，
+并且尚未由 <code >view_ids</code> 中的某个视图填充</dd></dl><p >这些主要用于从 <a href="data.html#reference-data" class="internal reference"><span class="std std-ref">数据文件</span></a> 定义操作时:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span> <span class="na">id=</span><span class="s">&quot;test_action&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>A Test Action<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;res_model&quot;</span><span class="nt">&gt;</span>some.model<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_mode&quot;</span><span class="nt">&gt;</span>graph<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;my_specific_view&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >将使用 &quot;my_specific_view&quot; 视图， 即使这不是模型的默认视图。</p><p ><code >views</code> 序列的服务器端组成如下：</p><ul ><li ><code >view_ids</code> 获取每个 <code >(id, type)</code> (按 <code >sequence</code> 排序)</li><li >如果 <code >view_id</code> 已定义并且其类型尚未填充，则加上 <code >(id, type)</code></li><li >对于 <code >view_mode</code> 中的每个未填充类型, 加上 <code >(False, type)</code></li></ul></section><section id="url-ir-actions-act-url"><i id="reference-actions-url"></i><h2 >URL 动作 (<code >ir.actions.act_url</code>)</h2><p >允许通过Odoo动作打开URL（网站/网页）。可以通过两个字段进行定制:</p><dl ><dt ><code >url</code></dt><dd >激活动作时打开的地址</dd><dt ><code >target</code></dt><dd >在新窗口/页面中打开地址，如果是 <code >new</code>， 则用页面替换当前内容 <code >self</code>。 默认为 <code >new</code></dd></dl><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.act_url&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://odoo.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;self&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p >将用Odoo主页替换当前内容部分。</p></section><section id="ir-actions-server"><i id="reference-actions-server"></i><h2 >服务器动作 (<code >ir.actions.server</code>)</h2><p >允许从任何有效的动作位置触发复杂服务器代码。只有两个字段与客户端有关:</p><dl ><dt ><code >id</code></dt><dd >要运行的服务器动作数据库中的标识符</dd><dt ><code >context</code> (选填)</dt><dd >运行服务器动作时要使用的上下文数据</dd></dl><p >数据库中的记录明显更丰富，并且可以根据其状态执行大量特定的或通用的动作 <code >state</code> . 一些字段（和相应的行为）在状态中共享：</p><dl ><dt ><code >model_id</code></dt><dd >Odoo模型链接到动作，通过 <a href="#reference-actions-server-context" class="internal reference"><span class="std std-ref">contexts 赋值</span></a></dd><dt ><code >condition</code> (选填)</dt><dd >使用服务器动作的 <a href="#reference-actions-server-context" class="internal reference"><span class="std std-ref">context 赋值</span></a> 为Python代码。 如果为 <code >False</code> ， 则阻止动作运行。默认为: <code >True</code></dd></dl><p >有效的动作类型 (<code >state</code> 字段) 是可扩展的, 默认类型是:</p></section><section id="code"><h3 ><code >code</code></h3><p >默认和最具灵活性的服务器动作类型，使用动作的 <a href="#reference-actions-server-context" class="internal reference"><span class="std std-ref">context 赋值</span></a> 检测任意的Python代码。 仅使用一个特定类型的特定字段：</p><dl ><dt ><code >code</code></dt><dd >一段Python代码在调用动作时执行</dd></dl><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.actions.server&quot;</span> <span class="na">id=</span><span class="s">&quot;print_instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Res Partner Server Action<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;model_res_partner&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span><span class="nt">&gt;</span>
+        raise Warning(object.name)
+    <span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >代码段中可以定义一个名为“action”的变量，它将作为下一个要执行的动作返回给客户端：</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.actions.server&quot;</span> <span class="na">id=</span><span class="s">&quot;print_instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Res Partner Server Action<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;model_res_partner&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;code&quot;</span><span class="nt">&gt;</span>
+        if object.some_condition():
+            action = {
+                &quot;type&quot;: &quot;ir.actions.act_window&quot;,
+                &quot;view_mode&quot;: &quot;form&quot;,
+                &quot;res_model&quot;: object._name,
+                &quot;res_id&quot;: object.id,
+            }
+    <span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >将要求客户打开一个表单记录，如果它满足一些条件</p></div><p >这往往是在 <a href="data.html#reference-data" class="internal reference"><span class="std std-ref">数据文件</span></a> 创建的唯一操作类型, 除了 <a href="#reference-actions-server-multi" class="internal reference"><span class="std std-ref">multi</span></a> 外，其它类型比Python代码定义的更简单，从UI定义，而不是从 <a href="data.html#reference-data" class="internal reference"><span class="std std-ref">数据文件</span></a> 中定义。</p></section><section id="object-create"><i id="reference-actions-server-object-create"></i><h3 ><code >object_create</code></h3><p >创建一个新纪录，从头开始 (通过 <code class="py py-meth xref">create()</code>)
+或通过复制现有记录 (通过 <code class="py py-meth xref">copy()</code>)</p><dl ><dt ><code >use_create</code></dt><dd ><p >创建的方法，其中之一：</p><dl ><dt ><code >new</code></dt><dd >在由 <code >model_id</code> 指定的模型中创建一个记录</dd><dt ><code >new_other</code></dt><dd >在由 <code >crud_model_id</code> 指定的模型中创建一个记录</dd><dt ><code >copy_current</code></dt><dd >复制调用操作的记录</dd><dt ><code >copy_other</code></dt><dd >复制其他记录，通过 <code >ref_object</code> 获取</dd></dl></dd><dt ><code >fields_lines</code></dt><dd ><p >要在创建或者复制记录时覆盖的字段。<code class="py xref py-class">One2many</code> 与字段:</p><dl ><dt ><code >col1</code></dt><dd ><code >ir.model.fields</code> 在 <code >use_create</code> 隐含的模型中设置</dd><dt ><code >value</code></dt><dd >字段的值，通过 <code >type</code> 解释</dd><dt ><code >type</code></dt><dd >如果是 <code >value</code> , <code >value</code> 字段被解释为一个字面值（可能被转换）, 如果 <code >equation</code> 的 <code >value</code> 字段是解释为Python表达式并被进行求值</dd></dl></dd><dt ><code >crud_model_id</code></dt><dd >模型中创建一个新纪录, 如果 <code >use_create</code> 被设置为 <code >new_other</code></dd><dt ><code >ref_object</code></dt><dd ><code class="py xref py-class">Reference</code> 要复制的任意记录, 如果 <code >use_create</code>
+设置为 <code >copy_other</code> ，则使用</dd><dt ><code >link_new_record</code></dt><dd >booleac标志通过 <code >link_field_id</code> 指定的many2one字段将新创建的记录链接到当前记录, 默认为 <code >False</code></dd><dt ><code >link_field_id</code></dt><dd >many2one 到 <code >ir.model.fields</code> ，指定当前记录的m2o字段，应在其上设置新创建的记录（模型应该匹配）</dd></dl></section><section id="object-write"><h3 ><code >object_write</code></h3><p >与 <a href="#reference-actions-server-object-create" class="internal reference"><span class="std std-ref">object_create</span></a> 类似，但会更改现有记录，而不是创建新纪录</p><dl ><dt ><code >use_write</code></dt><dd ><p >写的方法，以下之一:</p><dl ><dt ><code >current</code></dt><dd >写入当前记录</dd><dt ><code >other</code></dt><dd >写入通过 <code >crud_model_id</code> 和 <code >ref_object</code> 选择的其他记录</dd><dt ><code >expression</code></dt><dd >写入通过 <code >crud_model_id</code> 选择其模型的其他记录，并通过创建 <code >write_expression</code> 选择其id</dd></dl></dd><dt ><code >write_expression</code></dt><dd >返回记录或对象标识的Python表达式，在 <code >use_write</code> 设置为 <code >expression</code> 使用， 以便决定应该修改哪个记录</dd><dt ><code >fields_lines</code></dt><dd >查阅 <a href="#reference-actions-server-object-create" class="internal reference"><span class="std std-ref">object_create</span></a></dd><dt ><code >crud_model_id</code></dt><dd >查阅 <a href="#reference-actions-server-object-create" class="internal reference"><span class="std std-ref">object_create</span></a></dd><dt ><code >ref_object</code></dt><dd >查阅 <a href="#reference-actions-server-object-create" class="internal reference"><span class="std std-ref">object_create</span></a></dd></dl></section><section id="multi"><i id="reference-actions-server-multi"></i><h3 ><code >multi</code></h3><p >一个接一个执行多个动作。要执行的动作通过 <code >child_ids</code> m2m定义. 如果子动作本身返回动作，最后一个将作为自己的下一个动作返回到客户端</p></section><section id="trigger"><h3 ><code >trigger</code></h3><p >向工作流发送信号</p><dl ><dt ><code >wkf_transition_id</code></dt><dd >触发 <code class="py xref py-class">Many2one</code> 到 <code >workflow.transition</code></dd><dt ><code >use_relational_model</code></dt><dd >if <code >base</code> (默认)， 则代表当前记录触发信号。 如果是 <code >relational</code>，则代表通过 <code >wkf_model_id</code> 和 <code >wkf_field_id</code> 选择当前记录的字段触发信号</dd></dl></section><section id="client-action"><h3 ><code >client_action</code></h3><p >用于直接返回使用 <code >action_id</code> 定义的其他的间接动作。将该动作返回给客户端执行</p></section><section id="reference-actions-server-context"><i id="id2"></i><h3 >求值上下文</h3><p >在服务器动作求值上下文中或周围有多个密钥可用：</p><dl ><dt ><code >self</code></dt><dd >通过 <code >model_id</code> 链接到动作的模型对象</dd><dt ><code >object</code>, <code >obj</code></dt><dd >仅在提供 <code >active_model</code> 和 <code >active_id</code> （通过上下文）时可用，否则为 <code >None</code>。
+由 <code >active_id</code> 选择实际的记录</dd><dt ><code >pool</code></dt><dd >当前数据库注册表</dd><dt ><code >datetime</code>, <code >dateutil</code>, <code >time</code></dt><dd >对应的Python模块</dd><dt ><code >cr</code></dt><dd >当前位置</dd><dt ><code >user</code></dt><dd >当前用户记录</dd><dt ><code >context</code></dt><dd >执行上下文</dd><dt ><code >Warning</code></dt><dd ><code >Warning</code> 异常的构造函数</dd></dl></section><section id="ir-actions-report-xml"><i id="reference-actions-report"></i><h2 >报表动作 (<code >ir.actions.report.xml</code>)</h2><p >触发报表的打印</p><dl ><dt ><code >name</code> (必填)</dt><dd >用在列表视图中作为描述显示或者排序</dd><dt ><code >model</code> (必填)</dt><dd >您的报表所关注的模型</dd><dt ><code >report_type</code> (必填)</dt><dd ><code >qweb-pdf</code> 用于PDF报表或 <code >qweb-html</code> 用于HTML</dd><dt ><code >report_name</code></dt><dd >您的报表的名称（这将是PDF输出的名称）</dd><dt ><code >groups_id</code></dt><dd ><code class="py xref py-class">Many2many</code> 字段允许查看/使用当前报表的分组</dd><dt ><code >paperformat_id</code></dt><dd ><code class="py xref py-class">Many2one</code> 字段设置适合此报表的纸张格式（如果未指定，将使用默认格式）</dd><dt ><code >attachment_use</code></dt><dd ><p >如果设置为 <code >True</code> ，报表只在第一次请求时生成，并且随后则为从存储的报表中直接打印，而不是每次都重新生成。</p><p >可用于只能生成一次的报表 (例如出于法律的原因)</p></dd><dt ><code >attachment</code></dt><dd >定义报表名称的Python表达式；该记录可作为变量访问 <code >object</code></dd></dl></section><section id="ir-actions-client"><i id="reference-actions-client"></i><h2 >客户端动作 (<code >ir.actions.client</code>)</h2><p >触发完全在客户端中实现的动作。</p><dl ><dt ><code >tag</code></dt><dd >客户端动作的标识符，客户端应知道如何响应任意的字符串</dd><dt ><code >params</code> (选填)</dt><dd >发送给客户端附加数据的Python字典，以及客户端动作标签</dd><dt ><code >target</code> (选填)</dt><dd >客户端动作应在内容区域(<code >current</code>)， 或在全局模式下 (<code >fullscreen</code>) 对话框/弹出窗口
+(<code >new</code>)中打开。使用 <code >main</code> 而不是 <code >current</code> 清除面包屑。默认为 <code >current</code>.</dd></dl><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.client&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tag&quot;</span><span class="p">:</span> <span class="s2">&quot;pos.ui&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p >告诉客户端启动Point of Sale接口，服务器是不知道POS接口是如何工作的。</p><div class="footnote" id="notquitem2m"><span class="footnote-label">[1]</span> 技术上不是M2M：添加序列字段，并且可以仅由视图类型组成，而没有视图id。</div></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Workflows &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="混入类(Mixins)和有用的类们" href="mixins.html" />
+    <link rel="prev" title="QWeb 报表" href="reports.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">Workflows</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/installing_odoo.jpg');"></span>
+      <div class="container text-center">
+        <h1> Workflows </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#basics" class="ripple internal reference">Basics</a></li><li class="list-group-item"><a href="#id1" class="ripple internal reference">活动</a><ul ><li class="list-group-item"><a href="#id2" class="ripple internal reference">流程启动和流程停止</a></li><li class="list-group-item"><a href="#id3" class="ripple internal reference">子流</a></li><li class="list-group-item"><a href="#id4" class="ripple internal reference">从子流发送信号</a></li><li class="list-group-item"><a href="#server-actions" class="ripple internal reference">Server actions</a></li><li class="list-group-item"><a href="#python-action" class="ripple internal reference">Python action</a></li><li class="list-group-item"><a href="#split-mode" class="ripple internal reference">Split mode</a></li><li class="list-group-item"><a href="#join-mode" class="ripple internal reference">Join mode</a></li><li class="list-group-item"><a href="#id5" class="ripple internal reference">种类</a></li></ul></li><li class="list-group-item"><a href="#id6" class="ripple internal reference">翻译</a><ul ><li class="list-group-item"><a href="#id7" class="ripple internal reference">条件</a></li><li class="list-group-item"><a href="#reference-workflows-signals" class="ripple internal reference">信号</a></li><li class="list-group-item"><a href="#id9" class="ripple internal reference">触发器</a></li></ul></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/workflows.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="workflows"><i id="reference-workflows"></i><p >在Odoo中，工作流是管理与模型记录相关联的一组“要做的事情”的技术组件。
+工作流提供了更高级别的方式来组织要在记录上执行的任务。</p><p >更具体地，工作流是有向图，其中节点被称为“活动”，并且弧被称为“转换”。</p><ul ><li >活动定义应在Odoo服务器内完成的工作，例如更改某些记录的状态或发送电子邮件。</li><li >转换控制工作流如何从活动到活动。</li></ul><p >在工作流的定义中，可以向转换附加条件，信号和触发器，以便工作流的行为取决于用户操作（例如单击按钮），
+更改记录或任意Python代码。</p><p >总而言之，Odoo的工作流系统提供：</p><ul ><li >记录（文档）随时间的演变的描述</li><li >基于各种灵活条件的自动操作</li><li >管理公司角色和验证步骤</li><li >管理对象之间的交互</li><li >通过其生命周期形成可视化的文档流表示</li></ul><p >例如，基本订单可以具有以下流程：</p><img src="../_images/order_0.svg" class="img-responsive center-block"><p >订单以 <em >Draft</em> 状态开始，可以由用户 <em >确认</em> ，然后发货（ <em >关闭</em> ）或 <em >取消</em> 。</p><p >使用Odoo的公司可能希望为订单添加折扣支持，其中销售人员可自由折扣高达15％的折扣，
+但是需要管理员验证获得超过15％的折扣。 可以在线更改工作流以添加相关步骤，
+而无需编辑Python或XML文件：</p><img src="../_images/order_1.svg" class="img-responsive center-block"><p >因为活动可以执行任意操作， <em >验证</em> 可以自动发送验证请求到相关员工。</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >需要为经理修改订单视图添加 <em >接受折扣</em> 按钮</p></div></section><section id="basics"><h2 >Basics</h2><p >使用数据文件定义工作流非常简单：记录“工作流”由活动和转换的记录一起提供。
+例如，这里是在XML中定义的两个活动的简单序列</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;test_workflow&quot;</span> <span class="na">model=</span><span class="s">&quot;workflow&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>test.workflow<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;osv&quot;</span><span class="nt">&gt;</span>test.workflow.model<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;on_create&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;activity_a&quot;</span> <span class="na">model=</span><span class="s">&quot;workflow.activity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;wkf_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;test_workflow&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;flow_start&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>a<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;kind&quot;</span><span class="nt">&gt;</span>function<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;action&quot;</span><span class="nt">&gt;</span>print_a()<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;activity_b&quot;</span> <span class="na">model=</span><span class="s">&quot;workflow.activity&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;wkf_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;test_workflow&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;flow_stop&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>b<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;kind&quot;</span><span class="nt">&gt;</span>function<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;action&quot;</span><span class="nt">&gt;</span>print_b()<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;trans_a_b&quot;</span> <span class="na">model=</span><span class="s">&quot;workflow.transition&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;act_from&quot;</span> <span class="na">ref=</span><span class="s">&quot;activity_a&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;act_to&quot;</span> <span class="na">ref=</span><span class="s">&quot;activity_b&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;signal&quot;</span><span class="nt">&gt;</span>signal_goto_b<span class="nt">&lt;/signal&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >一个工作流总是相对于一个特定的模型定义的（该模型由模型“工作流”上的属性“osv”给出）。
+将在该模型上调用在活动或转换中指定的方法。</p><p >在上面的示例代码中，创建了一个名为“test_workflow”的工作流。 它由两个名为“a”和“b”的活动
+和一个从“a”到“b”的转换组成。</p><p >第一个活动的属性 <code >flow_start</code> 设置为 <code >True</code> ，以便Odoo在实例化后知道在哪里启动工作流遍历。
+因为工作流记录上的 <code >on_create</code> 设置为True，所以为每个新创建的记录创建工作流。
+（否则，工作流应该通过其他方式来实现，例如从某些模块Python代码）。</p><p >当工作流被实例化时，它从活动“a”开始。 那个活动是一个 <code >function</code> ，这意味着动作 <code >print_a()</code>
+是一个对模型 <code >test.workflow</code> （通常是 <code >cr，uid，ids，</code> 参数传递给你）。</p><p >“a”和“b”之间的转换指定信号，但不指定任何条件。这意味着当信号 <code >signal_goto_b</code> 被接收
+并且因此处理活动“b”的动作 <code >print_b()</code> 时，工作流实例将立即从“a”转变到“b”。</p></section><section id="id1"><h2 >活动</h2><p >虽然转换可以看作是工作流的控制结构，但活动是从改变记录状态到发送电子邮件的一切地方都发生的。</p><p >存在不同类型的活动： <code >Dummy</code> ， <code >Function</code> ， <code >Subflow</code> 和 <code >Stop all</code> ，
+每个在处理活动时做不同的事情。 除了他们的种类，活动有其他属性，详细在下面的部分。</p></section><section id="id2"><h3 >流程启动和流程停止</h3><p >属性 <code >flow_start</code> 是一个布尔值，指定当工作流被实例化时是否处理活动。
+多个活动可以将其属性 <code >flow_start</code> 设置为“True”。 当为一个记录指定工作流时，
+Odoo只是处理所有的记录，然后评估所有的转移输出。</p><p >属性 <code >flow_stop</code> 是一个布尔值，指定活动是否停止工作流实例。 当属性 <code >flow_stop</code>
+设置为“True”的所有活动都完成时，工作流实例被认为已完成。</p><p >Odoo知道工作流实例何时完成很重要。 工作流可以实际上是另一工作流（称为子流）的活动；
+当子流完成时该活动完成。</p></section><section id="id3"><h3 >子流</h3><p >活动可以嵌入一个称为子流的完整工作流（嵌入工作流称为父工作流）。
+实例化的工作流由属性 <code >subflow_id</code> 指定。</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >在GUI中，除非活动的类型是 <code >Subflow</code> ，否则不能设置该属性。</p></div><p >当子流完成时，活动被认为已完成（并且其传出转换准备好被评估）（见上面的属性 <code >flow_stop</code> ）。</p></section><section id="id4"><h3 >从子流发送信号</h3><p >当工作流嵌入工作流的活动（作为子流）时，子流可以通过在属性 <code >signal_send</code> 中给出信号名称，
+从其自己的活动向父工作流发送信号。 Odoo通过发送以 &quot;subflow&quot; 为前缀的 <code >signal_send</code>
+的值来处理这些活动到父工作流实例。</p><p >换句话说，当在子流中执行活动时，可以在父工作流中进行反应和获得转换。</p></section><section id="server-actions"><h3 >Server actions</h3><p >活动可以通过在属性 <code >action_id</code> 中指定其ID来运行“server action”。</p></section><section id="python-action"><h3 >Python action</h3><p >活动可以执行一些Python代码，由属性“action”给出。 评估环境与 <a href="#id7" class="internal reference">条件</a> 一节中是相同的说明。</p></section><section id="split-mode"><h3 >Split mode</h3><p >处理活动后，Odoo评估其转换以到达流中的下一个活动。</p><p >然而，如果一个活动有多个转换，Odoo必须决定要跟踪哪个或哪些活动。</p><img src="../_images/split.svg" class="img-responsive center-block"><p >这个选择由 <code >split_mode</code> 属性控制：</p><dl ><dt ><code >XOR</code> (默认)</dt><dd >默认情况下，Odoo将使用满足条件的第一个转换（按 <code >sequence</code> 顺序）。 所有其他转换将被忽略。</dd><dt ><code >OR</code></dt><dd >在“OR”模式下，满足条件的所有转换都会同时遍历。 尚未生效的转换将被忽略，即使它们以后有效。</dd><dt ><code >AND</code></dt><dd >在 <code >AND</code> 模式下，Odoo将等待直到 <em >所有</em> 转换满足，并且将遍历所有这些（很像 <code >OR</code> 模式）。</dd></dl><p ><code >OR</code> 和 <code >AND</code> 模式都将导致活动在同一个活动工作流。</p></section><section id="join-mode"><h3 >Join mode</h3><p >就像输出转换条件可以组合在一起以决定它们是否可以遍历，输入转换可以组合在一起以决定是否和何时可以处理活动。</p><img src="../_images/join.svg" class="img-responsive center-block"><p ><code >join_mode</code> 属性控制该行为：</p><dl ><dt ><code >XOR</code> (默认)</dt><dd >任何传入转换启用活动并开始其处理。</dd><dt ><code >AND</code></dt><dd >仅在遍历 <em >所有</em> 传入转换后才启用和处理该活动。</dd></dl></section><section id="id5"><h3 >种类</h3><p >活动的种类定义活动可以执行的工作类型。</p><dl ><dt >Dummy (<code >dummy</code>, default)</dt><dd >根本不做任何事情，或调用server action。 通常用作调度或收集“hubs”用于过渡。</dd><dt >Function (<code >function</code>)</dt><dd >运行一些python代码，执行server action。</dd><dt >Stop all (<code >stopall</code>)</dt><dd >完全停止工作流实例并将其标记为已完成。</dd><dt >Subflow (<code >subflow</code>)</dt><dd ><p >开始执行其他工作流，一旦工作流完成，活动完成处理。</p><p >默认情况下，子流是为与父工作流相同的记录实例化的。 可以通过提供返回记录ID（与子流相同的数据模型）
+的Python代码来更改该行为。 嵌入式子流实例是给定记录之一。</p></dd></dl></section><section id="id6"><h2 >翻译</h2><p >转换提供了控制结构来编排工作流。 当活动完成时，工作流引擎尝试跨越从完成的活动到下一活动的转移。 在它们最简单的形式（如上例）中，它们按顺序链接活动：活动在其前面的活动完成后立即被处理。</p><p >而不是一次性运行所有活动，也可以等待转换，只有当满足一些标准时通过它们。
+标准是条件，信号和触发器。 它们将在以下部分中详细介绍。</p></section><section id="id7"><h3 >条件</h3><p >当活动已完成时，检查其传出转换以确定工作流实例是否可能通过它们继续并到达下一个活动。 当只定义一个条件（即没有定义信号或触发器）时，条件由Odoo计算，如果计算结果为“True”，
+worklfow实例将通过转换进行。 如果条件不满足，它将在每次修改相关联的记录时重新评估，
+或通过显式方法调用来重新评估。</p><p >默认情况下，属性 <code >condition</code> （即被求值的表达式）只是“True”，简单地计算为 <code >True</code> 。
+注意，条件可以是几行长； 在这种情况下，最后一个的值确定是否可以进行转换。</p><p >在条件评估环境中，方便地定义了几个符号（除了Odoo <code >safe_eval</code> 环境）：</p><ul ><li >所有模型列名称和</li><li >所有浏览记录的属性。</li></ul></section><section id="reference-workflows-signals"><i id="id8"></i><h3 >信号</h3><p >除了条件之外，转换可以指定信号名称。 当存在这样的信号名时，即使条件的计算结果为“True”，也不会直接进行转换。
+相反，转换阻止，等待被唤醒。</p><p >为了唤醒具有定义的信号名称的转换，必须将信号发送到工作流实例。 发送信号的一种常见方法是在用户界面中使用按钮，
+使用元素 <code >&lt;button /&gt;</code> ，信号名称作为属性 <code >name</code> 。 一旦该按钮被点击，该信号被发送到当前记录的工作流实例。</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >当信号发送到工作流实例时，仍会评估条件。</p></div></section><section id="id9"><h3 >触发器</h3><p >对于判断为 <code >False</code> 的条件，不会执行转换（因此不会立即处理它所导致的活动）。
+尽管如此，工作流实例可以通过提供所谓的触发器来获得跨越该转换的新机会。
+这个想法是，当条件不满足时，触发器被记录在数据库中。 稍后，可以特别唤醒安装了这些触发器的工作流实例，
+让它们重新评估其转换条件。 此机制通过仅定位其中几个（安装了触发器的那些）
+而不是所有这些触发器来唤醒工作流实例成本更低。</p><p >触发器作为记录ID（与模型名称一起）记录在数据库中，并引用等待这些记录的工作流实例。
+转换定义提供了一个模型名称（属性 <code >trigger_model</code> ）和一个Python表达式（属性 <code >trigger_expression</code> ），
+它在给定模型中的记录ID列表。 任何这些记录都可以唤醒与其相关联的工作流实例。</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >每当重新尝试转换时，不会重新安装触发器。</p></div></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,544 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>QWeb &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="Javascript" href="javascript.html" />
+    <link rel="prev" title="网络控制器" href="http.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">QWeb</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/qweb.jpg');"></span>
+      <div class="container text-center">
+        <h1> QWeb </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#reference-qweb-output" class="ripple internal reference">数据输出</a></li><li class="list-group-item"><a href="#reference-qweb-conditionals" class="ripple internal reference">条件</a></li><li class="list-group-item"><a href="#reference-qweb-loops" class="ripple internal reference">循环</a></li><li class="list-group-item"><a href="#reference-qweb-attributes" class="ripple internal reference">属性</a></li><li class="list-group-item"><a href="#id7" class="ripple internal reference">设置变量</a></li><li class="list-group-item"><a href="#id8" class="ripple internal reference">调用子模板</a></li><li class="list-group-item"><a href="#python" class="ripple internal reference">Python</a><ul ><li class="list-group-item"><a href="#id9" class="ripple internal reference">专用指令</a><ul ><li class="list-group-item"><a href="#id10" class="ripple internal reference">资源包</a></li><li class="list-group-item"><a href="#id11" class="ripple internal reference">“智能记录”字段格式化</a></li></ul></li><li class="list-group-item"><a href="#id12" class="ripple internal reference">调试</a></li><li class="list-group-item"><a href="#id13" class="ripple internal reference">帮助</a><ul ><li class="list-group-item"><a href="#id14" class="ripple internal reference">基于请求</a></li><li class="list-group-item"><a href="#id15" class="ripple internal reference">基于视图</a></li></ul></li><li class="list-group-item"><a href="#api" class="ripple internal reference">API</a></li></ul></li><li class="list-group-item"><a href="#javascript" class="ripple internal reference">Javascript</a><ul ><li class="list-group-item"><a href="#id17" class="ripple internal reference">专用指令</a><ul ><li class="list-group-item"><a href="#id18" class="ripple internal reference">定义模板</a></li><li class="list-group-item"><a href="#id19" class="ripple internal reference">模板继承</a></li></ul></li><li class="list-group-item"><a href="#id20" class="ripple internal reference">调试</a></li><li class="list-group-item"><a href="#id21" class="ripple internal reference">帮助</a></li><li class="list-group-item"><a href="#id22" class="ripple internal reference">API</a></li></ul></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/qweb.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="qweb"><i id="reference-qweb"></i><p >QWeb是Odoo<a href="#othertemplates" class="footnote-ref" id="id1">2</a> 使用的主要模板引擎。它是一个XML模板引擎<a href="#genshif" class="footnote-ref" id="id2">1</a> ，主要用于生成HTML片段和页面。</p><p >模板伪指令被指定为以 <code >t-</code> 为前缀的XML属性，例如 <code >t-if</code> 用于 <a href="#reference-qweb-conditionals" class="internal reference"><span class="std std-ref">条件</span></a>，元素和其他属性直接呈现。</p><p >为了避免元素渲染，一个占位符元素 <code >&lt;t&gt;</code> 也是可用的，它执行它的指令，但不生成任何输出:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-if=</span><span class="s">&quot;condition&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Test<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p >将导致:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;</span>Test<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >如果 <code >condition</code> 是对的，但:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">t-if=</span><span class="s">&quot;condition&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Test<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >将导致:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Test<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</section><section id="reference-qweb-output"><i id="id3"></i><h2 >数据输出</h2><p >QWeb有一个主输出指令，当显示用户提供的内容: <code >esc</code> 时，HTML会自动转义其限制 <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" class="external reference">XSS</a> 的内容。</p><p ><code >esc</code> 接受一个表达式，计算它并打印内容:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;value&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >使用值 <code >value</code> 设置为 <code >42</code> ，产生:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;</span>42<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >还有一个其它输出指令 <code >raw</code>，它的行为分别与 <code >esc</code> 相同，但是 <em >不会对其输出进行HTML转义</em> 。显示单独构建的标记（例如，从函数方法中）或用户提供的安全标记可能是有用的。</p></section><section id="reference-qweb-conditionals"><i id="id4"></i><h2 >条件</h2><p >QWeb有一个条件指令 <code >if</code> ，它计算表达式作为属性的值:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-if=</span><span class="s">&quot;condition&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>ok<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >如果条件是成立的，则呈现元素:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>ok<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >但是如果条件不成立，则从结果中删除:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >条件渲染适用于指令的载体，它不必是 <code >&lt;t&gt;</code></p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">t-if=</span><span class="s">&quot;condition&quot;</span><span class="nt">&gt;</span>ok<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >将给出与前面例子相同的结果。</p><p >额外的条件分支指令 <code >t-elif</code> 和 <code >t-else</code> 也可用:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">t-if=</span><span class="s">&quot;user.birthday == today()&quot;</span><span class="nt">&gt;</span>Happy bithday!<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">t-elif=</span><span class="s">&quot;user.login == &#39;root&#39;&quot;</span><span class="nt">&gt;</span>Welcome master!<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">t-else=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Welcome!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</section><section id="reference-qweb-loops"><i id="id5"></i><h2 >循环</h2><p >QWeb有一个迭代指令 <code >foreach</code>，它接受一个表达式返回集合迭代，第二个参数 <code >t-as</code> 提供迭代的 &quot;当前项目&quot;的名称:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-foreach=</span><span class="s">&quot;[1, 2, 3]&quot;</span> <span class="na">t-as=</span><span class="s">&quot;i&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;i&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p >将呈现为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;</span>1<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>2<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>3<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >跟条件一样， <code >foreach</code> 适用于带有指令属性的元素</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p</span> <span class="na">t-foreach=</span><span class="s">&quot;[1, 2, 3]&quot;</span> <span class="na">t-as=</span><span class="s">&quot;i&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;i&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >相当于前面的例子。</p><p ><code >foreach</code> 可以对一个数组进行迭代 (当前项将是当前值)，一个映射 (当前项将是当前键)或一个整数
+(相当于在0和所提供的整数之间的数组迭代).</p><p >除了通过 <code >t-as</code> 传递名字， <code >foreach</code> 为各种数据点提供了一些其他变量：</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p ><code >$as</code> 将被传递给 <code >t-as</code> 的名称所取代</p></div><dl ><dt ><code class="samp"><em >$as</em>_all</code></dt><dd >该对象被迭代</dd><dt ><code class="samp"><em >$as</em>_value</code></dt><dd >当前迭代值，对于列表和整数与 <code >$as</code> 相同，但是对于映射，它提供了值(<code >$as</code> 提供了键)</dd><dt ><code class="samp"><em >$as</em>_index</code></dt><dd >当前迭代索引（迭代的第一项具有索引0）</dd><dt ><code class="samp"><em >$as</em>_size</code></dt><dd >集合的大小（如果可用）</dd><dt ><code class="samp"><em >$as</em>_first</code></dt><dd >是否当前项是第一次迭代 (等价于 <code class="samp"><em >$as</em>_index == 0</code>)</dd><dt ><code class="samp"><em >$as</em>_last</code></dt><dd >当前项是否是迭代的最后一个(等价于 <code class="samp"><em >$as</em>_index + 1 == <em >$as</em>_size</code>)，需要迭代的大小可用</dd><dt ><code class="samp"><em >$as</em>_parity</code></dt><dd >即 <code >&quot;even&quot;</code> 或 <code >&quot;odd&quot;</code>，当前迭代的奇偶性</dd><dt ><code class="samp"><em >$as</em>_even</code></dt><dd >指示当前迭代轮次在偶数索引上的布尔标志</dd><dt ><code class="samp"><em >$as</em>_odd</code></dt><dd >指示当前迭代轮次在奇数索引上的布尔标志</dd></dl><p >提供的这些额外的变量和创建到 <code >foreach</code> 的所有新变量只在 <code >foreach</code> 的范围内可用。如果变量存在于 <code >foreach</code> 的上下文之外，则该值将在foreach的末尾处复制到全局的上下文中。</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;existing_variable&quot;</span> <span class="na">t-value=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!-- existing_variable now False --&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">t-foreach=</span><span class="s">&quot;[1, 2, 3]&quot;</span> <span class="na">t-as=</span><span class="s">&quot;i&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;existing_variable&quot;</span> <span class="na">t-value=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;new_variable&quot;</span> <span class="na">t-value=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- existing_variable and new_variable now True --&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="c">&lt;!-- existing_variable always True --&gt;</span>
+<span class="c">&lt;!-- new_variable undefined --&gt;</span>
+</pre></div>
+</div>
+</section><section id="reference-qweb-attributes"><i id="id6"></i><h2 >属性</h2><p >QWeb 可以即时计算属性并设置计算结果在输出节点。这是 通过 <code >t-att</code> (属性)指令来实现的，它存在3种不同的形式：</p><dl ><dt ><code class="samp">t-att-<em >$name</em></code></dt><dd ><p >创建一个名为 <code >$name</code> 的属性，对属性值进行求值并将结果设置为属性的值:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">t-att-a=</span><span class="s">&quot;42&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将被渲染为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">a=</span><span class="s">&quot;42&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd><dt ><code class="samp">t-attf-<em >$name</em></code></dt><dd ><p >与上一个相同，但是参数是一个 <a href="../glossary.html#term-format-string" class="internal reference"><span class="std std-term xref">format string</span></a> 而不是一个表达式，通常用于混合字面值和非
+字面值字符串（例如类）:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-foreach=</span><span class="s">&quot;[1, 2, 3]&quot;</span> <span class="na">t-as=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">t-attf-class=</span><span class="s">&quot;row {{ item_parity }}&quot;</span><span class="nt">&gt;&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;item&quot;</span><span class="nt">/&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p >将呈现为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;row even&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;row odd&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;row even&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</dd><dt ><code class="samp">t-att=mapping</code></dt><dd ><p >如果参数是映射，则每个（键，值）对将生成一个新属性及其值:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">t-att=</span><span class="s">&quot;{&#39;a&#39;: 1, &#39;b&#39;: 2}&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将呈现为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">a=</span><span class="s">&quot;1&quot;</span> <span class="na">b=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd><dt ><code class="samp">t-att=pair</code></dt><dd ><p >如果参数是一对（2元素的元组或数组），则该对的第一项是属性的名称，第二项是值:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">t-att=</span><span class="s">&quot;[&#39;a&#39;, &#39;b&#39;]&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将呈现为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">a=</span><span class="s">&quot;b&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl></section><section id="id7"><h2 >设置变量</h2><p >QWeb允许从模板内创建变量，记住计算（使用它多次），给一堆数据一个明显的名称
+...</p><p >这是通过 <code >set</code> 指令完成的，它接受要创建的变量的名称。要设置的值可以通过两种方式提供:</p><ul ><li ><p >一个包含表达式的 <code >t-value</code> 属性，其计算结果将被设置:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;foo&quot;</span> <span class="na">t-value=</span><span class="s">&quot;2 + 1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将会打印 <code >3</code></p></li><li ><p >如果没有 <code >t-value</code> 属性，则渲染节点的主体并将设置为变量的值:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;foo&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>ok<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;t</span> <span class="na">t-esc=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将会生成 <code >&amp;lt;li&amp;gt;ok&amp;lt;/li&amp;gt;</code> (内容被转义，因为我们使用 <code >esc</code> 指令)</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >使用这个操作的结果是一个重要的用例的 <code >raw</code> 指令。</p></div></li></ul></section><section id="id8"><h2 >调用子模板</h2><p >QWeb模板可以用于顶级渲染，但也可以从另一个模板（避免重复或给部分模板命名）通过使用 <code >t-call</code> 指令来使用它们:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;other-template&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >这将调用具有具有执行上下文命名的父模板，如果 <code >other_template</code> 定义为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;p&gt;&lt;t</span> <span class="na">t-value=</span><span class="s">&quot;var&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p >上面的调用将被渲染为 <code >&lt;p/&gt;</code> (无内容)，但是:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;var&quot;</span> <span class="na">t-value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;other-template&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将被渲染为 <code >&lt;p&gt;1&lt;/p&gt;</code>。</p><p >然而，这里有一个问题是从 <code >t-call</code> 外部可见的。或者在 <code >call</code> 指令的主体中设置的内容将在调用模
+板 <em >之前</em> 被计算，并且可以改变本地上下文:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;other-template&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;var&quot;</span> <span class="na">t-value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+<span class="c">&lt;!-- &quot;var&quot; does not exist here --&gt;</span>
+</pre></div>
+</div>
+<p ><code >call</code> 指令的主体可以是任意复杂的(而不仅仅是 <code >set</code> 指令)，并且它的呈现形式将在被调用的模板中作为一个神奇的 <code >0</code> 变量使用:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    This template was called with content:
+    <span class="nt">&lt;t</span> <span class="na">t-raw=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >因此被称为:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;other-template&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;em&gt;</span>content<span class="nt">&lt;/em&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p >将导致:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div&gt;</span>
+    This template was called with content:
+    <span class="nt">&lt;em&gt;</span>content<span class="nt">&lt;/em&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</section><section id="python"><h2 >Python</h2></section><section id="id9"><h3 >专用指令</h3></section><section id="id10"><h4 >资源包</h4></section><section id="id11"><h4 >“智能记录”字段格式化</h4><p ><code >t-field</code> 指令智能在“智能记录”( <code >browse</code> 方法)的结果中执行字段访问( <code >a.b</code> )时使用。它能够基于字段类型自动格式化，并集成在网站的副文本版本中。</p><p ><code >t-options</code> 可以用于自定义字段，最常见的选项是 <code >widget</code> ，其它选项是依赖于字段或者widget的。</p></section><section id="id12"><h3 >调试</h3><dl ><dt ><code >t-debug</code></dt><dd ><p >使用PDB的 <code >set_trace</code> API调用调试器。参数应该是一个模块的名称，在其上调用 <code >set_trace</code> 方法:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-debug=</span><span class="s">&quot;pdb&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >相当于 <code >importlib.import_module(&quot;pdb&quot;).set_trace()</code></p></dd></dl></section><section id="id13"><h3 >帮助</h3></section><section id="id14"><h4 >基于请求</h4><p >QWeb的大多数Python端使用都在控制器中(在HTTP请求期间)，在这种情况下，存储在数据库中的模板(如 <a href="views.html#reference-views-qweb" class="internal reference"><span class="std std-ref">views</span></a>) 可以简单地通过调用 <code class="py py-meth xref">odoo.http.HttpRequest.render()</code>:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s1">&#39;my-template&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;context_value&#39;</span><span class="p">:</span> <span class="mi">42</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p >这自动创建一个 <code class="py xref py-class">Response</code> 对象可以从控制器返回（或进一步定制合适的）。</p></section><section id="id15"><h4 >基于视图</h4><p >在比以前的帮助者更深层次的是 <code >ir.ui.view</code> 的 <code >render</code> 方法:</p><section class="code-method"><h6 id="render"><code>render(<em>cr, uid, id[, values][, engine='ir.qweb][, context]</em>)</code></h6><p >通过数据库id或 <a href="../glossary.html#term-external-id" class="internal alert-link reference"><span class="std std-term xref">external id</span></a> 呈现QWeb视图/模板。模板从 <code >ir.ui.view</code> 记录自动加载。</p><p >在呈现上下文中设置多个默认值：</p><dl ><dt ><code >request</code></dt><dd >当前 <code class="py xref py-class">WebRequest</code> 对象，如果有</dd><dt ><code >debug</code></dt><dd >当前请求（如果有）是否在 <code >debug</code> 模式</dd><dt ><a href="http://werkzeug.pocoo.org/docs/urls/#werkzeug.urls.url_quote_plus" class="external reference alert-link" title="(in Werkzeug v0.13-dev)"><code class="py xref py-func">quote_plus</code></a></dt><dd >url编码效用函数</dd><dt ><a href="https://docs.python.org/2/library/json.html#module-json" class="external reference alert-link" title="(in Python v2.7)"><code class="py xref py-mod">json</code></a></dt><dd >相应的标准库模块</dd><dt ><a href="https://docs.python.org/2/library/time.html#module-time" class="external reference alert-link" title="(in Python v2.7)"><code class="py xref py-mod">time</code></a></dt><dd >相应的标准库模块</dd><dt ><a href="https://docs.python.org/2/library/datetime.html#module-datetime" class="external reference alert-link" title="(in Python v2.7)"><code class="py xref py-mod">datetime</code></a></dt><dd >相应的标准库模块</dd><dt ><a href="https://labix.org/python-dateutil#head-ba5ffd4df8111d1b83fc194b97ebecf837add454" class="external reference alert-link">相关文章</a></dt><dd >参考模块</dd><dt ><code >keep_query</code></dt><dd ><code >keep_query</code> 帮助函数</dd></dl><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >values</strong> -- 上下文值传递到QWeb进行渲染</li><li ><strong >engine</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- 用于渲染的Odoo模型的名称，可以用于在本地扩展或自定义QWeb（通过创建一个</li></ul></div></div></div><p >基于 <code >ir.qweb</code> 改变的&quot;新&quot; qweb)</p></section></section><section id="api"><i id="reference-qweb-javascript"></i><h3 >API</h3><p >也可以直接使用 <code >ir.qweb</code> 模型（并扩展它，继承它）:</p></section><section id="javascript"><h2 >Javascript</h2></section><section id="id17"><h3 >专用指令</h3></section><section id="id18"><h4 >定义模板</h4><p ><code >t-name</code> 指令智能放在模板文件的顶层（直接子文件到文档根）:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;templates&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-name=</span><span class="s">&quot;template-name&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- template code --&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/templates&gt;</span>
+</pre></div>
+</div>
+<p >它不需要其它参数，但可以使用一个 <code >&lt;t&gt;</code> 元素或任何其它的。使用 <code >&lt;t&gt;</code> 元素，<code >&lt;t&gt;</code> 应该有一个子元素。</p><p >模板名称是任意字符串，但是当多个模板相关时（例如称为子模板），通常使用点分割的名称来指示分层关系。</p></section><section id="id19"><h4 >模板继承</h4><p >模板继承用于就地改变现有模板，例如，以向其他模块所创建的模板添加信息。</p><p >模板继承通过 <code >t-extend</code> 指令执行，它将模板的名称作为参数修改。</p><p >然后使用任意数量的 <code >t-jquery</code> 子命令执行更改:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-extend=</span><span class="s">&quot;base.template&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-jquery=</span><span class="s">&quot;ul&quot;</span> <span class="na">t-operation=</span><span class="s">&quot;append&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li&gt;</span>new element<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p ><code >t-jquery</code> 指令采用一个 <a href="http://api.jquery.com/category/selectors/" class="external reference">CSS selector</a> 。此选择器用于扩展模板以选择应用指定的 <code >t-operation</code> 的 <em >上下文节点</em> :</p><dl ><dt ><code >append</code></dt><dd >节点的主体被附加在上下文节点的末尾（在上下文节点的最后一个子节点之后）</dd><dt ><code >prepend</code></dt><dd >节点的主体被添加到上下文节点（在上下文节点的第一个子节点之前插入）</dd><dt ><code >before</code></dt><dd >节点的主体被插入在上下文节点之前</dd><dt ><code >after</code></dt><dd >节点的主体被插入在上下文节点之后</dd><dt ><code >inner</code></dt><dd >节点的主体替换上下文节点的子节点</dd><dt ><code >replace</code></dt><dd >该节点的主体用于替换上下文节点本身</dd><dt >无操作</dt><dd ><p >如果没有指定 <code >t-operation</code> ，那么模板主体被解释为javascript代码，并使用上下文节点作
+为 <code >this</code> 来执行。</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >同时比其它操作更强大，这种模式也更难调试和维护，建议避免它</p></div></dd></dl></section><section id="id20"><h3 >调试</h3><p >javascript QWeb实现提供了一些调试:</p><dl ><dt ><code >t-log</code></dt><dd ><p >使用表达式参数，在呈现过程中计算表达式并使用 <code >console.log</code> 记录其结果:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;foo&quot;</span> <span class="na">t-value=</span><span class="s">&quot;42&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;t</span> <span class="na">t-log=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >将打印 <code >42</code> 到控制台</p></dd><dt ><code >t-debug</code></dt><dd ><p >在模板渲染期间触发调试器断点:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-if=</span><span class="s">&quot;a_test&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-debug=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+<p >如果调试活跃度较高（确切的条件取决于浏览器及其开发工具）将停止执行</p></dd><dt ><code >t-js</code></dt><dd ><p >节点的主体是在模板渲染期间执行的JavaScript代码。获取一个 <code >context</code> 参数，这是
+在 <code >t-js</code> 的主体中
+可以使用的渲染上下文的名称:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;foo&quot;</span> <span class="na">t-value=</span><span class="s">&quot;42&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;t</span> <span class="na">t-js=</span><span class="s">&quot;ctx&quot;</span><span class="nt">&gt;</span>
+    console.log(&quot;Foo is&quot;, ctx.foo);
+<span class="nt">&lt;/t&gt;</span>
+</pre></div>
+</div>
+</dd></dl></section><section id="id21"><h3 >帮助</h3><section class="code-attribute"><h6 id="core.qweb"><code>core.qweb</code></h6><p >(核心是 <code >web.core</code> 模块)一个实例 <a href="#QWeb2.Engine" class="internal alert-link reference" title="QWeb2.Engine"><code class="js-class xref js">QWeb2.Engine()</code></a> ，所有模块定义的模板文件被加载，引用标准帮助器对象 <code >_</code> (下划线)， <code >_t</code> (翻译函数) 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" class="external reference alert-link">JSON</a> 。</p><p ><a href="#QWeb2.Engine.render" class="internal alert-link reference" title="QWeb2.Engine.render"><code class="js-func xref js">core.qweb.render</code></a> 可以用来轻松渲染基本模块模板</p></section></section><section id="id22"><h3 >API</h3><section class="code-class"><h6 id="QWeb2.Engine"><code><em >class </em>QWeb2.Engine()</code></h6><p >QWeb &quot;renderer&quot; ，处理大多数QWeb的逻辑（加载，解析，编辑和渲染模板）。</p><p >OpenERP Web在核心模块中为用户实例化一个，并将其导出到 <code >core.qweb</code> 。它还将各种模块的所有模板文件加载到QWeb实例中。</p><p >A <a href="#QWeb2.Engine" class="internal alert-link reference" title="QWeb2.Engine"><code class="js-class xref js">QWeb2.Engine()</code></a> 也用作&quot;模板命名空间&quot;.</p><section class="code-function"><h6 id="QWeb2.Engine.render"><code>QWeb2.Engine.render(<em>template</em>[, <em>context</em>])</code></h6><p >使用 <code >context</code> (如果提供有)将先前加载的模板呈现给字符串，以找到在模板呈现期间访问的变量(例如要显示的字符串)。</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Arguments</div><div class="code-field-body"><ul ><li ><strong >template</strong> (<code >String</code>) -- 要呈现的模板的名称</li><li ><strong >context</strong> (<code >Object</code>) -- 用于模板渲染的基本命名空间</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">字符串</div></div></div></section><p >引擎提供了另一种方法，在某些情况下可能是有用的(例如，如果你需要一个单独的模板命名空间，在OpenERP
+Web中，看板视图有自己的 <a href="#QWeb2.Engine" class="internal alert-link reference" title="QWeb2.Engine"><code class="js-class xref js">QWeb2.Engine()</code></a> 实例，所以他们的模板不会与更一般的“模块”模板碰撞):</p><section class="code-function"><h6 id="QWeb2.Engine.add_template"><code>QWeb2.Engine.add_template(<em>templates</em>)</code></h6><p >在QWeb实例中装入模板文件（模板集合）。模板可以指定为:</p><dl ><dt >XML字符串</dt><dd >QWeb尝试将其解析为XML文档，然后加载它。</dd><dt >网址</dt><dd >QWeb将尝试下载网址内容，然后加载生成的XML字符串。</dd><dt >一个 <code >Document</code> 或 <code >Node</code></dt><dd >QWeb将遍历文档的第一级（提供根的子节点）并加载任何命名的模板或模板覆盖。</dd></dl><div class="code-fields"></div></section><p ><a href="#QWeb2.Engine" class="internal alert-link reference" title="QWeb2.Engine"><code class="js-class xref js">QWeb2.Engine()</code></a> 还暴露了行为定制的各种属性:</p><section class="code-attribute"><h6 id="QWeb2.Engine.prefix"><code>QWeb2.Engine.prefix</code></h6><p >前缀用于在解析期间识别指令，字符串。默认情况下为 <code >t</code> 。</p></section><section class="code-attribute"><h6 id="QWeb2.Engine.debug"><code>QWeb2.Engine.debug</code></h6><p >布尔标志将引擎置于“调试模式”。通常，QWeb拦截在模板执行期间引发的任何错误。在调试模式下，它使所
+有异常通过，而不拦截它们。</p></section><section class="code-attribute"><h6 id="QWeb2.Engine.jQuery"><code>QWeb2.Engine.jQuery</code></h6><p >在模板继承处理期间使用的jQuery实例。默认为 <code >window.jQuery</code> 。</p></section><section class="code-attribute"><h6 id="QWeb2.Engine.preprocess_node"><code>QWeb2.Engine.preprocess_node</code></h6><p ><code >Function</code> 。如果存在，在将每个DOM节点编译为模板代码之前调用。在OpenERP Web中，这用于
+自动翻译文本内容和模板中一些属性。默认为 <code >null</code>。</p></section></section><div class="footnote" id="genshif"><span class="footnote-label"><a class="footnote-backref" href="#id2">[1]</a></span> 它类似于 <a href="http://genshi.edgewall.org" class="external reference">Genshi</a> , 虽然它不使用（不支持） <a href="http://en.wikipedia.org/wiki/XML_namespace" class="external reference">XML namespaces</a></div><div class="footnote" id="othertemplates"><span class="footnote-label"><a class="footnote-backref" href="#id1">[2]</a></span> 尽管它使用了一些其他的，由于历史原因，或者因为它们更适合用例。Odoo 9.0 仍然取决于 <a href="http://jinja.pocoo.org" class="external reference">Jinja</a> 和 <a href="http://www.makotemplates.org" class="external reference">Mako</a> 。</div></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>QWeb 报表 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="Workflows" href="workflows.html" />
+    <link rel="prev" title="翻译模块" href="translations.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">QWeb 报表</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/reports.jpg');"></span>
+      <div class="container text-center">
+        <h1> QWeb 报表 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#reference-reports-report" class="ripple internal reference">报表</a></li><li class="list-group-item"><a href="#reference-reports-templates" class="ripple internal reference">报表模板</a><ul ><li class="list-group-item"><a href="#id3" class="ripple internal reference">可用的最小模板</a></li><li class="list-group-item"><a href="#id4" class="ripple internal reference">可翻译模板</a></li><li class="list-group-item"><a href="#id5" class="ripple internal reference">条形码</a></li><li class="list-group-item"><a href="#id6" class="ripple internal reference">有用的注释</a></li></ul></li><li class="list-group-item"><a href="#reference-reports-paper-formats" class="ripple internal reference">纸张格式</a></li><li class="list-group-item"><a href="#reference-reports-custom-reports" class="ripple internal reference">自定义报表</a></li><li class="list-group-item"><a href="#id9" class="ripple internal reference">网页报表</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/reports.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="qweb"><p >报表使用HTML/QWeb编写，与Odoo中所有常规的视图一样。您可以使用 <a href="qweb.html#reference-qweb" class="internal reference"><span class="std std-ref">QWeb 控制流工具</span></a>。PDF呈现由 <a href="http://wkhtmltopdf.org" class="external reference">wkhtmltopdf</a> 执行。</p><p >如果你想要创建一个特定模型的报告，你需要定义 <a href="#reference-reports-report" class="internal reference"><span class="std std-ref">报表</span></a> 和 <a href="#reference-reports-templates" class="internal reference"><span class="std std-ref">报表模板</span></a> 。如果你愿意，你也可以为这个报告指定一个特定的 <a href="#reference-reports-paper-formats" class="internal reference"><span class="std std-ref">纸张格式</span></a> 。最后，如果你需要访问多个模型，你可以定义 <a href="#reference-reports-custom-reports" class="internal reference"><span class="std std-ref">自定义报表</span></a> 类，它允许您访问模板中的更多模型和记录。</p></section><section id="reference-reports-report"><i id="id1"></i><h2 >报表</h2><p >每个报告都必须通过 <span class="std xref std-ref">&lt;reference/actions/report&gt;</span> 来声明.</p><p >为简单起见，<code >&lt;report&gt;</code> 元素可用于定义报告，而不必手动设置 <a href="actions.html#reference-actions-report" class="internal reference"><span class="std std-ref">the action</span></a> 及其周围环境。那个 <code >&lt;report&gt;</code> 可以具有以下属性：</p><dl ><dt ><code >id</code></dt><dd >生成记录的 <a href="../glossary.html#term-external-id" class="internal reference"><span class="std std-term xref">external id</span></a></dd><dt ><code >name</code> (必填)</dt><dd >只是用来在列表视图里面作为描述显示或者排序</dd><dt ><code >model</code> (必填)</dt><dd >报表的模型</dd><dt ><code >report_type</code> (必填)</dt><dd >用于PDF报告的 <code >qweb-pdf</code> 或用于HTML的 <code >qweb-html</code></dd><dt ><code >report_name</code></dt><dd >报告的名称(这将是PDF输出的名称)</dd><dt ><code >groups</code></dt><dd ><code class="py xref py-class">Many2many</code> 字段允许查看/使用当前报表的分组</dd><dt ><code >attachment_use</code></dt><dd >如果设置为True，报表将使用由 <code >attachment</code> 表达式生成的名称作为记录的附件存储；如果需要报表只生成一次（例如法律原因）</dd><dt ><code >attachment</code></dt><dd >定义报告名称的Python表达式；该记录可以作为变量 <code >object</code> 访问</dd><dt ><code >paperformat</code></dt><dd >希望使用的纸张格式的外部ID（如果未指定，则为默认的纸张格式）</dd></dl><p >例如:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;report</span>
+    <span class="na">id=</span><span class="s">&quot;account_invoices&quot;</span>
+    <span class="na">model=</span><span class="s">&quot;account.invoice&quot;</span>
+    <span class="na">string=</span><span class="s">&quot;Invoices&quot;</span>
+    <span class="na">report_type=</span><span class="s">&quot;qweb-pdf&quot;</span>
+    <span class="na">name=</span><span class="s">&quot;account.report_invoice&quot;</span>
+    <span class="na">file=</span><span class="s">&quot;account.report_invoice&quot;</span>
+    <span class="na">attachment_use=</span><span class="s">&quot;True&quot;</span>
+    <span class="na">attachment=</span><span class="s">&quot;(object.state in (&#39;open&#39;,&#39;paid&#39;)) and</span>
+<span class="s">        (&#39;INV&#39;+(object.number or &#39;&#39;).replace(&#39;/&#39;,&#39;&#39;)+&#39;.pdf&#39;)&quot;</span>
+<span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="reference-reports-templates"><i id="id2"></i><h2 >报表模板</h2></section><section id="id3"><h3 >可用的最小模板</h3><p >最小模板如下所示:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&quot;report_invoice&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;report.html_container&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;t</span> <span class="na">t-foreach=</span><span class="s">&quot;docs&quot;</span> <span class="na">t-as=</span><span class="s">&quot;o&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;report.external_layout&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;h2&gt;</span>Report title<span class="nt">&lt;/h2&gt;</span>
+                    <span class="nt">&lt;p&gt;</span>This object&#39;s name is <span class="nt">&lt;span</span> <span class="na">t-field=</span><span class="s">&quot;o.name&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/t&gt;</span>
+        <span class="nt">&lt;/t&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+</div>
+<p >调用 <code >external_layout</code> 会在报表中添加默认的页眉和页脚。PDF的核心是 <code >&lt;div class=&quot;page&quot;&gt;</code> 内的内容。模板 <code >id</code> 必须是报表声明中指定的名称；例如 <code >account.report_invoice</code> 用于上面的报表。由于这是一个QWeb模板，您可以访问模板接收的 <code >docs</code> 对象的所有字段。</p><p >报表中包含一些特定的变量，主要有：</p><dl ><dt ><code >docs</code></dt><dd >记录当前报表</dd><dt ><code >doc_ids</code></dt><dd ><code >docs</code> 记录的id列表</dd><dt ><code >doc_model</code></dt><dd >模型为 <code >docs</code> 记录</dd><dt ><code >time</code></dt><dd >引用Python标准库的 <a href="https://docs.python.org/2/library/time.html#module-time" class="external reference" title="(in Python v2.7)"><code >time</code></a></dd><dt ><code >user</code></dt><dd ><code >res.user</code> 记录用户打印报表</dd><dt ><code >res_company</code></dt><dd >记录当前 <code >user</code> 的公司</dd></dl><p >如果想访问模板中的其他记录/模型，将需要 <a href="#reference-reports-custom-reports" class="internal reference"><span class="std std-ref">自定义报表</span></a>。</p></section><section id="id4"><h3 >可翻译模板</h3><p >如果希望报表为可翻译的(例如，合作伙伴的语言)，则需要定义两个模板:</p><ul ><li >主报表模板</li><li >可翻译模板</li></ul><p >可以从属性 <code >t-lang</code> 中设置语言代码(例如 <code >fr</code> 或 <code >en_US</code>)或记录字段的主模板调用可翻译模板。如果使用可翻译的字段（如国家/地区名称，销售条件等），则需要重新浏览具有适当上下文的相关记录。</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >如果您的报表模板不使用可翻译记录字段，则以其他语言重新浏览记录不是必需的，并且会影响性能。</p></div><p >例如，让我们看看销售模块的销售订单报表:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Main template --&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&quot;report_saleorder&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;report.html_container&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;t</span> <span class="na">t-foreach=</span><span class="s">&quot;docs&quot;</span> <span class="na">t-as=</span><span class="s">&quot;doc&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;sale.report_saleorder_document&quot;</span> <span class="na">t-lang=</span><span class="s">&quot;doc.partner_id.lang&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/t&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="c">&lt;!-- Translatable template --&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&quot;report_saleorder_document&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Re-browse of the record with the partner lang --&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;doc&quot;</span> <span class="na">t-value=</span><span class="s">&quot;doc.with_context({&#39;lang&#39;:doc.partner_id.lang})&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;report.external_layout&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_structure&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-6&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;strong</span> <span class="na">t-if=</span><span class="s">&quot;doc.partner_shipping_id == doc.partner_invoice_id&quot;</span><span class="nt">&gt;</span>Invoice and shipping address:<span class="nt">&lt;/strong&gt;</span>
+                    <span class="nt">&lt;strong</span> <span class="na">t-if=</span><span class="s">&quot;doc.partner_shipping_id != doc.partner_invoice_id&quot;</span><span class="nt">&gt;</span>Invoice address:<span class="nt">&lt;/strong&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">t-field=</span><span class="s">&quot;doc.partner_invoice_id&quot;</span> <span class="na">t-options=</span><span class="s">&quot;{&amp;quot;no_marker&amp;quot;: True}&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;...&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_structure&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+</div>
+<p >主模板使用 <code >doc.partner_id.lang</code> 作为可转换模板 <code >t-lang</code> 参数，因此会以客户的语言呈现出来。这样，每个销售订单的报表将以客户的语言打印出来。如果希望仅仅翻译文档的正文，但将页眉和页脚保留为默认语言，则可以通过以下方式调用报表的外部布局:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;report.external_layout&quot;</span> <span class="na">t-lang=</span><span class="s">&quot;en_US&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >请注意，这仅仅适用于调用外部模板，无法通过在除了 <code >t-call</code> 之外的xml节点上设置 <code >t-lang</code> 属性来翻译文档的一部分。如果希望翻译模板的一部分，可以使用此部分模板创建外部模板，并用 <code >t-lang</code> 属性从主模板中调用</p></div></section><section id="id5"><h3 >条形码</h3><p >条形码是由控制器返回的图像，并且可以很容易地嵌入到报告中，这要归功于QWeb的语法:</p><div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">t-att-src</span><span class="o">=</span><span class="s">&quot;&#39;/report/barcode/QR/%s&#39; % &#39;My text in qr code&#39;&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p >更多参数可以作为查询字符串传递</p><div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">t-att-src</span><span class="o">=</span><span class="s">&quot;&#39;/report/barcode/?</span>
+<span class="s">    type=%s&amp;value=%s&amp;width=%s&amp;height=%s&#39;%(&#39;QR&#39;, &#39;text&#39;, 200, 200)&quot;</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="id6"><h3 >有用的注释</h3><ul ><li >Twitter Bootstrap和FontAwesome类可以直接在报告模板中使用</li><li >本地CSS可以直接放在模板中</li><li ><p >全局CSS可以插入到主报表布局中，通过继承其模板并插入CSS:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&quot;report_saleorder_style&quot;</span> <span class="na">inherit_id=</span><span class="s">&quot;report.style&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;xpath</span> <span class="na">expr=</span><span class="s">&quot;.&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;t&gt;</span>
+      .example-css-class {
+        background-color: red;
+      }
+    <span class="nt">&lt;/t&gt;</span>
+  <span class="nt">&lt;/xpath&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+</div>
+</li><li >如果PDF报表缺少样式，可以检查 <a href="../howtos/backend.html#reference-backend-reporting-printed-reports-pdf-without-styles" class="internal reference"><span class="std std-ref">这些指令</span></a>。</li></ul></section><section id="reference-reports-paper-formats"><i id="id7"></i><h2 >纸张格式</h2><p >纸张格式是 <code >report.paperformat</code> 的记录，可以包含以下属性:</p><dl ><dt ><code >name</code> (必填)</dt><dd >只是用来在列表视图里面作为描述显示或者排序</dd><dt ><code >description</code></dt><dd >格式的描述</dd><dt ><code >format</code></dt><dd >定义格式(A0 到 A9, B0 到 B10, Legal, Letter,Tabloid,...) 或 <code >custom</code> ；默认为A4纸大
+小。如果定义了页面尺寸，则不能使用非定义格式。</dd><dt ><code >dpi</code></dt><dd >输出DPI，默认为90</dd><dt ><code >margin_top</code>, <code >margin_bottom</code>, <code >margin_left</code>, <code >margin_right</code></dt><dd >边距大小（mm）</dd><dt ><code >page_height</code>, <code >page_width</code></dt><dd >页面尺寸（mm）</dd><dt ><code >orientation</code></dt><dd >图像</dd><dt ><code >header_line</code></dt><dd >显示标题行</dd><dt ><code >header_spacing</code></dt><dd >标题间距（mm）</dd></dl><p >例如:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;paperformat_frenchcheck&quot;</span> <span class="na">model=</span><span class="s">&quot;report.paperformat&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>French Bank Check<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span> <span class="na">eval=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;format&quot;</span><span class="nt">&gt;</span>custom<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;page_height&quot;</span><span class="nt">&gt;</span>80<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;page_width&quot;</span><span class="nt">&gt;</span>175<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;orientation&quot;</span><span class="nt">&gt;</span>Portrait<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;margin_top&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;margin_bottom&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;margin_left&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;margin_right&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;header_line&quot;</span> <span class="na">eval=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;header_spacing&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;dpi&quot;</span><span class="nt">&gt;</span>80<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+</section><section id="reference-reports-custom-reports"><i id="id8"></i><h2 >自定义报表</h2><p >报表模型中有一个默认的 <code >get_html</code> 函数，用于查找名为 <code class="samp">report.<em >module.report_name</em></code> 的模型。如果存在，将使用它来调用QWeb引擎；否则将使用通用函数。如果希望通过在模板中更多的东西（例如其他模型记录）来自定义报表，则可以定义这个模型，覆盖函数 <code >render_html</code> ，并传递 <code >docargs</code> 字典中的对象:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">odoo</span> <span class="kn">import</span> <span class="n">api</span><span class="p">,</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">ParticularReport</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">AbstractModel</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;report.module.report_name&#39;</span>
+    <span class="nd">@api.model</span>
+    <span class="k">def</span> <span class="nf">render_html</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docids</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">report_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">]</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="n">report_obj</span><span class="o">.</span><span class="n">_get_report_from_name</span><span class="p">(</span><span class="s1">&#39;module.report_name&#39;</span><span class="p">)</span>
+        <span class="n">docargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;doc_ids&#39;</span><span class="p">:</span> <span class="n">docids</span><span class="p">,</span>
+            <span class="s1">&#39;doc_model&#39;</span><span class="p">:</span> <span class="n">report</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="s1">&#39;docs&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">report_obj</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s1">&#39;module.report_name&#39;</span><span class="p">,</span> <span class="n">docargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section><section id="id9"><h2 >网页报表</h2><p >报表由报表模块动态生成，可以通过网址直接访问</p><p >例如，可以通过访问 http://&lt;server-address&gt;/report/html/sale.report_saleorder/38 ，以html模式访问销售订单报表</p><p >或者可以访问PDF版本 http://&lt;server-address&gt;/report/pdf/sale.report_saleorder/38</p></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

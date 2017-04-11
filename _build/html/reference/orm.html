@@ -1,0 +1,697 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>ORM API &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="数据文件" href="data.html" />
+    <link rel="prev" title="Reference" href="../reference.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">ORM API</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/orm_api.jpg');"></span>
+      <div class="container text-center">
+        <h1> ORM API </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#id1" class="ripple internal reference">记录集</a><ul ><li class="list-group-item"><a href="#id2" class="ripple internal reference">字段访问</a></li><li class="list-group-item"><a href="#id3" class="ripple internal reference">记录缓存和预取</a></li><li class="list-group-item"><a href="#id4" class="ripple internal reference">集合操作</a></li><li class="list-group-item"><a href="#id5" class="ripple internal reference">其他记录集操作方法</a></li></ul></li><li class="list-group-item"><a href="#id6" class="ripple internal reference">环境</a><ul ><li class="list-group-item"><a href="#id7" class="ripple internal reference">转换环境</a></li></ul></li><li class="list-group-item"><a href="#orm" class="ripple internal reference">共用的ORM方法</a></li><li class="list-group-item"><a href="#id8" class="ripple internal reference">创建模块</a><ul ><li class="list-group-item"><a href="#id9" class="ripple internal reference">计算字段</a><ul ><li class="list-group-item"><a href="#id10" class="ripple internal reference">关联字段</a></li></ul></li><li class="list-group-item"><a href="#onchange" class="ripple internal reference">onchange: 运行中更新界面</a></li><li class="list-group-item"><a href="#sql" class="ripple internal reference">底层SQL</a></li></ul></li><li class="list-group-item"><a href="#api" class="ripple internal reference">新旧API的兼容性</a></li><li class="list-group-item"><a href="#reference-orm-model" class="ripple internal reference">模块参考</a></li><li class="list-group-item"><a href="#reference-orm-decorators" class="ripple internal reference">装饰器方法</a></li><li class="list-group-item"><a href="#reference-orm-fields" class="ripple internal reference">字段</a><ul ><li class="list-group-item"><a href="#reference-orm-fields-basic" class="ripple internal reference">基础字段</a></li><li class="list-group-item"><a href="#reference-orm-fields-relational" class="ripple internal reference">关联字段</a></li></ul></li><li class="list-group-item"><a href="#reference-orm-inheritance" class="ripple internal reference">继承和扩展</a><ul ><li class="list-group-item"><a href="#id17" class="ripple internal reference">原型继承</a></li><li class="list-group-item"><a href="#id18" class="ripple internal reference">扩展继承</a></li><li class="list-group-item"><a href="#id19" class="ripple internal reference">委托继承</a></li></ul></li><li class="list-group-item"><a href="#domain" class="ripple internal reference">Domain</a></li><li class="list-group-item"><a href="#apiapi" class="ripple internal reference">从旧API移植到新API</a><ul ><li class="list-group-item"><a href="#reference-orm-oldapi-bridging" class="ripple internal reference">自动桥接旧API方法</a></li></ul></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/orm.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="orm-api"><i id="reference-orm"></i></section><section id="id1"><h2 >记录集</h2><div class="versionadded"><p ><span class="versionmodified">New in version 8.0: </span>本文档的新API应该作为odoo8.0以后主要的API。它还提供了有关移植或桥接7.0和
+更早版本的“旧API”的信息，但该API没有明确地文档。看到旧的文档。</p></div><p >通过同一模块排序的记录集将模块和记录的相互作用表现出来。</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >相反，顾名思义，目前可能记录集里包含重复。这可能会在未来改变。</p></div><p >在一个记录集上执行模块上定义的方法，并且 <code >self</code> 是一个记录集:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;a.model&#39;</span>
+    <span class="k">def</span> <span class="nf">a_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># self can be anywhere between 0 records and all records in the</span>
+        <span class="c1"># database</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_operation</span><span class="p">()</span>
+</pre></div>
+</div>
+<p >迭代一个记录集将产生新的 <em >一个单独记录</em> 的集合(&quot;singletons&quot;),就像一个Python字符串迭代
+生成一个单一字符串:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_operation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="bp">self</span> <span class="c1"># =&gt; a.model(1, 2, 3, 4, 5)</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="n">record</span> <span class="c1"># =&gt; a.model(1), then a.model(2), then a.model(3), ...</span>
+</pre></div>
+</div>
+</section><section id="id2"><h3 >字段访问</h3><p >记录集提供一个“激活记录”界面： 模块字段可以通过这个记录直接被读和写，但是仅限单一记录集(signle-record)。
+设置一个字段的值将触发一次数据库更新:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">record</span><span class="o">.</span><span class="n">name</span>
+<span class="go">Example Name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">record</span><span class="o">.</span><span class="n">company_id</span><span class="o">.</span><span class="n">name</span>
+<span class="go">Company Name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Bob&quot;</span>
+</pre></div>
+</div>
+<p >尝试在多个记录中读取或写入字段会激发一个错误。</p><p >访问一个关联字段(<code class="py xref py-class">Many2one</code>,
+<code class="py xref py-class">One2many</code>, <code class="py xref py-class">Many2many</code>) <em >总是</em> 返回一个记录集，
+如果该字段没有值将返回空的记录集。</p><div role="alert" class="alert-danger alert"><p class="alert-title">Danger</p><p >每次赋值给一个字段将触发一次数据库更新, 当同一时间设置多个字段或给多个记录
+设置字段(赋相同的值), 使用 <code class="py py-meth xref">write()</code>:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 3 * len(records) database updates</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="n">record</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">record</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">record</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># len(records) database updates</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="n">record</span><span class="o">.</span><span class="n">write</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+
+<span class="c1"># 1 database update</span>
+<span class="n">records</span><span class="o">.</span><span class="n">write</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+</pre></div>
+</div>
+</div></section><section id="id3"><h3 >记录缓存和预取</h3><p >Odoo为记录中的字段维持一个缓存空间，因此不是每次访问字段都触发数据库请求，
+不然那将对性能的影响是可怕的。这个下面例子只对第一个语句进行数据库查询:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">record</span><span class="o">.</span><span class="n">name</span>             <span class="c1"># first access reads value from database</span>
+<span class="n">record</span><span class="o">.</span><span class="n">name</span>             <span class="c1"># second access gets value from cache</span>
+</pre></div>
+</div>
+<p >为了避免每次读一个记录上的一个字段，Odoo <em >预取</em> 记录和字段借鉴一个启发式算法以获得更好的性能。
+一旦一个字段必须在给定的记录上被读取，这个ORM实际在一个大的记录集上读取该字段，并且以便下一个
+用户读取，将该字段返回的值到存储到缓存中，所有基础存储的字段(boolean, integer, float, char,
+text, date, datetime, selection, many2one)被同时获取到；它们对应于模型表的列，并在同一
+查询中高效地获取。</p><p >考虑下面这个例子, <code >partners</code> 是一个有1000条记录的记录集。如果没有预取,该循环将对数据库
+进行2000次查询,如果有预取,仅仅需要查询一次:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">partner</span> <span class="ow">in</span> <span class="n">partners</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">partner</span><span class="o">.</span><span class="n">name</span>          <span class="c1"># first pass prefetches &#39;name&#39; and &#39;lang&#39;</span>
+                                <span class="c1"># (and other fields) on all &#39;partners&#39;</span>
+    <span class="nb">print</span> <span class="n">partner</span><span class="o">.</span><span class="n">lang</span>
+</pre></div>
+</div>
+<p >预取也适用于 <em >二次记录</em> ：当关系字段被读取时，它们的值（这是记录）为将来的预取订阅。其中访问二次
+记录中的某个字段只需从相同的模型预取所有次要记录。这使得下面的示例只生成两次查询，
+一个用于合作伙伴，另一个用于国家:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">partner</span> <span class="ow">in</span> <span class="n">partners</span><span class="p">:</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="n">partner</span><span class="o">.</span><span class="n">country_id</span>        <span class="c1"># first pass prefetches all partners</span>
+    <span class="n">countries</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">country</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>         <span class="c1"># first pass prefetches all countries</span>
+</pre></div>
+</div>
+</section><section id="id4"><h3 >集合操作</h3><p >记录集是不变的，但是相同模块的集合可以通过使用一系列的操作符来结合，返回新的记录集，
+集合操作 <em >不</em> 保留顺序</p><ul ><li ><code >record in set</code> 是否返回 <code >record</code> (第一项必须是一个元素的记录集)
+在 <code >set</code> 中 。 <code >record not in set</code> 是相反的操作</li><li ><code >set1 &lt;= set2</code> 和 <code >set1 &lt; set2</code> 返回是否 <code >set1</code> 是 <code >set2</code> 的子集</li><li ><code >set1 &gt;= set2</code> 和 <code >set1 &gt; set2</code> 返回是否 <code >set1</code> 是 <code >set2</code> 的超级</li><li ><code >set1 | set2</code> 返回两个集合的合集,一个新的记录集包括任一个集合中的所有记录</li><li ><code >set1 &amp; set2</code> 返回两个集合的并集,一个新的记录集仅包括两个集合中都有的记录</li><li ><code >set1 - set2</code> 返回一个记录在 <code >set1</code> 而不 <code >set2</code> 中的新的记录集</li></ul></section><section id="id5"><h3 >其他记录集操作方法</h3><p >记录集是可迭代的因此通常的Python 工具是可用于转化的(<a href="https://docs.python.org/2/library/functions.html#map" class="external reference" title="(in Python v2.7)"><code >map()</code></a>, <a href="https://docs.python.org/2/library/functions.html#sorted" class="external reference" title="(in Python v2.7)"><code >sorted()</code></a>,
+<a href="https://docs.python.org/2/library/itertools.html#itertools.ifilter" class="external reference" title="(in Python v2.7)"><code class="py xref py-func">ifilter()</code></a>, ...) 然而这些返回的要么是 <a href="https://docs.python.org/2/library/functions.html#list" class="external reference" title="(in Python v2.7)"><code >list</code></a>
+要么是 <a href="https://docs.python.org/2/glossary.html#term-iterator" class="external reference" title="(in Python v2.7)"><span >iterator</span></a> ,去除了在结果之上调用的方法的能力，或者去除了使用集合的操作。</p><p >记录集因此提供这些操作返回记录集本身:</p><dl ><dt ><code class="py py-meth xref">filtered()</code></dt><dd ><p >返回一个只包含满足提供判定函数的记录集。判定也可以是由真或假字段筛选的字符串:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># only keep records whose company is the current user&#39;s</span>
+<span class="n">records</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">company_id</span> <span class="o">==</span> <span class="n">user</span><span class="o">.</span><span class="n">company_id</span><span class="p">)</span>
+
+<span class="c1"># only keep records whose partner is a company</span>
+<span class="n">records</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="s2">&quot;partner_id.is_company&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">sorted()</code></dt><dd ><p >返回一个通过关键字函数排序的记录集。如果未提供关键字，使用模块默认的排序:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># sort records by name</span>
+<span class="n">records</span><span class="o">.</span><span class="n">sorted</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">mapped()</code></dt><dd ><p >将提供的函数应用于记录集中的每一条记录，如果结果是记录集将返回一个记录集:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># returns a list of summing two fields for each record in the set</span>
+<span class="n">records</span><span class="o">.</span><span class="n">mapped</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">field1</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">field2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >提供的函数可以使字符串来获取字段的值:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># returns a list of names</span>
+<span class="n">records</span><span class="o">.</span><span class="n">mapped</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+
+<span class="c1"># returns a recordset of partners</span>
+<span class="n">record</span><span class="o">.</span><span class="n">mapped</span><span class="p">(</span><span class="s1">&#39;partner_id&#39;</span><span class="p">)</span>
+
+<span class="c1"># returns the union of all partner banks, with duplicates removed</span>
+<span class="n">record</span><span class="o">.</span><span class="n">mapped</span><span class="p">(</span><span class="s1">&#39;partner_id.bank_ids&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl></section><section id="id6"><h2 >环境</h2><dl ><dt ><code class="py xref py-class">Environment</code> 通过ORM存储各种环境中的数据：数据库游标(数据库查询) 、</dt><dd >当前用户 (用来权限检查)、当前环境(存储任意的元数据)。环境可以被存储在缓存中。</dd></dl><p >所有的记录集都有一个不可变的环境，它可以通过 <code class="py xref py-attr">env</code> 访问,通过
+(<code class="py xref py-attr">user</code>), 游标
+(<code class="py xref py-attr">cr</code>) or 上下文
+(<code class="py xref py-attr">context</code>)给当前用户访问:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">records</span><span class="o">.</span><span class="n">env</span>
+<span class="go">&lt;Environment object ...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">records</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">user</span>
+<span class="go">res.user(3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">records</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span>
+<span class="go">&lt;Cursor object ...)</span>
+</pre></div>
+</div>
+<p >当从其他记录集创建了一个记录集，这个环境是可以被继承的。环境可以被用于从其他模块获取一个空的记录集，
+并且查询这个模块:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span>
+<span class="go">res.partner</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">([[</span><span class="s1">&#39;is_company&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;customer&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">]])</span>
+<span class="go">res.partner(7, 18, 12, 14, 17, 19, 8, 31, 26, 16, 13, 20, 30, 22, 29, 15, 23, 28, 74)</span>
+</pre></div>
+</div>
+</section><section id="id7"><h3 >转换环境</h3><p >来自一个记录集的环境可以被定制。使用转换环境返回一个新版本的记录集。</p><dl ><dt ><code class="py py-meth xref">sudo()</code></dt><dd ><p >根据提供的用户来创建一个新的环境，如果没有提供则使用管理员（绕过权限/规则的安全上下文），
+返回一个调用使用新的环境的记录集:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># create partner object as administrator</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sudo</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;A Partner&quot;</span><span class="p">})</span>
+
+<span class="c1"># list partners visible by the &quot;public&quot; user</span>
+<span class="n">public</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;base.public_user&#39;</span><span class="p">)</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="n">public</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">([])</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">with_context()</code></dt><dd ><ol ><li >可以携带一个位置参数，它将取代目前的环境的上下文</li><li ><p >可以通过关键字携带任意数量的参数，这些参数将被增加到当前环境上下文中或步骤1中的上下文设置中:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># look for partner, or create one with specified timezone if none is</span>
+<span class="c1"># found</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">with_context</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">a_tz</span><span class="p">)</span><span class="o">.</span><span class="n">find_or_create</span><span class="p">(</span><span class="n">email_address</span><span class="p">)</span>
+</pre></div>
+</div>
+</li></ol></dd><dt ><code class="py py-meth xref">with_env()</code></dt><dd >彻底替换现存的环境</dd></dl></section><section id="orm"><h2 >共用的ORM方法</h2><p ><code class="py py-meth xref">search()</code>
+提供一个 <a href="#reference-orm-domains" class="internal reference"><span class="std std-ref">search domain</span></a> ,返回一个匹配的记录集。
+也可以返回匹配的记录集的子集,通过 <code >offset</code> 和 <code >limit</code> 参数,同时通过 <code >order</code> 参数排序:</p><div class="highlight-default"><div class="highlight"><pre><span></span>     &gt;&gt;&gt; # searches the current model
+     &gt;&gt;&gt; self.search([(&#39;is_company&#39;, &#39;=&#39;, True), (&#39;customer&#39;, &#39;=&#39;, True)])
+     res.partner(7, 18, 12, 14, 17, 19, 8, 31, 26, 16, 13, 20, 30, 22, 29, 15, 23, 28, 74)
+     &gt;&gt;&gt; self.search([(&#39;is_company&#39;, &#39;=&#39;, True)], limit=1).name
+     &#39;Agrolait&#39;
+
+.. tip:: 只检查是否有任何匹配的记录,或计数的数目,使用 :meth:`~odoo.models.Model.search_count`
+</pre></div>
+</div>
+<dl ><dt ><code class="py py-meth xref">create()</code></dt><dd ><p >提供一系列数量字段的值，返回包含该记录的记录集:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;New Name&quot;</span><span class="p">})</span>
+<span class="go">res.partner(78)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">write()</code></dt><dd ><p >提供一系列字段值，将他们写入到记录集中的所有记录中。不返回任何东西:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;Newer Name&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">browse()</code></dt><dd ><p >提供数据库id或者ids的集合，返回一个记录集，当记录的id从odoo之外被获取是有用的
+(例如 往返通过外部的系统)或:ref:[UNKNOWN NODE title_reference]:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="go">res.partner(7, 18, 12)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">exists()</code></dt><dd ><p >返回一个仅存在于数据库中记录的新的记录集。可以用来检查是否该记录依旧存在:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">record</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;The record has been deleted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >或者调用一个方法后应该移除一些记录:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">records</span><span class="o">.</span><span class="n">may_remove_some</span><span class="p">()</span>
+<span class="c1"># only keep records which were not deleted</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">ref()</code></dt><dd ><p >环境的方法返回匹配到的 <a href="../glossary.html#term-external-id" class="internal reference"><span class="std std-term xref">external id</span></a> 的记录:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;base.group_public&#39;</span><span class="p">)</span>
+<span class="go">res.groups(2)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py py-meth xref">ensure_one()</code></dt><dd ><p >检查该记录集是一个signleton(仅包含一个单一记录)，否则提示一个错误:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">records</span><span class="o">.</span><span class="n">ensure_one</span><span class="p">()</span>
+<span class="c1"># is equivalent to but clearer than:</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expected singleton&quot;</span>
+</pre></div>
+</div>
+</dd></dl></section><section id="id8"><h2 >创建模块</h2><p >模块字段作为属性被定义在模块上:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">odoo</span> <span class="k">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">fields</span>
+<span class="k">class</span> <span class="nc">AModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;a.model.name&#39;</span>
+
+    <span class="n">field1</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">()</span>
+</pre></div>
+</div>
+<div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >意思你不能用同一个名字定义一个字段和方法，它们会冲突</p></div><p >默认字段标签（用户可见的名字）是该字段首字母大写的名字，它可以被 <code >string</code> 属性复写:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">field2</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s2">&quot;an other field&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >针对不同类型字段和参数，看 <a href="#reference-orm-fields" class="internal reference"><span class="std std-ref">参考该字段</span></a></p><p >默认值作为参数被定义在字段上，要么是一个值:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_field</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;a value&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >要么是一个被调用来计算默认值的函数，该函数应该返回那个值:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_default_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+<span class="n">a_field</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">compute_default_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section><section id="id9"><h3 >计算字段</h3><p >字段可以被计算(而不是直接从数据库读出来)使用 <code >compute</code> 参数。 <strong >它必须将计算的值赋值给该字段</strong> 。
+如果它使用其他 <em >字段</em> 的值，它应该指明这些字段使用 <code class="py xref py-func">depends()</code>:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">odoo</span> <span class="k">import</span> <span class="n">api</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_compute_total&#39;</span><span class="p">)</span>
+
+<span class="nd">@api</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;tax&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_compute_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">record</span><span class="o">.</span><span class="n">tax</span>
+</pre></div>
+</div>
+<ul ><li ><p >当使用子字段时可以使用点操作:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">depends</span><span class="p">(</span><span class="s1">&#39;line_ids.value&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_compute_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">line_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</li><li >计算字段默认不被存储，当请求时它们被计算和返回。设置 <code >store=True</code> 将被存储在数据库中
+并可以自动被搜索</li><li ><p >通过设置 <code >search</code> 参数来在计算字段上搜索。该值是一个方法的名字返回一个
+<a href="#reference-orm-domains" class="internal reference"><span class="std std-ref">Domain</span></a>:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">upper_name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_compute_upper&#39;</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="s1">&#39;_search_upper&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_search_upper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">operator</span> <span class="o">==</span> <span class="s1">&#39;like&#39;</span><span class="p">:</span>
+        <span class="n">operator</span> <span class="o">=</span> <span class="s1">&#39;ilike&#39;</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">value</span><span class="p">)]</span>
+</pre></div>
+</div>
+</li><li ><p >允许 <em >设置</em> 值到计算字段，使用 <code >inverse</code> 参数。它是一个函数的名称反转计算并且设置关联字段:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">document</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_get_document&#39;</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="s1">&#39;_set_document&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_get_document</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">get_document_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">record</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_set_document</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">record</span><span class="o">.</span><span class="n">document</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">get_document_path</span><span class="p">())</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">document</span><span class="p">)</span>
+</pre></div>
+</div>
+</li><li ><p >多个字段可以在同一时间通过同一方法被计算出来, 仅仅使用相同的方法在所有的字段上
+并且设置它们:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">discount_value</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_apply_discount&#39;</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="n">compute</span><span class="o">=</span><span class="s1">&#39;_apply_discount&#39;</span><span class="p">)</span>
+
+<span class="nd">@depends</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;discount&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_apply_discount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="c1"># compute actual discount from discount percentage</span>
+        <span class="n">discount</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">record</span><span class="o">.</span><span class="n">discount</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">discount_value</span> <span class="o">=</span> <span class="n">discount</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">discount</span>
+</pre></div>
+</div>
+</li></ul></section><section id="id10"><h4 >关联字段</h4><p >一个特殊的计算字段是 <em >related</em> (代理)字段,该字段在当前记录提供一个子字段的值.
+他们通过 <code >related</code> 参数被指定并且像常规的计算字段可以被存储:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nickname</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">related</span><span class="o">=</span><span class="s1">&#39;user_id.partner_id.name&#39;</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section><section id="onchange"><h3 >onchange: 运行中更新界面</h3><p >当一个用户在表单视图改变一个字段值（但是还没保存），它可以基于这个值被用于自动更新其他字段
+例如，当税收改变或者添加一个新的发票行将更新最终总数。</p><ul ><li >计算字段会自动检查并重新计算，他们不需要onchange</li><li ><p >对于非计算字段，这个onchange()装饰器被用于提供新字段:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">onchange</span><span class="p">(</span><span class="s1">&#39;field1&#39;</span><span class="p">,</span> <span class="s1">&#39;field2&#39;</span><span class="p">)</span> <span class="c1"># if these fields are changed, call method</span>
+<span class="k">def</span> <span class="nf">check_change</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">field1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">field2</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field3</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p >在这个方法被发送至客户端程序并且对用户可视时，这个改变被展现出来</p></li><li >计算字段和新的onchanges API通过客户端被自动调用无需添加他们在视图中</li><li ><p >通过添加on_change=&quot;0” 在view中来抑制一个指定字段触发onchange方法:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">field</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span> <span class="n">on_change</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p >当该字段被用户编辑时，将不会触发任何界面更新，即使这有个函数字段或明确的onchange依赖于该字段</p></li></ul><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p ><code >onchange</code> 方法运行在虚拟记录赋值这些记录是不写入数据库,只是用来知道这值返回给客户</p></div></section><section id="sql"><h3 >底层SQL</h3><dl ><dt ><code class="py xref py-attr">cr</code> 环境属性是针对当前事务的游标和允许直接执行SQL,要么是难以使用</dt><dd ><p >ORM来进行表达, 要么是性能的原因:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;some_sql&quot;</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="n">param3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl><p >由于模块使用相同的游标并且 <code class="py xref py-class">Environment</code> 保存不同的缓存，当在原生的SQL中 <em >变更</em>
+数据库时这些缓存必须失效，或者进一步利用模块来变成不相干。当在SQL中使用 <code >CREATE</code>, <code >UPDATE</code> 或者 <code >DELETE</code>
+时必须清除缓存, 在 <code >SELECT</code> 中则不需要(这只是简单的读取数据库)。</p><p >清除缓存可以使用 <code class="py xref py-class">Environment</code> 对象中的
+<code class="py py-meth xref">invalidate_all()</code> 方法。</p></section><section id="api"><i id="reference-orm-oldapi"></i><h2 >新旧API的兼容性</h2><p >Odoo目前正从旧的API中过渡，手动通旧API建立桥梁是必须的:</p><ul ><li >RPC 层(XML-RPC和JSON-RPC)是用旧的API来表示的，单纯使用新的API表达式方法是不可用RPC的</li><li >从旧系列的代码重写被调用的方法仍然需要使用旧API的风格</li></ul><p >新旧API之间最大的不同:</p><ul ><li ><code class="py xref py-class">Environment</code> (游标，用户id和上下文)的值直接通过方法传递</li><li >记录数据(<code class="py xref py-attr">ids</code>)通过明确的方法传递，而且根本没有通过</li><li >方法趋向使用列表而不是记录集</li></ul><p >默认情况下，方法假定使用新API风格而不是调用旧的API。</p><div role="alert" class="alert-info aphorism alert"><p class="alert-title">Tip</p><p >从新到旧API的调用是桥接的</p><p >当使用新的API风格，使用旧的API定义的方法被调用时在运行中将自动转换，不需要做任何指定:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># method in the old API style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">old_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="nb">print</span> <span class="n">ids</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># method in the new API style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">new_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># system automatically infers how to call the old-style</span>
+<span class="gp">... </span>    <span class="c1"># method from the new-style method</span>
+<span class="gp">... </span>    <span class="bp">self</span><span class="o">.</span><span class="n">old_method</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="p">[</span><span class="n">model</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">new_method</span><span class="p">()</span>
+<span class="go">[1, 2, 3, 4]</span>
+</pre></div>
+</div>
+</div><p >两个装饰器可以使新风格的方法运用到旧的API中:</p><dl ><dt ><code class="py xref py-func">model()</code></dt><dd ><p >该方法没有使用ids被展现出来，它的记录集是空的，对应旧的API的 <code >cr, uid, *arguments, context</code>:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">model</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a_value</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="c1"># can be called as</span>
+<span class="n">old_style_model</span><span class="o">.</span><span class="n">some_method</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">a_value</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd><dt ><code class="py xref py-func">multi()</code></dt><dd ><p >该方法携带一系列ids被展现出来，对应旧的API的 <code >cr, uid, ids, *arguments, context</code>:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@api</span><span class="o">.</span><span class="n">multi</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a_value</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="c1"># can be called as</span>
+<span class="n">old_style_model</span><span class="o">.</span><span class="n">some_method</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="p">[</span><span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">],</span> <span class="n">a_value</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl><p >由于新风格的APIs趋向返回记录集而旧的APIs趋向返回一系列id的列表，因此这也有管理这个的装饰器:</p><dl ><dt ><code class="py xref py-func">returns()</code></dt><dd ><p >该函数被假定返回一个记录集，第一个参数应该被命名为记录集的模块或者 <code >self</code> (针对当前模块)</p><p >如果该方法在新的API风格中被调用时没有作用的，但是当调用旧的API风格时将记录集转换为一系列id的列表:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@api</span><span class="o">.</span><span class="n">multi</span>
+<span class="gp">... </span><span class="nd">@api</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="bp">self</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_style_model</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="s1">&#39;a.model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_style_model</span><span class="o">.</span><span class="n">some_method</span><span class="p">()</span>
+<span class="go">a.model(1, 2, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">old_style_model</span> <span class="o">=</span> <span class="n">pool</span><span class="p">[</span><span class="s1">&#39;a.model&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">old_style_model</span><span class="o">.</span><span class="n">some_method</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</dd></dl></section><section id="reference-orm-model"><i id="id11"></i><h2 >模块参考</h2></section><section id="reference-orm-decorators"><i id="id12"></i><h2 >装饰器方法</h2></section><section id="reference-orm-fields"><i id="id13"></i><h2 >字段</h2></section><section id="reference-orm-fields-basic"><i id="id14"></i><h3 >基础字段</h3></section><section id="reference-orm-fields-relational"><i id="id15"></i><h3 >关联字段</h3></section><section id="reference-orm-inheritance"><i id="id16"></i><h2 >继承和扩展</h2><p >Odoo提供三种不同以模块化方式扩展模型：</p><ul ><li >从现有模型创建新模型，向副本添加新信息，但保留原始模模型</li><li >扩展其他模块中定义的模型，替换以前的版本</li><li >将一些模型的字段委托给它包含的记录</li></ul><img src="../_images/inheritance_methods1.png" class="img-responsive center-block"></section><section id="id17"><h3 >原型继承</h3><p >当同时使用 <code class="py xref py-attr">_inherit</code> 和 <code class="py xref py-attr">_name</code>
+属性时， Odoo使用现有的模型作为基础来创建一个新的模型（通过提供 <code class="py xref py-attr">_inherit</code> ）。
+这个新的模型从基础模型中获取所有的字段，方法和元信息（默认值和al）</p><p >并且使用它们：</p><p >将会yield:</p><p >第二个模型继承了第一个模型的 <code >check</code> 方法和 <code >name</code> 字段，但是覆盖了 <code >call</code> 方法，因为当使用标准 <span class="std xref std-ref">Python inheritance</span>  。</p></section><section id="id18"><h3 >扩展继承</h3><p >当使用 <code class="py xref py-attr">_inherit</code> 但是没有提供 <code class="py xref py-attr">_name</code> 时，
+新模型替代已存在的模型，本质是在原有模型进行扩展。对于添加新字段或方法是非常有用的，或者去定制或重新配置它们
+（例如 改变它们的默认排序）:</p><p >将会yield:</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >它也将产生各种 <span class="std xref std-ref">automatic fields</span> 除非它们已被禁用</p></div></section><section id="id19"><h3 >委托继承</h3><p >第三种继承机制提供了更多的灵活性（可以改变在运行时）但有较少的功能：
+使用 <code class="py xref py-attr">_inherits</code> 模型*委托*查找当前模型中未找到的任何字段
+到“儿童”模型。委托通过以下方式执行 <code class="py xref py-class">Reference</code> 字段在父代上自动设置
+模型：</p><p >将导致:</p><p >并且可以直接在委托字段上写入:</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >当使用委托继承时，方法不被继承，只继承字段</p></div></section><section id="domain"><i id="reference-orm-domains"></i><h2 >Domain</h2><p >domain是一个标准列表，每个标准是一个三元组（要么是 <code >list</code> 或是一个 <code >tuple</code> ）的
+<code >(field_name, operator, value)</code> :</p><dl ><dt ><code >field_name</code> (<code >str</code>)</dt><dd >当前模型的字段名，或者通过 <code class="py xref py-class">Many2one</code> 的关系遍历，
+使用点符号。 <code >'street'</code> 或 <code >partner_id.country'</code></dd><dt ><code >operator</code> (<code >str</code>)</dt><dd ><p >用于比较 <code >field_name</code> 和 <code >value</code> 的操作符。有效的操作符有：</p><dl ><dt ><code >=</code></dt><dd >相等</dd><dt ><code >!=</code></dt><dd >不等</dd><dt ><code >&gt;</code></dt><dd >大于</dd><dt ><code >&gt;=</code></dt><dd >不小于</dd><dt ><code >&lt;</code></dt><dd >小于</dd><dt ><code >&lt;=</code></dt><dd >不大于</dd><dt ><code >=?</code></dt><dd >未设置或等于(如果 <code >value</code> 为 <code >None</code> 或 <code >False</code> ，则返回真，否则表现为 <code >=</code> )</dd><dt ><code >=like</code></dt><dd >匹配 <code >field_name</code> 与 <code >value</code> 模式。 模式中的下划线 “_” 代表任何单个字符（匹配）
+百分号“％”匹配任何零个或多个字符的字符串。</dd><dt ><code >like</code></dt><dd >匹配 <code >field_name</code> 与 <code >value</code> 模式。类似于 <code >= like</code> ，但在匹配之前用“％”包装 <code >value</code></dd><dt ><code >not like</code></dt><dd >不匹配 <code >%value%</code> 的模式</dd><dt ><code >ilike</code></dt><dd >等同于不区分大小写的 <code >like</code></dd><dt ><code >not ilike</code></dt><dd >等同于不区分大小写的 <code >not like</code></dd><dt ><code >=ilike</code></dt><dd >等同于不区分大小写的 <code >=like</code></dd><dt ><code >in</code></dt><dd >等于 <code >value</code> 中的任意一项, <code >value</code> 应该是一个列表</dd><dt ><code >not in</code></dt><dd >不等于 <code >value</code> 中的任意一项</dd><dt ><code >child_of</code></dt><dd ><p >是一个 <code >value</code> 记录的子节点（子孙）</p><p >采用模型的语义（即关系字段命名为 <code class="py xref py-attr">_parent_name</code> ）。</p></dd></dl></dd><dt ><code >value</code></dt><dd >变量类型，必须是与命名字段可比的（通过 <code >operator</code> ）</dd></dl><p >可以使用 <em >prefix</em> 形式的逻辑运算符组合Domain条件</p><dl ><dt ><code >'&amp;'</code></dt><dd >逻辑运算符 <em >AND</em> ，组合条件的默认操作。 Arity 2（使用接下来的两个标准或组合）。</dd><dt ><code >'|'</code></dt><dd >逻辑运算符 <em >OR</em>, arity 2.</dd><dt ><code >'!'</code></dt><dd ><p >逻辑运算符 <em >NOT</em>, arity 1.</p><div role="alert" class="alert-info alert"><p class="alert-title">Tip</p><p >主要是否定标准的组合 :class: aphorism</p><p >个别标准通常有一个否定形式（例如 <code >=</code> -&gt; <code >!=</code> ， <code >&lt;</code> -&gt; <code >&gt;=</code> ）比简单的否定更有效</p></div></dd></dl><div role="alert" class="admonition-example alert"><p class="alert-title">Example</p><p >要搜索来自比利时或德国且语言不是英语且名为 <em >ABC</em> 的合作伙伴:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;ABC&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;language.code&#39;</span><span class="p">,</span><span class="s1">&#39;!=&#39;</span><span class="p">,</span><span class="s1">&#39;en_US&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;|&#39;</span><span class="p">,(</span><span class="s1">&#39;country_id.code&#39;</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;be&#39;</span><span class="p">),</span>
+     <span class="p">(</span><span class="s1">&#39;country_id.code&#39;</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="s1">&#39;de&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p >该domain解释为:</p><div class="highlight-text"><div class="highlight"><pre><span></span>    (name is &#39;ABC&#39;)
+AND (language is NOT english)
+AND (country is Belgium OR Germany)
+</pre></div>
+</div>
+</div></section><section id="apiapi"><h2 >从旧API移植到新API</h2><ul ><li >在新API中要避免使用ids的裸列表，使用记录集替代</li><li >仍然写在旧API中的方法应该自动桥接ORM，不需要切换到旧的API，只需调用它们就像是一个新的API方法。 有关更多详细信息，请参见 <a href="#reference-orm-oldapi-bridging" class="internal reference"><span class="std std-ref">自动桥接旧API方法</span></a> 。</li><li ><code class="py py-meth xref">search()</code> 返回一个记录集。</li><li >通过常规的字段类型 <code >related=</code> 或 <code >compute=</code> 参数来替换 <code >fields.related</code> 和 <code >fields.function</code></li><li ><code class="py xref py-func">depends()</code> 在 <code >compute =</code> 方法上 <strong >必须是存在的</strong> ， 它必须列出 <strong >所有</strong> 计算方法使用的字段和子字段。太多的依赖（在不需要的情况下重新计算字段）比不够（将忘记重新计算字段，然后值将不正确）好</li><li >在计算字段上移除 <strong >所有</strong> <code >onchange</code> 方法。当它的依赖字段改变时计算字段会自动重新计算，并且用于由客户端自动生成 <code >onchange</code></li><li >装饰器 <code class="py xref py-func">multi()</code> 用于桥接 <em >当从旧的API上下文</em> 调用时，对于内部或新的api（例如 计算）是无用的</li><li >移除 <code class="py xref py-attr">_default</code>, 在对应字段上用 <code >default=</code> 替代</li><li ><p >如果一个字段的 <code >string =</code> 是字段名的首字母大写的版本:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >那是没有什么作用的，应该被移除</p></li><li ><code >multi =</code> 参数在新的API字段上不做任何事情，使用相同的 <code >compute =</code> 方法在所有相关字段上得到相同结果</li><li >通过名称（一个字符串）提供 <code >compute =</code>，<code >inverse =</code> 和 <code >search =</code> 方法，这使得它们可以重写（不需要中间“跳转”函数）</li><li >双重检查所有字段和方法有不同的名称，在碰撞情况下没有警告（因为Python在Odoo看到任何东西之前处理它）</li><li >正常的新api导入是 <code >from odoo import fields，models</code> 。 如果兼容性装饰器是必要的，使用 <code >from odoo import api，fields，models</code></li><li >避免使用 <code class="py xref py-func">one()</code> 装饰器, 它有可能执行你不期望的事</li><li >删除显示定义的 <code class="py xref py-attr">create_uid</code>,
+<code class="py xref py-attr">create_date</code>,
+<code class="py xref py-attr">write_uid</code> 和
+<code class="py xref py-attr">write_date</code> 字段: 它们现在被创建为常规的“合法”字段，并且可以
+像任何其他字段一样读写</li><li ><p >当不可能进行直接转换（语义不能被桥接）或“旧API”版本是不可取的并且可以针对新的API进行改进时，
+可以使用完全不同的“旧API”和“新API”实现相同的方法名使用 <code class="py xref py-func">v7()</code> 和 <code class="py xref py-func">v8()</code> 。 该方法应该首先使用old-API风格定义，并装饰 <code class="py xref py-func">v7()</code> ，然后应该使用完全相同的名称重新定义，
+但新的API风格和装饰 <code class="py xref py-func">v8()</code> 。 来自旧API上下文的调用将被分派到首要实现，
+并且来自新API上下文的调用将被分派到次要实现。 一个实现可以通过切换上下文来调用（并且频繁地）调用另一个实现。</p><div role="alert" class="alert-danger alert"><p class="alert-title">Danger</p><p >使用这些装饰器使方法非常难以覆盖和更难以理解和记录</p></div></li><li ><p ><code class="py xref py-attr">_columns</code> 或 <code class="py xref py-attr">_all_columns</code> 应该被
+<code class="py xref py-attr">_fields</code> 所替代, 它提供通过新风格 <code class="py xref py-class">odoo.fields.Field</code> 对实例进行访问（而不是旧风格 <code class="py xref py-class">odoo.osv.fields._column</code> ）</p><p >使用新的API样式创建的非存储计算字段是 <em >不</em> 可用于 <code class="py xref py-attr">_columns</code>，
+只能通过以下方式检查 <code class="py xref py-attr">_fields</code></p></li><li >在方法中重新分配 <code >self</code> 是非必需的并且有可能破坏翻译自省</li><li ><p ><code class="py xref py-class">Environment</code> 对象依赖于一些threadlocal状态，在使用它们之前必须设置它们。有必要使用 <code class="py py-meth xref">odoo.api.Environment.manage()</code> 上下文管理器尝试在尚未设置的新环境中使用新API，</p><p >例如新线程或Python交互式环境:</p><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">odoo</span> <span class="k">import</span> <span class="n">api</span><span class="p">,</span> <span class="n">modules</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">modules</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">RegistryManager</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{})</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="gr">AttributeError</span>: <span class="n">environments</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">api</span><span class="o">.</span><span class="n">Environment</span><span class="o">.</span><span class="n">manage</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="n">env</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{})</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">res.partner(1,)</span>
+</pre></div>
+</div>
+</li></ul></section><section id="reference-orm-oldapi-bridging"><i id="id20"></i><h3 >自动桥接旧API方法</h3><p >当模型被初始化时，如果它们看起来像在旧API样式中声明的模型，则所有方法都被自动扫描和桥接。
+这种桥接使得它们可以从新的API样式方法中透明地调用。</p><p >如果被调用的第二个位置参数是 <code >cr</code> 或 <code >cursor</code> ，则被匹配为旧API风格的方法。该系统也会辨别
+第三个位置参数被称为 <code >uid</code> 或 <code >user</code> 和 第四个位置参数被称为 <code >id</code> 或 <code >ids</code> 。它也会辨别
+任意被命名为 <code >context</code> 参数的存在。</p><p >当从一个新API上下文调用这样的方法时，系统会自动从当前环境 <code class="py xref py-class">Environment</code>
+调用(<code class="py xref py-attr">cr</code> ， <code class="py xref py-attr">user</code> 和
+<code class="py xref py-attr">context</code>) 或者当前的记录集 (for <code >id</code>
+and <code >ids</code>)。</p><p >在极少数需要的情况下，桥接可以通过装饰旧式方法来定制：</p><ul ><li >完全禁用它，通过装饰一个方法
+<code class="py xref py-func">noguess()</code> 这将不会有桥接并且方法将以准确的方式从新和旧的API风格调用</li><li ><p >显式地定义桥接，这主要是对于不正确匹配的方法（因为参数以意想不到的方式命名）：</p><dl ><dt ><code class="py xref py-func">cr()</code></dt><dd >将自动地将当前游标添加到显式提供的参数位置</dd><dt ><code class="py xref py-func">cr_uid()</code></dt><dd >将自动地将当前游标和用户id添加到显式提供的参数位置</dd><dt ><code class="py xref py-func">cr_uid_ids()</code></dt><dd >将自动地将当前游标、用户id和记录集的ids添加到显式提供的参数位置</dd><dt ><code class="py xref py-func">cr_uid_id()</code></dt><dd >将循环当前记录集，并为每个记录调用该方法一次，将当前游标，用户id和记录id添加到显式提供的参数位置。</dd></dl><div role="alert" class="alert-danger alert"><p class="alert-title">Danger</p><p >当从一个新的API上下文调用时，这个包装器的结果是 <em >总是一个列表</em> 所有这些方法都有一个 <code >_context</code> 后缀版本（例如 <code class="py xref py-func">cr_uid_context()</code> ），它也通过关键字 <em >传递当前上下文</em> 。</p></div></li><li >双重实现使用 <code class="py xref py-func">v7()</code> 和 <code class="py xref py-func">v8()</code> 将被忽略，因为他们提供自己的“桥接”</li></ul></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

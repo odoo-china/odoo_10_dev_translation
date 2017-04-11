@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>混入类(Mixins)和有用的类们 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="Odoo 指南" href="guidelines.html" />
+    <link rel="prev" title="Workflows" href="workflows.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">混入类(Mixins)和有用的类们</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/mixins.jpg');"></span>
+      <div class="container text-center">
+        <h1> 混入类(Mixins)和有用的类们 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#messaging-features" class="ripple internal reference">消息特性(Messaging features)</a><ul ><li class="list-group-item"><a href="#messaging-integration" class="ripple internal reference">消息集成(Messaging integration)</a><ul ><li class="list-group-item"><a href="#id1" class="ripple internal reference">基础的消息系统</a></li><li class="list-group-item"><a href="#logging-changes" class="ripple internal reference">记录改变(Logging changes)</a></li><li class="list-group-item"><a href="#subtypes" class="ripple internal reference">子类型(Subtypes)</a></li><li class="list-group-item"><a href="#customizing-notifications" class="ripple internal reference">自定义通知(Customizing notifications)</a></li><li class="list-group-item"><a href="#overriding-defaults" class="ripple internal reference">复写默认值(Overriding defaults)</a></li></ul></li><li class="list-group-item"><a href="#mail-alias" class="ripple internal reference">邮件别名(Mail alias)</a><ul ><li class="list-group-item"><a href="#aliases-incoming-mail-gateway" class="ripple internal reference">别名(Aliases)对比传入邮件网关(Incoming Mail Gateway)</a></li><li class="list-group-item"><a href="#alias-support-integration" class="ripple internal reference">别名支持集成(Alias support integration)</a></li></ul></li></ul></li><li class="list-group-item"><a href="#website-features" class="ripple internal reference">网站特性(Website features)</a><ul ><li class="list-group-item"><a href="#visitor-tracking" class="ripple internal reference">访问者跟踪(Visitor tracking)</a></li><li class="list-group-item"><a href="#website-visibility" class="ripple internal reference">网站可见性(Website visibility)</a></li><li class="list-group-item"><a href="#website-metadata" class="ripple internal reference">网站元数据(Website metadata)</a></li></ul></li><li class="list-group-item"><a href="#others" class="ripple internal reference">其他(Others)</a><ul ><li class="list-group-item"><a href="#customer-rating" class="ripple internal reference">客户评价(Customer Rating)</a><ul ><li class="list-group-item"><a href="#id2" class="ripple internal reference">在你的模型上添加评价</a></li><li class="list-group-item"><a href="#id3" class="ripple internal reference">使用邮件发送评分请求</a></li></ul></li></ul></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/mixins.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="mixins"><i id="reference-mixins"></i><p >Odoo实现了一些有用的类和混入类,它们使你在你的对象上更容易地添加常用的行为.
+这个指南会用示例和使用场景来详细描述他们.</p></section><section id="messaging-features"><i id="reference-mixins-mail"></i><h2 >消息特性(Messaging features)</h2></section><section id="messaging-integration"><i id="reference-mixins-mail-chatter"></i><h3 >消息集成(Messaging integration)</h3></section><section id="id1"><h4 >基础的消息系统</h4><p >把消息特性集成进你的模型非常简单. 只需要继承(inheriting) <code >mail.thread</code> 模型
+并且添加消息字段(和它们合适的控件)至你的表格视图,就可以完全工作了.</p><div role="alert" class="admonition- alert"><p class="alert-title">示例</p><p >我们创建一个最简单的模型来代表一个商务旅行. 因为组织这类的旅行一般牵扯到很多人和很多讨论,
+让我们在这个模型上添加消息交流.</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessTrip</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.trip&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Trip&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">()</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Responsible&#39;</span><span class="p">)</span>
+    <span class="n">guest_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Participants&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >在表格视图中:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;businness_trip_form&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>business.trip.form<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>business.trip<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">string=</span><span class="s">&quot;Business Trip&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- 你常规的表格视图在这里</span>
+<span class="c">            ...</span>
+<span class="c">            接下来是会话集成 --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_chatter&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;message_follower_ids&quot;</span> <span class="na">widget=</span><span class="s">&quot;mail_followers&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;message_ids&quot;</span> <span class="na">widget=</span><span class="s">&quot;mail_thread&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+</div><p >一旦你在模型上添加了会话支持, 用户就可以很容易的在你模型上的任意记录里添加信息或者内部通知;
+这里的每个信息会发送一个提醒(给所有信息的接收者, 对于内部通知来说,给员工(<em >base.group_user</em>)
+用户). 如果你的邮件网关和收集器地址正确的配置了的话, 这些通知会被作为邮件发送并且可以从邮件客户端直接回复;
+自动路由系统会把回复路由至正确的进程.</p><p >服务器端, 一些帮助类功能可以使你很容易的发送信息来管理你记录的接收者:</p><h5 >发布消息</h5><section class="code-method"><h6 id="message_post"><code>message_post(<em>self</em>, <em>body=''</em>, <em>subject=None</em>, <em>message_type='notification'</em>, <em>subtype=None</em>, <em>parent_id=False</em>, <em>attachments=None</em>, <em>content_subtype='html'</em>, <em>**kwargs</em>)</code></h6><p >在一个存在的进程中发布一个新的消息, 返回新的 mail.message ID.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >body</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- 消息的主体, 通常是无害的原始的HTML</li><li ><strong >message_type</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- 参考mail_message.type 字段</li><li ><strong >content_subtype</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- 如果是纯文本: 转换主体为html</li><li ><strong >parent_id</strong> (<a href="https://docs.python.org/2/library/functions.html#int" class="external reference alert-link" title="(in Python v2.7)"><code >int</code></a>) -- 在私密讨论的情况下, 通过添加父partner进消息来处理前一个消息的回复</li><li ><strong >attachments</strong> (<code >list(tuple(str,str))</code>) -- 附件的元组列表,形式是
+<code >(name,content)</code>, 其内容不是base64编码的</li><li ><strong >**kwargs</strong> -- 额外的关键字参数会被用于新的mail.message记录的默认的列值</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">新建的mail.message的ID</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#int" class="external reference alert-link" title="(in Python v2.7)">int</a></div></div></div></section><section class="code-method"><h6 ><code>message_post_with_view(views_or_xmlid, **kwargs):</code></h6><p >使用ir.qweb引擎的一个使用view_id来发送邮件/发布一个消息的助手方法.
+这个方法是独立的,因为在允许批处理视图的模板和组合器中什么也没有.
+这个方法可能在模板处理ir.ui.views时消失.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><strong >or ir.ui.view record</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- 外部id或者需要发送的记录的视图</div></div></div></section><section class="code-method"><h6 id="message_post_with_template"><code>message_post_with_template(<em>template_id</em>, <em>**kwargs</em>)</code></h6><p >使用模板来发送邮件的助手方法</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >template_id</strong> -- 需要渲染来生成消息主体的模板的id</li><li ><strong >**kwargs</strong> -- 生成一个mail.compose.message向导的参数(其继承自mail.message)</li></ul></div></div></div></section><h5 >接收消息</h5><p >这些方法在一个新的邮件被邮件网关处理的时候调用. 这些邮件可能是新的进程
+(如果他们通过 <a href="#reference-mixins-mail-alias" class="internal reference"><span class="std std-ref">别名(alias)</span></a> 到达)
+或者只是一个已经存在的进程的回复. 复写他们使你可以设置进程记录的值,其依赖来自邮件本身的一些值
+(比如更新一个数据或者一个邮件地址, 添加抄送地址作为接收者, 等等.).</p><section class="code-method"><h6 id="message_new"><code>message_new(<em>msg_dict</em>, <em>custom_values=None</em>)</code></h6><p >当一个新的消息在一个给定的线程模型上接收到的时候,被 <code >message_process</code> 调用,
+如果这个消息不属于一个存在的线程中.</p><p >默认的行为是创建一个相应模型的新的记录(基于从消息释放的一些很基本的信息).
+可以通过复写这个方法来实现额外的行为.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >msg_dict</strong> (<a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)"><code >dict</code></a>) -- 一个包含邮件细节和附件的映射(map). 查看 <code >message_process</code>
+和 <code >mail.message.parse</code> 来获得详细信息.</li><li ><strong >custom_values</strong> (<a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)"><code >dict</code></a>) -- 在创建新的线程记录时, 传递给create()的附加字段值的一个可选字典;
+请当心使用,这些值可能会覆盖来自这个消息的其他值.</li></ul></div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#int" class="external reference alert-link" title="(in Python v2.7)">int</a></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">新创建的线程对象的id</div></div></div></section><section class="code-method"><h6 id="message_update"><code>message_update(<em>msg_dict</em>, <em>update_vals=None</em>)</code></h6><p >当一个新的消息被一个现存的进程接收到时被 <code >message_process</code> 调用.
+默认的行为是用从接收到的邮件的 <code >update_vals</code> 来更新这个记录.</p><p >可以通过复写这个方法来实现额外的行为.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >msg_dict</strong> (<a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)"><code >dict</code></a>) -- 一个包含邮件细节和附件的映射(map). 查看 <code >message_process</code>
+和 <code >mail.message.parse</code> 来获得详细信息.</li><li ><strong >update_vals</strong> (<a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)"><code >dict</code></a>) -- 一个包含更新给定id的记录的字典,如果字典是None或者空的,不会执行写操作.</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">True</div></div></div></section><h5 >接收者的管理</h5><section class="code-method"><h6 id="message_subscribe"><code>message_subscribe(<em>partner_ids=None</em>, <em>channel_ids=None</em>, <em>subtype_ids=None</em>, <em>force=True</em>)</code></h6><p >把partner添加进接收者的记录里.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >partner_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的partner ID</li><li ><strong >channel_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的channel ID</li><li ><strong >subtype_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的channels/partner的子类型的ID(如果是 <code >None</code> 则是默认的子类)</li><li ><strong >force</strong> -- 如果为真, 在使用参数中给定的子类创建一个新的接收者时,删除存在的接收者</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">成功/失败</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#bool" class="external reference alert-link" title="(in Python v2.7)">bool</a></div></div></div></section><section class="code-method"><h6 id="message_subscribe_users"><code>message_subscribe_users(<em>user_ids=None</em>, <em>subtype_ids=None</em>)</code></h6><p >message_subscribe 的一个包装, 使用users来代替partners.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >user_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的user ID; 如果为 <code >空(None)</code>, 提交当前的用户.</li><li ><strong >subtype_ids</strong> (<code >list(int)</code>) -- 将要提交的channels/partners子类的ID</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">成功</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#bool" class="external reference alert-link" title="(in Python v2.7)">bool</a></div></div></div></section><section class="code-method"><h6 id="message_unsubscribe"><code>message_unsubscribe(<em>partner_ids=None</em>, <em>channel_ids=None</em>)</code></h6><p >把partner从接受者记录里移除.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >partner_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的partner ID</li><li ><strong >channel_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的channel ID</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">真</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#bool" class="external reference alert-link" title="(in Python v2.7)">bool</a></div></div></div></section><section class="code-method"><h6 id="message_unsubscribe_users"><code>message_unsubscribe_users(<em>user_ids=None</em>)</code></h6><p >message_subscribe 的一个包装,使用users.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><strong >user_ids</strong> (<code >list(int)</code>) -- 将要提交至记录的user ID; 如果为 <code >空(None)</code>, 提交当前的用户.</div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">真</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#bool" class="external reference alert-link" title="(in Python v2.7)">bool</a></div></div></div></section></section><section id="logging-changes"><h4 >记录改变(Logging changes)</h4><p ><code >mail</code> 模块对字段添加了一个有力的跟踪系统, 允许你来记录在记录对话中特定字段的改变.</p><p >为了添加一个字段的跟踪, 只需要简单的添加 <code >onchange</code> 的值的属性为track_visibility
+(如果它应该只在字段改变的情况下被显示于通知中) 或者 <code >always</code>
+(如果这个值应该被一直显示于通知中,即使这个特定的字段没有改变 - 比如,在通过一直添加命名字段
+来使通知更具有说明性时最有用).</p><div role="alert" class="admonition- alert"><p class="alert-title">示例</p><p >让我们跟踪我们商务旅行的命名和责任者的改变:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessTrip</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.trip&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Trip&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;always&#39;</span><span class="p">)</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Responsible&#39;</span><span class="p">,</span>
+                                 <span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">guest_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Participants&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >从现在起, 针对于旅行的命名和责任人的每个改变会在记录上进行记录.
+这个 <code >name</code> 字段会被显示于通知中并且对这个通知给出更多的信息(即使名字没有改变).</p></div></section><section id="subtypes"><h4 >子类型(Subtypes)</h4><p >子类型让你对消息有更细致的控制. 子类型作为一个通知的分级,
+允许提交者至一个文档来定制化他们希望接收的通知的子类型.</p><p >子类型在你的模型里被当做一个数据来创建; 模型有如下的字段:</p><dl ><dt ><code >name</code> (强制的) - <code class="py xref py-class">Char</code></dt><dd >子类型的名称, 会在通知的自定义弹出框中显示</dd><dt ><code >description</code> - <code class="py xref py-class">Char</code></dt><dd >会添加进子类型发布的消息的描述. 如果为空, 名字会被添加进来</dd><dt ><code >internal</code> - <code class="py xref py-class">Boolean</code></dt><dd >有内部子类型的消息只会对雇员可见, 就像在 <code >base.group_user</code> 组中的组员</dd><dt ><code >parent_id</code> - <code class="py xref py-class">Many2one</code></dt><dd >自动提交的链接子类型; 比如项目子类型通过这个链接链接至任务子类型. 当有人被提交至一个项目,
+他会被通过这个父子类型中找到的子类型提交至这个项目所有的任务中</dd><dt ><code >relation_field</code> - <code class="py xref py-class">Char</code></dt><dd >比如, 当链接项目和任务子类型, 关系字段是任务的project_id字段</dd><dt ><code >res_model</code> - <code class="py xref py-class">Char</code></dt><dd >应用子类型的至的模型; 如果为False, 这个子类型应用于所有模型</dd><dt ><code >default</code> - <code class="py xref py-class">Boolean</code></dt><dd >当提交时这个子类型是否是被激活的</dd><dt ><code >sequence</code> - <code class="py xref py-class">Integer</code></dt><dd >用于在通知自定义的弹出框排列子类型</dd><dt ><code >hidden</code> - <code class="py xref py-class">Boolean</code></dt><dd >用于子类型在通知自定义的弹出框是否隐藏</dd></dl><p >使用字段跟踪的接口子类型,可以允许根据用户可能感兴趣而提交至不同的通知.
+为了实现这样, 你可以复写 <code >_track_subtype()</code> 函数:</p><section class="code-method"><h6 id="_track_subtype"><code>_track_subtype(<em>init_values</em>)</code></h6><p >根据已经更新的值来给出由记录改变触发的子类型.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><strong >init_values</strong> (<a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)"><code >dict</code></a>) -- 记录的原始值; 只有修改字段出现在字典中</div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">一个子类型的完全外部id或者为False如果没有子类型被触发的话</div></div></div></section><div role="alert" class="admonition- alert"><p class="alert-title">示例</p><p >在我们的示例类里添加一个 <code >状态(state)</code> 字段并且在这个字段值改变的时候使用一个特定的子类型来触发一个通知.</p><p >首先我们要定义我们的子类型:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;mt_state_change&quot;</span> <span class="na">model=</span><span class="s">&quot;mail.message.subtype&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Trip confirmed<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;res_model&quot;</span><span class="nt">&gt;</span>business.trip<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span> <span class="na">eval=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span><span class="nt">&gt;</span>Business Trip confirmed!<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >然后, 我们需要复写 <code >track_subtype()</code> 函数. 这个函数通过跟踪系统来调用,
+以此依据当前被应用的改变来获得是哪个子类型应该被使用. 在我们的情况中,
+当 <code >state</code> 字段从 <em >draft</em> 变为 <em >confirmed</em> 时我们想使用我们新鲜出炉的子类型:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessTrip</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.trip&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Trip&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Responsible&#39;</span><span class="p">,</span>
+                                 <span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">guest_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Participants&#39;</span><span class="p">)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Selection</span><span class="p">([(</span><span class="s1">&#39;draft&#39;</span><span class="p">,</span> <span class="s1">&#39;New&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span> <span class="s1">&#39;Confirmed&#39;</span><span class="p">)],</span>
+                             <span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_track_subtype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_values</span><span class="p">):</span>
+        <span class="c1"># init_values 包含在改变之前的被修改的字段的值</span>
+        <span class="c1">#</span>
+        <span class="c1"># 应用的值可以通过记录来访问因为他们已经在缓存中了</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_one</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;state&#39;</span> <span class="ow">in</span> <span class="n">init_values</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;my_module.mt_state_change&#39;</span>  <span class="c1"># Full external id</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">BusinessTrip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_track_subtype</span><span class="p">(</span><span class="n">init_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></section><section id="customizing-notifications"><h4 >自定义通知(Customizing notifications)</h4><p >当发送通知至接收者时, 在模板中添加按钮来允许从邮件快速动作是很有用的.
+即使一个直接连接至记录表格视图的简单按钮也很有用; 虽然在大部分情况中你不想在外部用户中显示这些按钮.</p><p >这个通知系统允许用以下的几种方式自定义通知模板:</p><ul ><li >显示 <em >访问按钮</em>: 这些按钮在通知邮件的头部可见并且允许接收者直接访问记录的表格视图</li><li >显示 <em >跟从按钮</em>: 这些按钮允许接收者直接快速的从记录里提交</li><li >显示 <em >解除跟从按钮</em>: 这些按钮允许接收者直接快速的从记录里解除提交</li><li >显示 <em >自定义动作按钮</em>: 这些按钮被用于特定的步骤并且允许你来制作邮件里直接可用的一些有用的行为
+(比如转化一个机会至一个商机, 让财务经理使一个花费表格生效等等)</li></ul><p >这些按钮设置可以应用于不同的组,这些组你可以通过复写函数 <code >_notification_recipients</code> 自定义.</p><section class="code-method"><h6 id="_notification_recipients"><code>_notification_recipients(<em>message</em>, <em>groups</em>)</code></h6><p >根据已经更新的值给出记录上面的改变触发的子类型.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><ul ><li ><strong >message</strong> (<code >record</code>) -- <code >mail.message</code> 当前发出的记录</li><li ><strong >groups</strong> (<code >list(tuple)</code>) -- <p >表格元组的列表(group_name, group_func,group_data)里面有:</p><dl ><dt >group_name</dt><dd >是一个只用于可以复写和操作组的标识.
+默认的组是 <code >user</code> (链接至雇员用户的接收者),
+<code >portal</code> (链接至外部用户的接收者) 和 <code >customer</code> (没有链接至任何用户的接收者).
+一个复写使用的示例是添加一个链接至res.groups的组,就像Hr Officer给他们来设置特定的动作按钮.</dd><dt >group_func</dt><dd >是一个函数的指针,它把一个partner记录作为参数. 这个方法会被应用于接收者来获得是否他们属于一个给定的组.
+只有第一个匹配的组被保留. 评估顺序是这个列表的顺序.</dd><dt >group_data</dt><dd ><p >一个包含通知邮件参数的字典,其有如下的键值对:</p><ul ><li ><dl ><dt >has_button_access</dt><dd >是否在邮件中显示访问 &lt;Document&gt; 按钮. 对新组来说默认为真, 对外部/客户来说为假.</dd></dl></li><li ><dl ><dt >button_access</dt><dd >有url和按钮标题的字典</dd></dl></li><li ><dl ><dt >has_button_follow</dt><dd >是否在邮件中显示跟随按钮(如果接收者当前没有跟随这个线程). 对新组来说默认为真, 对外部/客户来说为假.</dd></dl></li><li ><dl ><dt >button_follow</dt><dd >有url和按钮标题的字典</dd></dl></li><li ><dl ><dt >has_button_unfollow</dt><dd >是否在邮件中显示解除跟随跟随按钮(如果接收者当前已经跟随这个线程). 对新组来说默认为真, 对外部/客户来说为假.</dd></dl></li><li ><dl ><dt >button_unfollow</dt><dd >有url和按钮标题的字典</dd></dl></li><li ><dl ><dt >actions</dt><dd >在通知邮件中显示的动作按钮的列表. 每个动作是一个包含url和按钮标题的字典.</dd></dl></li></ul></dd></dl></li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">一个子类型的完全外部id或者没有子类型被触发的话就是False</div></div></div></section><p >在动作列表中的url可以通过调用 <code >_notification_link_helper()</code> 函数自动生成:</p><section class="code-method"><h6 id="_notification_link_helper"><code>_notification_link_helper(<em>self</em>, <em>link_type</em>, <em>**kwargs</em>)</code></h6><p >对于一个当前记录的给定的类型生成一个链接(或者一个特定的记录如果关键字 <code >model</code> 和 <code >res_id</code> 被设置了的话).</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><strong >link_type</strong> (<a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)"><code >str</code></a>) -- <p >需要生成的链接类型; 可以是下面的任意值:</p><dl ><dt ><code >view</code></dt><dd >连接至记录的表格视图</dd><dt ><code >assign</code></dt><dd >分配记录的用户至记录的 <code >user_id</code> 字段(如果有的话)</dd><dt ><code >follow</code></dt><dd >自解释的</dd><dt ><code >unfollow</code></dt><dd >自解释的</dd><dt ><code >workflow</code></dt><dd >触发一个工作流信号; 这个信号的名字应该由关键字 <code >signal</code> 提供</dd><dt ><code >method</code></dt><dd >调用记录的一个方法; 方法的名字应该由关键字 <code >method</code> 提供</dd><dt ><code >new</code></dt><dd >打开一个新纪录的空的表格视图; 你可以通过提供其id来指定一个在 <code >action_id</code> 里的特定的动作(数据库id或者完全解析的外部id)</dd></dl></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">选择的记录的链接的类型</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)">str</a></div></div></div></section><div role="alert" class="admonition- alert"><p class="alert-title">示例</p><p >让我们在商务旅行状态改变通知里添加一个自定义的按钮;
+这个按钮会重置状态至Draft并且只对Travel Manager组里的成员可见(<code >business.group_trip_manager</code>)</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessTrip</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.trip&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">,</span> <span class="s1">&#39;mail.alias.mixin&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Trip&#39;</span>
+
+    <span class="c1"># Pevious code goes here</span>
+
+    <span class="k">def</span> <span class="nf">action_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">({</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="s1">&#39;draft&#39;</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">_notification_recipients</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Handle Trip Manager recipients that can cancel the trip at the last</span>
+<span class="sd">        minute and kill all the fun. &quot;&quot;&quot;</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BusinessTrip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_notification_recipients</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_one</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span>
+            <span class="n">app_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notification_link_helper</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span>
+                                <span class="n">method</span><span class="o">=</span><span class="s1">&#39;action_cancel&#39;</span><span class="p">)</span>
+            <span class="n">trip_actions</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">app_action</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Cancel&#39;</span><span class="p">)}]</span>
+
+        <span class="n">new_group</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s1">&#39;group_trip_manager&#39;</span><span class="p">,</span>
+            <span class="k">lambda</span> <span class="n">partner</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">partner</span><span class="o">.</span><span class="n">user_ids</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">any</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">has_group</span><span class="p">(</span><span class="s1">&#39;business.group_trip_manager&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">partner</span><span class="o">.</span><span class="n">user_ids</span><span class="p">),</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="n">trip_actions</span><span class="p">,</span>
+            <span class="p">})</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">new_group</span><span class="p">]</span> <span class="o">+</span> <span class="n">groups</span>
+</pre></div>
+</div>
+<p >请注意我可能已经在这个方法之外定义了我的评估函数并且定义了一个全局的函数来实现它而不是用一个匿名函数,
+但是为了在这个有时会很枯燥的文档中更简洁和简单, 我选择了前者而不是后者.</p></div></section><section id="overriding-defaults"><h4 >复写默认值(Overriding defaults)</h4><p >这里有很多方法让你自定义 <code >mail.thread</code> 模型的行为, 包含(但不限于):</p><dl ><dt ><code >_mail_post_access</code> - <code class="py xref py-class">Model</code>  属性</dt><dd >为了在模型上发布一个消息需要的访问权限; 默认为需要一个 <code >write</code> , 也可以设置为 <code >read</code></dd><dt >环境关键字(Context keys):</dt><dd ><p >这些环境关键字可以被用于控制 <code >mail.thread</code> 特性
+像自动提交或者在调用 <code >create()</code> 时的字段跟踪或者
+<code >write()</code> (或者可能有用的任何其他方法).</p><ul ><li ><code >mail_create_nosubscribe</code>: 在新建或者message_post, 不要提交当前用户至新的线程</li><li ><code >mail_create_nolog</code>: 在创建时,别记录自动的'&lt;Document&gt;
+created' 消息</li><li ><code >mail_notrack</code>: 在新建或者写操作时, 不要执行值跟踪新建消息</li><li ><code >tracking_disable</code>: 在新建或者写操作时, 不执行MailThread特性
+(自动提交, 跟踪, 发步, ...)</li><li ><code >mail_auto_delete</code>: 自动删除邮件通知; 默认为真</li><li ><code >mail_notify_force_send</code>: 如果要发送少于50邮件通知, 那就直接发送它们而不使用队列; 默认为真</li><li ><code >mail_notify_user_signature</code>: 在邮件通知中添加当前用户签名; 默认为真</li></ul></dd></dl></section><section id="mail-alias"><i id="reference-mixins-mail-alias"></i><h3 >邮件别名(Mail alias)</h3><p >别名是可配置的邮件地址,其连接至特定的记录(它通常继承 <code >mail.alias.mixin</code> 模型)
+其会在通过邮件联系时创建新的记录. 它们是让你系统从外部访问的一个简单方便的方法,
+允许用户或者客户快速地在你的数据库中创建记录而不用直接连接至Odoo.</p></section><section id="aliases-incoming-mail-gateway"><h4 >别名(Aliases)对比传入邮件网关(Incoming Mail Gateway)</h4><p >一些人使用传入邮件网关来实现同样的目的. 你仍然需要正确的配置邮件网关来使用别名,
+但是一个单独的捕捉域已经足够了,因为所有的路由会在Odoo内部完成.
+别名相对于邮件网关有几种优势:</p><ul ><li ><dl ><dt >更容易配置</dt><dd ><ul ><li >一个单独的传入网关可被很多别名来使用; 这避免了子啊你的域名上配置多个邮件
+(所有的配置在Odoo内部完成)</li><li >不需要系统访问权限来配置别名</li></ul></dd></dl></li><li ><dl ><dt >更一致</dt><dd ><ul ><li >在相关记录上可配置, 而不是在设置子菜单中</li></ul></dd></dl></li><li ><dl ><dt >服务器端更容易复写</dt><dd ><ul ><li >混入类模型的构建基础就是可扩展性, 相对于一个邮件网关,允许你从传入的邮件来更容易地释放有用的数据.</li></ul></dd></dl></li></ul></section><section id="alias-support-integration"><h4 >别名支持集成(Alias support integration)</h4><p >别名通常配置于一个父模型上,其会在通过邮件交流时被创建一个特定的记录.
+比如,项目有创建任务或问题的别名, 销售团队有生成商机的别名.</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >通过别名创建的模型 <strong >必须</strong> 继承 <code >mail_thread</code> 模型.</p></div><p >通过继承 <code >mail.alias.mixin</code> 会添加别名支持; 这个混入类会对每个创建的父类生成一个新的 <code >mail.alias</code> 记录
+(比如, 每个 <code >project.project</code> 记录有它的 <code >mail.alias</code> 记录在生成时初始化).</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >别名可被手动生成并且被一个简单的 <code class="py xref py-class">Many2one</code> 字段支持.
+这个指南假设你希望一个完全的包含自动创建别名,指定记录的默认值等的集合.</p></div><p >不像 <code >mail.thread</code> 继承, <code >mail.alias.mixin</code> <strong >需要</strong> 一些特定的复写才能正确工作.
+这些复写会指定生成的别名的值, 就像它必须生成的记录和这些记录可能依赖的在其父对象上的一些默认值:</p><section class="code-method"><h6 id="get_alias_model_name"><code>get_alias_model_name(<em>vals</em>)</code></h6><p >返回别名的模型名字. 那些没有回复至已经存在的记录的传入的邮件会导致一个这个别名模型的新的记录的生成.
+这个值可能依赖 <code >vals</code>, 当这个模型的一个记录被创建时传递给 <code >create</code> 的字典的值.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Parameters</div><div class="code-field-body"><strong >dict</strong> (<code >vals</code>) -- 新创建的用于保持别名的记录的值
+the alias</div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">模型名称</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/functions.html#str" class="external reference alert-link" title="(in Python v2.7)">str</a></div></div></div></section><section class="code-method"><h6 id="get_alias_values"><code>get_alias_values()</code></h6><p >返回新建一个别名的值, 或者当其创建后在别名上写.
+并不是完全强制的, 它通常被用于确保一个新建的记录会链接至别名的父
+(比如任务在当前的项目创建)通过设置一个别名 <code >alias_defaults</code> 字段的默认值的字典.</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">会被写入新的别名的值的字典</div></div><div class="code-field"><div class="code-field-name">Return type</div><div class="code-field-body"><a href="https://docs.python.org/2/library/stdtypes.html#dict" class="external reference alert-link" title="(in Python v2.7)">dict</a></div></div></div></section><p ><code >get_alias_values()</code> 复写是十分有趣的因为它允许你很容易的修改你的别名的行为.
+在别名中可以设置的字段上, 下面的这些十分有趣:</p><dl ><dt ><code >alias_name</code> - <code class="py xref py-class">Char</code></dt><dd >邮件别名的名字, 例如 '工作' 如果你想抓取 &lt;<a href="mailto:jobs@example.odoo.com" class="external reference">jobs@example.odoo.com</a>&gt; 的邮件</dd><dt ><code >alias_user_id</code> - <code class="py xref py-class">Many2one</code> (<code >res.users</code>)</dt><dd >通过别名接收邮件来创建的记录的所有者;
+如果这个字段没有设置,系统会基于发送者(From)的地址尝试找到正确的所有者,
+或者会使用管理员账户如果在那个地中中找不到系统用户的话</dd><dt ><code >alias_defaults</code> - <code class="py xref py-class">Text</code></dt><dd >在给别名创建新的记录是被评估来提供默认值Python字典</dd><dt ><code >alias_force_thread_id</code> - <code class="py xref py-class">Integer</code></dt><dd >线程(记录)的可选ID,所有收到的邮件会被附加其上,即使他们没有被回复; 如果设置了的话,
+这会完全禁用新记录的生成方法</dd><dt ><code >alias_contact</code> - <code class="py xref py-class">Selection</code></dt><dd ><p >使用邮件网关在文档上发布一个消息的策略</p><ul ><li ><em >everyone</em>: 所有人都可发布</li><li ><em >partners</em>: 只有认证的合作伙伴</li><li ><em >followers</em>: 只有相关文档的接收者或者接收通道的成员</li></ul></dd></dl><p >请注意别名使用了 <a href="orm.html#reference-orm-inheritance" class="internal reference"><span class="std std-ref">授权继承(delegation inheritance)</span></a>,
+这意味着虽然别名存储于另一个表格中, 你可以从父对象中直接访问这些字段.
+这使你可以很容易的让别名在记录的表格视图中变得可配置.</p><div role="alert" class="admonition- alert"><p class="alert-title">示例</p><p >让我们在我们的商务旅行上添加一个别名来通过邮件来直接创建花费.</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessTrip</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.trip&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">,</span> <span class="s1">&#39;mail.alias.mixin&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Trip&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Responsible&#39;</span><span class="p">,</span>
+                                 <span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">guest_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Participants&#39;</span><span class="p">)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Selection</span><span class="p">([(</span><span class="s1">&#39;draft&#39;</span><span class="p">,</span> <span class="s1">&#39;New&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span> <span class="s1">&#39;Confirmed&#39;</span><span class="p">)],</span>
+                             <span class="n">track_visibility</span><span class="o">=</span><span class="s1">&#39;onchange&#39;</span><span class="p">)</span>
+    <span class="n">expense_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">One2many</span><span class="p">(</span><span class="s1">&#39;business.expense&#39;</span><span class="p">,</span> <span class="s1">&#39;trip_id&#39;</span><span class="p">,</span> <span class="s1">&#39;Expenses&#39;</span><span class="p">)</span>
+    <span class="n">alias_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;mail.alias&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="s1">&#39;Alias&#39;</span><span class="p">,</span> <span class="n">ondelete</span><span class="o">=</span><span class="s2">&quot;restrict&quot;</span><span class="p">,</span>
+                               <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_alias_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vals</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 指定在别名收到一个消息时要创建的模型 &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;business.expense&#39;</span>
+
+    <span class="k">def</span> <span class="nf">get_alias_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 指定一些会在别名创建时设置的默认值 &quot;&quot;&quot;</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BusinessTrip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_alias_values</span><span class="p">()</span>
+        <span class="c1"># alias_defaults 保存一个会被写入到通过这个别名创建所有记录的字典</span>
+        <span class="c1">#</span>
+        <span class="c1"># 这种情况下, 我们想所有的花费记录被发送至一个旅行别名上,其湖北链接至相应的商务旅行上</span>
+        <span class="n">values</span><span class="p">[</span><span class="s1">&#39;alias_defaults&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;trip_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+        <span class="c1"># 默认情况下,我们只需要这个旅行的接收者可以发布花费</span>
+        <span class="n">values</span><span class="p">[</span><span class="s1">&#39;alias_contact&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;followers&#39;</span>
+        <span class="k">return</span> <span class="n">values</span>
+
+<span class="k">class</span> <span class="nc">BusinessExpense</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;business.expense&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mail.thread&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;Business Expense&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">()</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s1">&#39;Amount&#39;</span><span class="p">)</span>
+    <span class="n">trip_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;business.trip&#39;</span><span class="p">,</span> <span class="s1">&#39;Business Trip&#39;</span><span class="p">)</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Created by&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >我们需要我们的别名在我们的商务旅行的表格视图中很容易的配置, 所以让我们添加如下内容仅我们的表格视图:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;page</span> <span class="na">string=</span><span class="s">&quot;Emails&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">name=</span><span class="s">&quot;group_alias&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;alias_name&quot;</span> <span class="na">string=</span><span class="s">&quot;Email Alias&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">name=</span><span class="s">&quot;alias_def&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- 当在视图模式中时显示一个链接,一个可配置的字段当在编辑模式中时 --&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;alias_id&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_read_only oe_inline&quot;</span>
+                    <span class="na">string=</span><span class="s">&quot;Email Alias&quot;</span> <span class="na">required=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_edit_only oe_inline&quot;</span> <span class="na">name=</span><span class="s">&quot;edit_alias&quot;</span>
+                 <span class="na">style=</span><span class="s">&quot;display: inline;&quot;</span> <span class="nt">&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;alias_name&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span><span class="nt">/&gt;</span>
+                @
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;alias_domain&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span> <span class="na">readonly=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;alias_contact&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span>
+                <span class="na">string=</span><span class="s">&quot;Accept Emails From&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/page&gt;</span>
+</pre></div>
+</div>
+<p >现在我们可以直接通过商务旅行的表格视图来改变这个别名的地址,并且改变可发送邮件给这个别名的人员.</p><p >我们接下来会在创建花费时,在我们的花费模型上复写 <code >message_new()</code> 来取得邮件中的值:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BusinessExpense</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># 之前的代码在这里</span>
+    <span class="c1"># ...</span>
+
+    <span class="k">def</span> <span class="nf">message_new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">custom_values</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; 复写为根据邮件来设置值.</span>
+
+<span class="sd">        在这个例子中, 我们只是使用邮件标题作为花费的名字,试着找到一个有这个邮件地址的合作伙伴</span>
+<span class="sd">        并且进行一个正则匹配来找到花费的总数.&quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">msg_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="s1">&#39;New Expense&#39;</span><span class="p">)</span>
+        <span class="c1"># 匹配最后一个字符串中的浮点数</span>
+        <span class="c1"># 例如: &#39;50.3 bar 34.5&#39; 变为 &#39;34.5&#39;. 这是潜在的价格</span>
+        <span class="c1"># 来编码花费. 如果不是, 就使用1.0</span>
+        <span class="n">amount_pattern</span> <span class="o">=</span> <span class="s1">&#39;(\d+(\.\d*)?|\.\d+)&#39;</span>
+        <span class="n">expense_price</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">amount_pattern</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">price</span> <span class="o">=</span> <span class="n">expense_price</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">expense_price</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="mf">1.0</span>
+        <span class="c1"># 通过查找其地址来找到合作伙伴</span>
+        <span class="n">partner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;res.partner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">([(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;ilike&#39;</span><span class="p">,</span> <span class="n">email_address</span><span class="p">)],</span>
+                                                 <span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;amount&#39;</span><span class="p">:</span> <span class="n">price</span><span class="p">,</span>
+            <span class="s1">&#39;partner_id&#39;</span><span class="p">:</span> <span class="n">partner</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">}</span>
+        <span class="n">defaults</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">custom_values</span> <span class="ow">or</span> <span class="p">{})</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BusinessExpense</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">message_new</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">custom_values</span><span class="o">=</span><span class="n">defaults</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div></section><section id="website-features"><i id="reference-mixins-website"></i><h2 >网站特性(Website features)</h2></section><section id="visitor-tracking"><i id="reference-mixins-website-utm"></i><h3 >访问者跟踪(Visitor tracking)</h3><p ><code >utm.mixin</code> 类可以被用于跟踪在线的营销/通信活动,其实现是通过连接至特定资源的参数.
+这个混入类添加了3个字段至你的模型:</p><ul ><li ><code >campaign_id</code>: <code class="py xref py-class">Many2one</code> 字段连接至 <code >utm.campaign</code>
+对象 (例如 Christmas_Special, Fall_Collection, etc.)</li><li ><code >source_id</code>: <code class="py xref py-class">Many2one</code> 字段连接至 <code >utm.source</code>
+对象 (例如 搜索引擎,邮件列表等等.)</li><li ><code >medium_id</code>: <code class="py xref py-class">Many2one</code> 字段连接至 <code >utm.medium</code>
+对象 (i.e. 邮寄信件, 电子邮件, 社交网络更新等等.)</li></ul><p >这些模型有一个单独的字段 <code >命名(name)</code> (比如,他们只是用于区别不同的活动而没有任何特殊的行为).</p><p >一旦一个客户使用url
+(比如 <a href="http://www.odoo.com/?campaign_id=mixin_talk&amp;source_id=www.odoo.com&amp;medium_id=website" class="external reference">http://www.odoo.com/?campaign_id=mixin_talk&amp;source_id=www.odoo.com&amp;medium_id=website</a>)
+里设置的这些参数来访问你的网站,三个cookies文件就用这些参数设置了访问者的网站.
+一旦这个继承了utm.mixin的对象被从网站创建了(比如商机表格,工作应用等),
+utm.mixin 代码就开始生效并且从cookies取得相应的值来在新的记录里设置他们.
+一旦这一步完成了,你可以接下来在定义报表和视图时使用
+campaign/source/medium字段作为任何其他字段(分组方法, 等等.).</p><p >想要扩展这个行为, 只需要简单的添加一个关系字段至一个简单模型上
+(这个模型应该支持 <em >快速创建</em> (比如使用一个 <code >name</code> 值来调用 <code >create()</code> )
+并且扩展这个函数 <code >tracking_fields()</code>:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UtmMyTrack</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;my_module.my_track&#39;</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;My Tracking Object&#39;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Char</span><span class="p">(</span><span class="n">string</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Models</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;my_module.my_model&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utm.mixin&#39;</span><span class="p">]</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s1">&#39;My Tracked Object&#39;</span>
+
+    <span class="n">my_field</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;my_module.my_track&#39;</span><span class="p">,</span> <span class="s1">&#39;My Field&#39;</span><span class="p">)</span>
+
+    <span class="nd">@api.model</span>
+    <span class="k">def</span> <span class="nf">tracking_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">tracking_fields</span><span class="p">()</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+        <span class="c1"># (&quot;URL_PARAMETER&quot;, &quot;FIELD_NAME_MIXIN&quot;, &quot;NAME_IN_COOKIES&quot;)</span>
+            <span class="p">(</span><span class="s1">&#39;my_field&#39;</span><span class="p">,</span> <span class="s1">&#39;my_field&#39;</span><span class="p">,</span> <span class="s1">&#39;odoo_utm_my_field&#39;</span><span class="p">)</span>
+        <span class="p">])</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p >这会让系统用在url参数 <code >my_field</code> 里的值生成一个名字为 <em >odoo_utm_my_field</em> 的cookie;
+一旦一个这个模型的新的记录被一个网站表格调用来创建, <code >utm.mixin</code> 的通用的复写方法 <code >create()</code>
+会从cookie里取得这个字段的默认的值
+(并且这个 <code >my_module.my_track</code> 记录如果不存在的话,会被在运行中创建).</p><p >你可以在下面的模型中找到集成的具体示例:</p><ul ><li ><code >crm.lead</code> 在 CRM (<em >crm</em>) 应用中</li><li ><code >hr.applicant</code> 在 Recruitment Process (<em >hr_recruitment</em>) 应用中</li><li ><code >helpdesk.ticket</code> 在 Helpdesk (<em >helpdesk</em> - Odoo Enterprise only) 应用中</li></ul></section><section id="website-visibility"><i id="reference-mixins-website-published"></i><h3 >网站可见性(Website visibility)</h3><p >你可以很容易的在任何一个你的记录里添加一个网站可见性的开关.
+并且这个混入类非常容易来手动实现,它是继 <code >mail.thread</code> 之后最常用的; 这证明了它的用处.
+这个混入类的最典型的使用情况是任何有一个前端页面的对象; 控制页面的可见性可以使你慢慢的编辑这个页面,
+并且直到你满意之后才发布他.</p><p >为了包含这个功能,你只需要继承 <code >website.published.mixin</code>:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BlogPost</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s2">&quot;blog.post&quot;</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s2">&quot;Blog Post&quot;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;website.published.mixin&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p >这个混入类在你的模型上添加了两个字段:</p><ul ><li ><code >website_published</code>: <code class="py xref py-class">Boolean</code> 字段,它代表了发布的状态</li><li ><code >website_url</code>: <code class="py xref py-class">Char</code> 字段,它代表了对象被访问的URL</li></ul><p >请注意这个最后的字段是一个运算字段并且必须在你的类中被实现:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_compute_website_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">blog_post</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="n">blog_post</span><span class="o">.</span><span class="n">website_url</span> <span class="o">=</span> <span class="s2">&quot;/blog/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">log_post</span><span class="o">.</span><span class="n">blog_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >一旦这个机制起作用了,你只需要改编你的前端和后端视图来使得他们可被访问到.
+在后端, 在按钮盒中添加一个按钮是最常用的方法:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;oe_stat_button&quot;</span> <span class="na">name=</span><span class="s">&quot;website_publish_button&quot;</span>
+    <span class="na">type=</span><span class="s">&quot;object&quot;</span> <span class="na">icon=</span><span class="s">&quot;fa-globe&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;website_published&quot;</span> <span class="na">widget=</span><span class="s">&quot;website_button&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/button&gt;</span>
+</pre></div>
+</div>
+<p >在前端,需要一些安全检查来避免向网站访问者展示 'Edition' 按钮:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;website_published_button&quot;</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span>
+     <span class="na">groups=</span><span class="s">&quot;base.group_website_publisher&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- or any other meaningful group --&gt;</span>
+    <span class="nt">&lt;t</span> <span class="na">t-call=</span><span class="s">&quot;website.publish_management&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;object&quot;</span> <span class="na">t-value=</span><span class="s">&quot;blog_post&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;publish_edit&quot;</span> <span class="na">t-value=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;t</span> <span class="na">t-set=</span><span class="s">&quot;action&quot;</span> <span class="na">t-value=</span><span class="s">&quot;&#39;blog.blog_post_action&#39;&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/t&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p >请注意你必须把你的对象作为变量 <code >object</code> 传递给模板;
+在这个例子中, <code >blog.post</code> 记录被作为 <code >blog_post</code> 变量传递给 <code >qweb</code> 渲染引擎,
+为了发布管理模板,这样做很是很必须的.
+<code >publish_edit</code> 变量允许前端按钮链接至后端(允许你很容易的来切换前端至后端,或者相反的操作);
+如果设置了, 你必须指定你想在后端调用位于 <code >action</code> 变量的的动作的完全的外部id
+(注意这个模型必须有表格视图).</p><p ><code >website_publish_button</code> 动作在混入类中定义并把其行为加入到你的对象中:
+如果这个类有一个有效的 <code >website_url</code> 计算功能,用户在点击这个按钮的时候会被重定向到前端;
+用户接下来可以在前端直接发布这个页面. 这保证了不会发生任何意外的在线发布.
+如果没有运算功能, 就会只是触发 <code >website_published</code> 的布尔值.</p></section><section id="website-metadata"><i id="reference-mixins-website-seo"></i><h3 >网站元数据(Website metadata)</h3><p >这个简单的混入类只是允许你很容的把元数据注入到你的前端页面中.</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BlogPost</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s2">&quot;blog.post&quot;</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="s2">&quot;Blog Post&quot;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;website.seo.metadata&#39;</span><span class="p">,</span> <span class="s1">&#39;website.published.mixin&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p >这个混入类在你的模型上添加了3个字段:</p><ul ><li ><code >website_meta_title</code>: <code class="py xref py-class">Char</code> 字段,其允许你设置你页面的额外的标题</li><li ><code >website_meta_description</code>: <code class="py xref py-class">Char</code> 字段,
+其包含一个页面的简短描述(有时用于搜索引擎的结果)</li><li ><code >website_meta_keywords</code>: <code class="py xref py-class">Char</code> 字段,
+其包含一些关键字来让搜索引擎更好地对你的页面进行分类;
+&quot;Promote&quot; 工具会帮助你很容易的选择语意相关的关键字</li></ul><p >这些字段在前端使用编辑器工具条中的&quot;Promote&quot;工具可以进行编辑.
+设置这些字段可以帮助搜索引擎更好的索引你的页面.
+注意搜索引擎不会只依据这些元数据来构建他们的结果; 最好的搜索引擎优化实践依然要参考可靠的素材.</p></section><section id="others"><i id="reference-mixins-misc"></i><h2 >其他(Others)</h2></section><section id="customer-rating"><i id="reference-mixins-misc-rating"></i><h3 >客户评价(Customer Rating)</h3><p >评价混入类允许通过发送邮件来让客服评分, 字段转换为一个看板流程并且聚合你的评价的统计数据.</p></section><section id="id2"><h4 >在你的模型上添加评价</h4><p >为了添加评分支持, 只需要继承 <code >rating.mixin</code> 模型:</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Models</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s1">&#39;my_module.my_model&#39;</span>
+    <span class="n">_inherit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rating.mixin&#39;</span><span class="p">,</span> <span class="s1">&#39;mail.thread&#39;</span><span class="p">]</span>
+
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.users&#39;</span><span class="p">,</span> <span class="s1">&#39;Responsible&#39;</span><span class="p">)</span>
+    <span class="n">partner_id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2one</span><span class="p">(</span><span class="s1">&#39;res.partner&#39;</span><span class="p">,</span> <span class="s1">&#39;Customer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p >混入类的行为被加入到你的模型中:</p><ul ><li ><p ><code >rating.rating</code> 记录会被链接至你模型的 <code >partner_id</code> 字段(如果有这个字段的话).</p><ul ><li >这个行为可以通过函数 <code >rating_get_partner_id()</code> 来复写,如果你使用其他字段而不是 <code >partner_id</code></li></ul></li><li ><dl ><dt ><code >rating.rating</code> 记录会被链接至你模型的合作伙伴的 <code >user_id</code> 字段 (如果有这个字段的话)</dt><dd >(比如被评分的合作伙伴)</dd></dl><ul ><li >这个行为可以通过函数 <code >rating_get_rated_partner_id()</code> 来复写,
+如果你使用其他的字段而不是 <code >user_id</code> (注意这个函数必须返回一个
+<code >res.partner</code>, 对于 <code >user_id</code> ,系统会自动的提取合作伙伴的用户)</li></ul></li><li >会话历史会显示评分事件(如果你的模型继承了 <code >mail.thread</code>)</li></ul></section><section id="id3"><h4 >使用邮件发送评分请求</h4><p >如果你希望发送邮件来请求一个评分, 只需要生成一个有链接至评分对象的邮件即可.
+一个十分基础的邮件模板看起来像下面这样:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;rating_my_model_email_template&quot;</span> <span class="na">model=</span><span class="s">&quot;mail.template&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>My Model: Rating Request<span class="nt">&lt;/field&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;email_from&quot;</span><span class="nt">&gt;</span>${object.rating_get_rated_partner_id().email or &#39;&#39; | safe}<span class="nt">&lt;/field&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;subject&quot;</span><span class="nt">&gt;</span>Service Rating Request<span class="nt">&lt;/field&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;my_module.model_my_model&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;partner_to&quot;</span> <span class="nt">&gt;</span>${object.rating_get_partner_id().id}<span class="nt">&lt;/field&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;auto_delete&quot;</span> <span class="na">eval=</span><span class="s">&quot;True&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;body_html&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[</span>
+<span class="cp">% set access_token = object.rating_get_access_token()</span>
+<span class="cp">&lt;p&gt;Hi,&lt;/p&gt;</span>
+<span class="cp">&lt;p&gt;How satsified are you?&lt;/p&gt;</span>
+<span class="cp">&lt;ul&gt;</span>
+<span class="cp">    &lt;li&gt;&lt;a href=&quot;/rating/${access_token}/10&quot;&gt;Satisfied&lt;/a&gt;&lt;/li&gt;</span>
+<span class="cp">    &lt;li&gt;&lt;a href=&quot;/rating/${access_token}/5&quot;&gt;Not satisfied&lt;/a&gt;&lt;/li&gt;</span>
+<span class="cp">    &lt;li&gt;&lt;a href=&quot;/rating/${access_token}/1&quot;&gt;Very unsatisfied&lt;/a&gt;&lt;/li&gt;</span>
+<span class="cp">&lt;/ul&gt;</span>
+<span class="cp">]]&gt;</span><span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >你的客户接下来会收到一个链接到一个简单页面的邮件,这个页面允许客户提供一个交互的反馈
+(包括一个自由文本组成的的反馈信息including a free-text).</p><p >你可以很容易的通过定义一个评分的动作来使用你的表格视图集成你的评分:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;rating_rating_action_my_model&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Customer Ratings<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;res_model&quot;</span><span class="nt">&gt;</span>rating.rating<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_mode&quot;</span><span class="nt">&gt;</span>kanban,pivot,graph<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;domain&quot;</span><span class="nt">&gt;</span>[(&#39;res_model&#39;, &#39;=&#39;, &#39;my_module.my_model&#39;), (&#39;res_id&#39;, &#39;=&#39;, active_id), (&#39;consumed&#39;, &#39;=&#39;, True)]<span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+
+<span class="nt">&lt;record</span> <span class="na">id=</span><span class="s">&quot;my_module_my_model_view_form_inherit_rating&quot;</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>my_module.my_model.view.form.inherit.rating<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>my_module.my_model<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;inherit_id&quot;</span> <span class="na">ref=</span><span class="s">&quot;my_module.my_model_view_form&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;xpath</span> <span class="na">expr=</span><span class="s">&quot;//div[@name=&#39;button_box&#39;]&quot;</span> <span class="na">position=</span><span class="s">&quot;inside&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">&quot;%(rating_rating_action_my_model)d&quot;</span> <span class="na">type=</span><span class="s">&quot;action&quot;</span>
+                    <span class="na">class=</span><span class="s">&quot;oe_stat_button&quot;</span> <span class="na">icon=</span><span class="s">&quot;fa-smile-o&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;rating_count&quot;</span> <span class="na">string=</span><span class="s">&quot;Rating&quot;</span> <span class="na">widget=</span><span class="s">&quot;statinfo&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/xpath&gt;</span>
+    <span class="nt">&lt;/field&gt;</span>
+<span class="nt">&lt;/record&gt;</span>
+</pre></div>
+</div>
+<p >请注意有默认的评分视图 (kanban,pivot,graph) ,其允许你快速的查看你客户的评分.</p><p >你可以在下面的模型中找到具体的集成示例:</p><ul ><li ><code >project.task</code> 在 Project (<em >rating_project</em>) 应用中</li><li ><code >helpdesk.ticket</code> 在 Helpdesk (<em >helpdesk</em> - Odoo Enterprise only) 应用中</li></ul></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

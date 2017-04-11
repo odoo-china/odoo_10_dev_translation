@@ -1,0 +1,468 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>视图 &mdash; odoo 10.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/patchqueue.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/patchqueue.js"></script>
+    <script type="text/javascript" src="../_static/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <script type="text/javascript" src="../_static/doc.js"></script>
+    <script type="text/javascript" src="../_static/jquery.noconflict.js"></script>
+    <link rel="top" title="odoo 10.0 documentation" href="../index.html" />
+    <link rel="up" title="Reference" href="../reference.html" />
+    <link rel="next" title="模块" href="module.html" />
+    <link rel="prev" title="动作" href="actions.html" /> 
+  </head>
+  <body role="document"><header class="o_main_header o_has_sub_nav o_inverted ">
+    <div class="o_main_header_main">
+      <a class="pull-left o_logo" href="/"></a>
+      <a href="#" class="o_mobile_menu_toggle visible-xs-block pull-right">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="mdi-navigation-menu"></span>
+      </a>
+      <div class="o_header_buttons">
+        <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+      </div>
+      <ul class="o_primary_nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Apps</a>
+          <div class="dropdown-menu o_secondary_nav">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3 o_website_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Websites
+                    <div>Build great user experience</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/website-builder">Website Builder</a></li>
+                    <li><a href="https://www.odoo.com/page/e-commerce">eCommerce</a></li>
+                    <li><a href="https://www.odoo.com/page/blog-engine">Blogs</a></li>
+                    <li><a href="https://www.odoo.com/page/community-builder">Forums</a></li>
+                    <li><a href="https://www.odoo.com/page/slides">Slides</a></li>
+                    <li><a href="https://adspike.odoo.com">SEA</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_sale_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Sales
+                    <div>Boost your success rate</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/sales">Sales</a></li>
+                    <li><a href="https://www.odoo.com/page/crm">CRM</a></li>
+                    <li><a href="https://www.odoo.com/page/billing">Invoicing</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Point of Sale</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/point-of-sale">Shops</a></li>
+                        <li><a href="https://www.odoo.com/page/pos-restaurant">Restaurants</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/subscriptions">Subscriptions</a></li>
+                    <li><a href="https://www.odoo.com/page/sign">Sign</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_operation_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Operations
+                    <div>It's all about efficiency</div>
+                  </div>
+                  <ul>
+                    <li><a href="https://www.odoo.com/page/accounting/">Accounting</a></li>
+                    <li><a href="https://www.odoo.com/page/project-management/">Project</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Human Resources</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/recruitment">Recruitment</a></li>
+                        <li><a href="https://www.odoo.com/page/employees">Employees</a></li>
+                        <li><a href="https://www.odoo.com/page/expenses">Expenses</a></li>
+                        <li><a href="https://www.odoo.com/page/appraisal">Appraisal</a></li>
+                        <li><a href="https://www.odoo.com/page/fleet">Fleet</a></li>
+                        <li><a href="https://www.odoo.com/page/leaves">Leaves</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/warehouse">Inventory</a></li>
+                    <li><a href="https://www.odoo.com/page/purchase">Purchase</a></li>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Manufacturing</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/manufacturing">MRP</a></li>
+                        <li><a href="https://www.odoo.com/page/plm">PLM</a></li>
+                        <li><a href="https://www.odoo.com/page/maintenance">Maintenance</a></li>
+                        <li><a href="https://www.odoo.com/page/quality">Quality</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-3 o_productivity_apps">
+                  <div class="o_nav_app_family">
+                    <span></span> Productivity Tools
+                    <div>Great Tools = Happy People</div>
+                  </div>
+                  <ul>
+                    <li class="dropdown">
+                      <a href="#0" class="dropdown-toggle">Communication</a>
+                      <ul>
+                        <li><a href="https://www.odoo.com/page/discuss">Discuss</a></li>
+                        <li><a href="https://www.odoo.com/page/discuss-groups">Mailing Lists</a></li>
+                        <li><a href="https://www.odoo.com/page/notes">Notes</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Appointment</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="https://www.odoo.com/page/timesheet">Timesheet</a></li>
+                    <li><a href="https://www.odoo.com/page/email-marketing">Email Marketing</a></li>
+                    <li><a href="https://www.odoo.com/page/events">Events</a></li>
+                    <li><a href="https://www.odoo.com/page/survey">Survey</a></li>
+                    <li><a href="https://www.odoo.com/page/live-chat">Live Chat</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="http://www.odoo.com/apps/modules" class="o_store_link"><i class="fa fa-cube fa-fw"></i> Third party apps</a>
+          </div>
+        </li>
+        <li><a href="https://www.odoo.com/page/tour">Tour</a></li>
+        <li><a href="https://www.odoo.com/pricing">Pricing</a></li>
+        <li><a href="https://www.odoo.com/page/docs">Docs</a></li>
+      </ul>
+    </div>
+    <nav class="navbar o_sub_nav">
+      <div class="container">
+        <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed text-left btn-block" data-toggle="collapse" data-target="#o_sub-menu" aria-expanded="false">
+              Navigate
+              <span class="mdi-hardware-keyboard-arrow-down pull-right"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="o_sub-menu">
+          <ol class="o_breadcrumb breadcrumb nav navbar-left">
+              
+              
+
+
+
+
+
+    
+        
+            <li><a href="../index.html">Developer Doc</a></li>
+        
+    
+    <li class="active"><a href="#">视图</a></li>
+
+              
+          </ol>
+
+          <div class="call-to-action navbar-right hidden-xs">
+            <a href="http://www.odoo.com/trial" class="btn btn-primary">Start Now</a>
+          </div>
+
+          <ul class="navbar-nav navbar-right nav o_sub_nav_actions">
+            
+              <li class="divider"></li>
+            
+
+            
+            
+
+
+            
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            
+            
+
+<li><a href="http://www.odoo.com/documentation/user/10.0/index.html">User</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/index.html">Developer</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/api_integration.html">API</a></li>
+<li><a href="http://www.odoo.com/documentation/10.0/setup/install.html">Installation</a></li>
+<li><a href="http://www.odoo.com/page/odoo-white-paper">White Papers</a></li>
+<li><a href="http://www.odoo.com/page/legal">Legal</a></li>
+            
+
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header><div id="wrap" class="">
+    
+    
+    
+    <figure class="card top has_banner">
+      <span class="card-img" style="background-image: url('../_static/banners/views.jpg');"></span>
+      <div class="container text-center">
+        <h1> 视图 </h1>
+      </div>
+    </figure>
+    
+    
+    
+    <div class="container ">
+      <main class="container-fluid ">
+        
+        <div class="row">
+          
+          <aside>
+            <div class="navbar-aside text-center">
+              <ul class="list-group text-left nav"><li class="list-group-item"><a href="#reference-views-structure" class="ripple internal reference">共同结构</a></li><li class="list-group-item"><a href="#reference-views-inheritance" class="ripple internal reference">继承</a><ul ><li class="list-group-item"><a href="#id4" class="ripple internal reference">视图匹配</a></li><li class="list-group-item"><a href="#id5" class="ripple internal reference">视图分解</a></li><li class="list-group-item"><a href="#id6" class="ripple internal reference">继承说明</a></li></ul></li><li class="list-group-item"><a href="#reference-views-list" class="ripple internal reference">列表</a></li><li class="list-group-item"><a href="#reference-views-form" class="ripple internal reference">表单</a><ul ><li class="list-group-item"><a href="#id12" class="ripple internal reference">结构组件</a></li><li class="list-group-item"><a href="#id13" class="ripple internal reference">语义组件</a></li><li class="list-group-item"><a href="#id14" class="ripple internal reference">业务视图指南</a><ul ><li class="list-group-item"><a href="#id15" class="ripple internal reference">状态栏</a><ul ><li class="list-group-item"><a href="#id16" class="ripple internal reference">按钮</a></li><li class="list-group-item"><a href="#id17" class="ripple internal reference">状态</a></li></ul></li><li class="list-group-item"><a href="#id18" class="ripple internal reference">工作表</a><ul ><li class="list-group-item"><a href="#id20" class="ripple internal reference">工作表表头</a></li><li class="list-group-item"><a href="#id21" class="ripple internal reference">按钮箱</a></li><li class="list-group-item"><a href="#id22" class="ripple internal reference">组和标题</a><ul ><li class="list-group-item"><a href="#id23" class="ripple internal reference">特殊情况: 小计</a></li></ul></li><li class="list-group-item"><a href="#id24" class="ripple internal reference">占位符和内联字段</a></li><li class="list-group-item"><a href="#id25" class="ripple internal reference">图片</a></li><li class="list-group-item"><a href="#id26" class="ripple internal reference">标签</a></li></ul></li></ul></li><li class="list-group-item"><a href="#id27" class="ripple internal reference">配置表单指南</a></li><li class="list-group-item"><a href="#id28" class="ripple internal reference">对话框表单指南</a></li><li class="list-group-item"><a href="#id29" class="ripple internal reference">配置向导指南</a></li></ul></li><li class="list-group-item"><a href="#reference-views-graph" class="ripple internal reference">图表</a><ul ><li class="list-group-item"><a href="#id31" class="ripple internal reference">枢轴</a></li></ul></li><li class="list-group-item"><a href="#reference-views-kanban" class="ripple internal reference">看板</a><ul ><li class="list-group-item"><a href="#javascript-api" class="ripple internal reference">Javascript API</a></li></ul></li><li class="list-group-item"><a href="#reference-views-calendar" class="ripple internal reference">日历</a></li><li class="list-group-item"><a href="#reference-views-gantt" class="ripple internal reference">甘特</a></li><li class="list-group-item"><a href="#reference-views-diagram" class="ripple internal reference">图表</a></li><li class="list-group-item"><a href="#reference-views-search" class="ripple internal reference">搜索</a><ul ><li class="list-group-item"><a href="#reference-views-search-defaults" class="ripple internal reference">搜索默认值</a></li></ul></li><li class="list-group-item"><a href="#qweb" class="ripple internal reference">QWeb</a></li></ul>
+              
+              <p class="gith-container"><a href="https://github.com/odoo/odoo/edit/10.0/doc/reference/views.rst" class="gith-link">
+                  Edit on GitHub
+              </a></p>
+              
+            </div>
+          </aside>
+          
+          <article class="doc-body ">
+            
+            
+  <section id="reference-views"><i id="id1"></i></section><section id="reference-views-structure"><i id="id2"></i><h2 >共同结构</h2><p >视图类型有多个字段，除非另有说明，否则它们都是选填的</p><dl ><dt ><code >name</code> (必填)</dt><dd >只是用来在列表视图里面作为描述显示或者排序</dd><dt ><code >model</code></dt><dd >模型链接到视图（它不适用于QWeb视图）</dd><dt ><code >priority</code></dt><dd ><p >客户端可以通过 <code >id</code> ， 或者 <code >(model, type)</code> 请求视图。 对于后者， 将会搜索出所有正确类型和模型的视图，并且将返回最小 <code >priority</code> 编号的视图 (它是“默认视图”)。</p><p ><code >priority</code> 也定义了视图继承期间的应用顺序 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">视图继承</span></a></p></dd><dt ><code >arch</code></dt><dd >视图布局的描述</dd><dt ><code >groups_id</code></dt><dd ><code class="py xref py-class">Many2many</code> 字段允许查看/使用当前视图的分组</dd><dt ><code >inherit_id</code></dt><dd >当前视图的父视图，详情可查阅 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">继承</span></a> ，默认情况下没有设置</dd><dt ><code >mode</code></dt><dd >继承模型， 详情可查阅 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">继承</span></a>。如果
+<code >inherit_id</code> 未设置，则 <code >mode</code> 只能为 <code >primary</code>。 如果设置了
+<code >inherit_id</code> ， 默认情况下为 <code >extension</code> ，但可以设置为 <code >primary</code></dd><dt ><code >application</code></dt><dd >网站功能定义可切换的视图。默认情况下，始终应用该视图</dd></dl></section><section id="reference-views-inheritance"><i id="id3"></i><h2 >继承</h2></section><section id="id4"><h3 >视图匹配</h3><ul ><li >如果一个视图被 <code >(model, type)</code> 请求， 则视图会有正确的模型和类型，并且 <code >mode=primary</code> 的最低优先级是匹配的</li><li >当一个视图被 <code >id</code> 请求时， 如果它的模型不是 <code >primary</code> ，则其最相近的父视图 <code >primary</code> 是匹配的</li></ul></section><section id="id5"><h3 >视图分解</h3><p >分解为匹配的 <code >primary</code> 生成最终的 <code >arch</code> 视图:</p><ol ><li >如果视图具有父视图，则父级完全解析，然后应用当前视图的继承说明</li><li >如果视图没有父视图，则其 <code >arch</code> 按原样使用</li><li >将查找当前视图具有模型 <code >extension</code> 扩展的子项，并且深度优先应用它们的继承说明（应用子视图，应用其子代，应用其兄弟)</li></ol><p >应用子视图的结果是产生最终的 <code >arch</code></p></section><section id="id6"><h3 >继承说明</h3><p >继承由元素定位器组成，以匹配父视图中的继承元素，以及用于修改所继承元素的子元素</p><p >有三种类型的元素定位符用于匹配目标元素:</p><ul ><li >具有 <code >expr</code> 属性的 <code >xpath</code> 元素。 <code >expr</code> 是一个应用于当前 <code >arch</code> 的 <a href="http://en.wikipedia.org/wiki/XPath" class="external reference">XPath</a>  表达式<a href="#hasclass" class="footnote-ref" id="id7">2</a> ，第一个节点是匹配的</li><li >具有 <code >name</code> 属性的 <code >field</code> 元素， 匹配具有相同 <code >name</code> 的第一个 <code >field</code> 。在匹配期间将忽略其它所有的属性</li><li >任何其它元素：具有相同名称和第一个元素相同的属性(忽略 <code >position</code> 和 <code >version</code> 属性)是匹配的，继承可以有可选的 <code >position</code> 属性，指定如何更改匹配的节点:</li></ul><dl ><dt ><code >inside</code> (默认)</dt><dd >继承的内容将添加到所匹配的节点</dd><dt ><code >replace</code></dt><dd >继承的内容将替换所匹配的节点。在规范的内容中包含 [UNKNOWN NODE title_reference] 的任何文本节点将被所匹配节点的副本替换，          从而有效地包装匹配的节点</dd><dt ><code >after</code></dt><dd >继承的内容将添加到所匹配节点的父节点之后</dd><dt ><code >before</code></dt><dd >继承的内容将添加到匹配节点的父节点之前</dd><dt ><code >attributes</code></dt><dd ><p >继承的内容应该具有 <code >name</code> 属性和选填的 <code >attribute</code> 元素：</p><ul ><li >如果 <code >attribute</code> 元素是主要的， 则在所匹配的节点上创建以其 <code >name</code> 命名的新属性，将
+<code >attribute</code> 元素的文本作为值</li><li >如果 <code >attribute</code> 元素不是主要的, 则需从所匹配的节点中删除以其 <code >name</code> 命名的属性。如果不存在这样的属性将产生错误</li></ul></dd></dl><p >视图的说明是按顺序应用的。</p></section><section id="reference-views-list"><i id="id8"></i><h2 >列表</h2><p >列表视图的根元素是 <code >&lt;tree&gt;</code><a href="#treehistory" class="footnote-ref" id="id9">3</a> 。列表视图的根元素可以有以下属性</p><dl ><dt ><code >editable</code></dt><dd ><p >默认情况下, 选择列表视图的行打开对应的 <a href="#reference-views-form" class="internal reference"><span class="std std-ref">form view</span></a> 。 <code >editable</code> 属性可以让列表视图在原文进行编辑。</p><p >验证值是 <code >top</code> 和 <code >bottom</code> ，使创建的新纪录分别出现在列表的顶部或底部.</p><p >内联 <a href="#reference-views-form" class="internal reference"><span class="std std-ref">form view</span></a> 的体系结构派生自列表视图。在 <a href="#reference-views-form" class="internal reference"><span class="std std-ref">form view</span></a> 的字段和按钮上大多数有效的属性因此被列表视图所接受，如果列表视图是不可编辑的，它们可能没有任何意义</p></dd><dt ><code >default_order</code></dt><dd ><p >覆盖视图的顺序，替换模型的默认顺序。该值是以逗号最为分割，列表后缀以 <code >desc</code> 反向排序</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;tree</span> <span class="na">default_order=</span><span class="s">&quot;sequence,name desc&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</dd><dt ><code >colors</code></dt><dd ><div class="deprecated"><p ><span class="versionmodified">Deprecated since version 9.0被: </span><code >decoration-{$name}</code> 替换</p></div></dd><dt ><code >fonts</code></dt><dd ><div class="deprecated"><p ><span class="versionmodified">Deprecated since version 9.0被: </span><code >decoration-{$name}</code> 替换</p></div></dd><dt ><code >decoration-{$name}</code></dt><dd ><p >允许基于记录的属性更改行文本的样式</p><p >其值是Python的表达式。对于每个记录，计算表达式将所记录的属性作为上下文值，如果为 <code >true</code>, 相应的样式将应用于该行。其他上下文值为 <code >uid</code> (当前用户的id) 和 <code >current_date</code> (当前日期为 <code >yyyy-MM-dd</code> 形式的字符串)。</p><p ><code >{$name}</code> 可以是 <code >bf</code> (<code >font-weight: bold</code>)， <code >it</code>
+(<code >font-style: italic</code>), 或任何 <a href="http://getbootstrap.com/components/#available-variations" class="external reference">引导上下文颜色</a> (<code >danger</code>,
+<code >info</code>, <code >muted</code>, <code >primary</code>, <code >success</code> 或 <code >warning</code>)。</p></dd><dt ><code >create</code>, <code >edit</code>, <code >delete</code></dt><dd >通过将相应的属性设置为 <code >false</code> 来 <em >禁用</em> 视图中的相应操作</dd><dt ><code >on_write</code></dt><dd ><p >只有在 <code >editable</code> 列表中才有意义。列表模型上方法的名称。在创建或编辑该记录（在数据库中）后，将使用记录的 <code >id</code> 来调用该方法。</p><p >该方法应返回其他记录的id列表以方便加载或更新</p></dd><dt ><code >string</code></dt><dd ><p >视图的替代可翻译标签</p><div class="deprecated"><p ><span class="versionmodified">Deprecated since version 8.0: </span>不再显示</p></div></dd></dl><p >列表视图的可能子元素是:</p><dl id="reference-views-list-button"><dt ><code >button</code></dt><dd ><p >在列表单元格中显示按钮</p><dl ><dt ><code >icon</code></dt><dd >图标，用于显示按钮</dd><dt ><code >string</code></dt><dd ><ul ><li >如果没有 <code >icon</code> ， 那么就是按钮的文本</li><li >如果有 <code >icon</code> ，则为 <code >alt</code> 的替代文本</li></ul></dd><dt ><code >type</code></dt><dd ><p >按钮的类型，提示如何点击它影响Odoo：</p><dl ><dt ><code >workflow</code> (默认)</dt><dd >向工作流发送信号。按钮的 <code >name</code> 是工作流信号，行的记录作为参数传递给信号</dd><dt ><code >object</code></dt><dd >调用列表模型上的方法。按钮的 <code >name</code> 是方法，它使用当前记录的id以及在当前上下文中调用。</dd><dt ><code >action</code></dt><dd >加载执行一个 <code >ir.actions</code> ，按钮的 <code >name</code> 动作的数据库id。上下文中使用的列表模型(作为 <code >active_model</code>)扩展，当前行的记录(<code >active_id</code>)和列表中当前加载的所有记录                  (<code >active_ids</code>，可能只是一个子集数据库记录匹配当前的搜索)</dd></dl></dd><dt ><code >name</code></dt><dd >详情请查阅 <code >type</code></dd><dt ><code >args</code></dt><dd >详情请查阅 <code >type</code></dd><dt ><code >attrs</code></dt><dd ><p >基于记录值的动态属性</p><p >属性到域, 域的映射在当前记录的上下文中说明，如果为 <code >True</code> ，则在单元上设置相应的属性</p><p >可能的属性是 <code >invisible</code> (隐藏按钮)和 <code >readonly</code> (禁用按钮，但扔显示)</p></dd><dt ><code >states</code></dt><dd ><p ><code >invisible</code> <code >attrs</code> 的简写: 状态列表，逗号分隔，要求模型具有 <code >state</code> 字段，并且它在视图中</p><p >如果记录 <em >不是</em> 在所列出的状态当中，使按钮 <code >invisible</code></p></dd><dt ><code >context</code></dt><dd >在执行按钮的Odoo调用时合并到视图的上下文中</dd><dt ><code >confirm</code></dt><dd >确认消息以在执行按钮的Odoo调用之前显示 (并且供用户接受)</dd></dl></dd><dt ><code >field</code></dt><dd ><p >定义一个列，其中应为每个记录显示相应的字段。可以使用以下属性：</p><dl ><dt ><code >name</code></dt><dd >要在当前模型中显示的字段名称。给定的名称对每个视图只能使用一次</dd><dt ><code >string</code></dt><dd >字段列的标题 (默认情况下, 使用模型字段的 <code >string</code>)</dd><dt ><code >invisible</code></dt><dd >提取和存储字段，但不显示列中。对于不应该显示但是需使用的字段是非常有必要的。例如                <code >@colors</code></dd><dt ><code >groups</code></dt><dd >列出应该能够看到字段的分组</dd><dt ><code >widget</code></dt><dd ><p >字段显示的表示，可能的列表视图值包括:</p><dl ><dt ><code >progressbar</code></dt><dd >将 <code >float</code> 字段显示为进度条。</dd><dt ><code >many2onebutton</code></dt><dd >如果字段是填充的，则通过复选标记替换m2o字段的值</dd><dt ><code >handle</code></dt><dd >对于 <code >sequence</code> 字段，而不是所显示字段的值只显示一个dra&amp;drop图标</dd></dl></dd><dt ><code >sum</code>, <code >avg</code></dt><dd >在列的底部显示相应的总数。总数仅在 <em >当前显示的</em> 记录上计算。总数操作必须与相应字段
+的 <code >group_operator</code> 匹配</dd><dt ><code >attrs</code></dt><dd >基于记录集的动态属性。只影响当前字段，<code >invisible</code> 将会隐藏字段，但使其他记录的相同字段可见，它不会隐藏列本身</dd></dl><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >如果列表视图是 <code >editable</code> ，在 <a href="#reference-views-form" class="internal alert-link reference"><span class="std std-ref">form view</span></a> 中的任意字段的属性都是有效的，并且将会设置在内关联的表单视图中</p></div></dd></dl></section><section id="reference-views-form"><i id="id11"></i><h2 >表单</h2><p >表单视图用于显示单条记录的数据。根元素是 <code >&lt;form&gt;</code>，由 <a href="http://en.wikipedia.org/wiki/HTML" class="external reference">HTML</a> 及其它结构和语义组成</p></section><section id="id12"><h3 >结构组件</h3><p >结构组件提供少逻辑的结构或&quot;视觉&quot;特征。它们用作窗体视图中的元素或元素集。</p><dl ><dt ><code >notebook</code></dt><dd ><p >定义标题部分。每个选项卡通过一个 <code >page</code> 子元素定义。页面可以具有以下属性：</p><dl ><dt ><code >string</code> (必填)</dt><dd >标签的标题</dd><dt ><code >accesskey</code></dt><dd >HTML <a href="http://www.w3.org/TR/html5/editing.html#the-accesskey-attribute" class="external reference">accesskey</a></dd><dt ><code >attrs</code></dt><dd >基于记录值的标准动态属性</dd></dl></dd><dt ><code >group</code></dt><dd ><p >用在表单中定义列。默认情况下，组定义两列并且组的最直接子项采用单列。 <code >field</code> 组的直接子元素默认显示一个标题，标题和字段本身的列为1。</p><p ><code >group</code> 中的列数可以用 <code >col</code> 属性来计算，元素所用的列数可以用 <code >colspan</code> 属性来计算。</p><p >子元素的横向布局（试着在改变行之前填充下一列）</p><p >分组可以有一个 <code >string</code> 属性，它显示为分组的标题</p></dd><dt ><code >newline</code></dt><dd >只用于 <code >group</code> 元素，提前结束当前行并立即切换到新行 (没有提前填充任何剩下的列)</dd><dt ><code >separator</code></dt><dd >小的横向间距，带有 <code >string</code> 属性的为一个节标题</dd><dt ><code >sheet</code></dt><dd >可以作为一个直接的子 <code >form</code>，显示为一个美观的表单形式</dd><dt ><code >header</code></dt><dd >与 <code >sheet</code> 结合，在工作表上方预留着宽的位置，通常用于显示工作流的按钮和状态的小部件</dd></dl></section><section id="id13"><h3 >语义组件</h3><p >语义组件涉及并允许与Odoo系统的交互。可用的语义组件有:</p><dl ><dt ><code >button</code></dt><dd >调用进去Odoo系统，类似于 <a href="#reference-views-list-button" class="internal reference"><span class="std std-ref">list view buttons</span></a></dd><dt ><code >field</code></dt><dd ><p >渲染 (并允许编辑)当前记录的单个字段。可能的属性包括</p><dl ><dt ><code >name</code> (必填)</dt><dd >要呈现的字段的名称</dd><dt ><code >widget</code></dt><dd >字段具有基于其类型的默认呈现(
+例如 <code class="py xref py-class">Char</code> ，<code class="py xref py-class">Many2one</code>)。 <code >widget</code> 属性允许使用不同的渲染方法和上下文</dd><dt ><code >options</code></dt><dd >JSON 对象指定字段窗口小部件的配置(包括默认的窗口小部件)</dd><dt ><code >class</code></dt><dd ><p >HTML类在生成的元素上设置，公共字段有：</p><dl ><dt ><code >oe_inline</code></dt><dd >避免换行符后面的字段</dd><dt ><code >oe_left</code>, <code >oe_right</code></dt><dd ><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" class="external reference">floats</a> 字段到相应的地方</dd><dt ><code >oe_read_only</code>, <code >oe_edit_only</code></dt><dd >只显示相应表单模式中的字段</dd><dt ><code >oe_no_button</code></dt><dd >避免显示导航按钮在 <code class="py xref py-class">Many2one</code></dd><dt ><code >oe_avatar</code></dt><dd >对于图像字段，将图像显示为&quot;头像&quot; (正方形,最大尺寸为90x90，某些图像装饰)</dd></dl></dd><dt ><code >groups</code></dt><dd >仅显示特定用户的字段</dd><dt ><code >on_change</code></dt><dd ><p >在编辑此字段的值时调用指定的方法，可以为用户生成更新的其他字段或显示警告</p><div class="deprecated"><p ><span class="versionmodified">Deprecated since version 8.0: </span>在模型上使用 <code class="py xref py-func">odoo.api.onchange()</code></p></div></dd><dt ><code >attrs</code></dt><dd >基于记录值的动态元参数</dd><dt ><code >domain</code></dt><dd >仅用于关系字段；显示现有记录以供选择应用的过滤器</dd><dt ><code >context</code></dt><dd >仅用于关系字段，上下文在获取可能的值时传递</dd><dt ><code >readonly</code></dt><dd >在只读和编辑模式下显示字段，但永远不可编辑</dd><dt ><code >required</code></dt><dd >如果字段没有值，则会生成错误并阻止保存记录</dd><dt ><code >nolabel</code></dt><dd >不自动显示字段的标签，只有当字段是 <code >group</code> 元素的直接子元素时才有意义</dd><dt ><code >placeholder</code></dt><dd >帮助消息显示在 <em >空</em> 字段中。可以替换复杂表单中的的字段标签。<em >不应该</em> 是数据，因为用户可能会将占 位符文本与填充字段混淆</dd><dt ><code >mode</code></dt><dd ><code class="py xref py-class">One2many</code>，显示模式（视图类型）用于字段的链接记录。 一个 <code >tree</code> ，  <code >form</code> ， <code >kanban</code> 或 <code >graph</code> 。默认是 <code >tree</code> (一个列表显示)</dd><dt ><code >help</code></dt><dd >悬停在字段或标签时为用户显示说明提示</dd><dt ><code >filename</code></dt><dd >对于二进制字段，提供文件相关字段的名称</dd><dt ><code >password</code></dt><dd >表示 <code class="py xref py-class">Char</code> 字段存储密码，并且不应显示其数据</dd></dl></dd></dl></section><section id="id14"><h3 >业务视图指南</h3><p >业务视图针对的是普通用户，而不是高级用户。例如包括：机会，产品，合作伙伴，任务，项目等等</p><img src="../_images/oppreadonly.png" class="img-responsive"><p >一般来说，业务视图由以下几点组成</p><ol ><li >顶部的状态栏（具有技术或业务流程）</li><li >在中间的纸（形式本身），</li><li >底部有历史和注释。</li></ol><p >从技术上讲，新的表单视图在XML中的结构如下:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;form&gt;</span>
+    <span class="nt">&lt;header&gt;</span> ... content of the status bar  ... <span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;sheet&gt;</span>  ... content of the sheet       ... <span class="nt">&lt;/sheet&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_chatter&quot;</span><span class="nt">&gt;</span> ... content of the bottom part ... <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</section><section id="id15"><h4 >状态栏</h4><p >状态栏的目的是显示当前记录和动作按钮的状态。</p><img src="../_images/status.png" class="img-responsive"></section><section id="id16"><h5 >按钮</h5><p >按钮的顺序遵循业务流程。例如，在销售订单中，逻辑步骤是：</p><ol ><li >发送报价单</li><li >确认报价</li><li >创建最终发票</li><li >发送货物</li></ol><p >突出显示的按钮（默认为红色）强调逻辑下一步，以帮助用户。它通常是第一个活动按钮。另一方面，<span class="guilabel">cancel</span> 按钮 <em >必须是</em> 保持灰色 (正常)。例如，在发票中，按钮 <span class="guilabel">Refund</span> 绝不能是红色的。</p><p >技术上，按钮通过添加类 &quot;oe_highlight&quot; 突出显示:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;oe_highlight&quot;</span> <span class="na">name=</span><span class="s">&quot;...&quot;</span> <span class="na">type=</span><span class="s">&quot;...&quot;</span> <span class="na">states=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="id17"><h5 >状态</h5><p >使用 <code >statusbar</code> 窗口小部件，并且以红色显示当前状态。所有流程共有的国家(例如，销售订单以报价开头，然后我们发送，然后成为完整的销售订单，最后完成)应该始终可见，但是根据特定子流程的异常或状态应该仅在当前可见。</p><img src="../_images/status1.png" class="img-responsive"><img src="../_images/status2.png" class="img-responsive"><p >状态按照字段中使用的顺序显示 (选择字段中的列表等)。始终可见的状态使用属性 <code >statusbar_visible</code> 指定。</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;state&quot;</span> <span class="na">widget=</span><span class="s">&quot;statusbar&quot;</span>
+    <span class="na">statusbar_visible=</span><span class="s">&quot;draft,sent,progress,invoiced,done&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="id18"><h4 >工作表</h4><p >所有业务视图应类似于打印纸纸张的大小:</p><img src="../_images/sheet.png" class="img-responsive"><ol ><li ><code >&lt;form&gt;</code> 或 <code >&lt;page&gt;</code> 中的元素不定义组，元素在其内部按照正常的HTML规则布局。它们的内容可以        使用 <code >&lt;group&gt;</code> 或者 <code >&lt;div&gt;</code> 元素显示分组。.</li><li >默认情况下，元素 <code >&lt;group&gt;</code> 在里面定义两列，除非属性 <code >col=&quot;n&quot;</code> 被使用。列具有相同的宽度(1/n th 组的宽度)。使用 <code >&lt;group&gt;</code> 元素来产生一列字段。</li><li ><p >为了给一部分赋予标题，向 <code >&lt;group&gt;</code> 元素中添加 <code >string</code> 属性:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">string=</span><span class="s">&quot;Time-sensitive operations&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p >这取代了以前使用 <code >&lt;separator string=&quot;XXX&quot;/&gt;</code> 。</p></li><li ><code >&lt;field&gt;</code> 元素不会产生标签，除了 <code >&lt;group&gt;</code> element<a href="#backwards-compatibility" class="footnote-ref" id="id19">1</a> 的直  接子元素。使用 <code class="samp">&lt;label for=&quot;<em >field_name</em>&gt;</code> 以产生字段的标签。</li></ol></section><section id="id20"><h5 >工作表表头</h5><p >某些工作表具有包含一个或多个字段的标题，并且这些字段的标签仅在编辑模式下显示</p><table class="table"><thead ><tr ><th >Edit mode</th><th >View mode</th></tr></thead><tbody ><tr ><td ><img src="../_images/header.png" class="img-responsive"></td><td ><img src="../_images/header2.png" class="img-responsive"></td></tr></tbody></table><p >使用HTML文本， <code >&lt;div&gt;</code>, <code >&lt;h1&gt;</code>, <code >&lt;h2&gt;</code>… 生成较好的标题，<code >&lt;label&gt;</code> 使用
+类 <code >oe_edit_only</code> 仅在编辑模式下显示字段的标签。类 <code >oe_inline</code> 将使字段内联(而不是分段)：字段后面的内容将显示在同一行而不是下一行中。上面的表单由以下XML生成:</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_edit_only&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;h1&gt;&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;&lt;/h1&gt;</span>
+
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;planned_revenue&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_edit_only&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;h2&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;planned_revenue&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;company_currency&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline oe_edit_only&quot;</span><span class="nt">/&gt;</span> at
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;probability&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span><span class="nt">/&gt;</span> % success rate
+<span class="nt">&lt;/h2&gt;</span>
+</pre></div>
+</div>
+</section><section id="id21"><h5 >按钮箱</h5><p >许多相关动作或链接可以在表单中显示。例如，在表单中，动作“安排呼叫”和“安排会议”在使用CRM时具有重要的地位。而不是将它们放在“更多”菜单中，将它们直接放在工作表中作为按钮（在顶部），使它们更加明显，更容易访问。</p><img src="../_images/header3.png" class="img-responsive"><p >从技术上来说，这些按钮放在一个 <code >&lt;div&gt;</code> 内，以便将它们分组为表格顶部的块</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;oe_button_box&quot;</span> <span class="na">name=</span><span class="s">&quot;button_box&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">string=</span><span class="s">&quot;Schedule/Log Call&quot;</span> <span class="na">name=</span><span class="s">&quot;...&quot;</span> <span class="na">type=</span><span class="s">&quot;action&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">string=</span><span class="s">&quot;Schedule Meeting&quot;</span> <span class="na">name=</span><span class="s">&quot;action_makeMeeting&quot;</span> <span class="na">type=</span><span class="s">&quot;object&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</section><section id="id22"><h5 >组和标题</h5><p >现在使用一个 <code >&lt;group&gt;</code> 元素生成一列字段，并带有一个可选的标题。</p><img src="../_images/screenshot-03.png" class="img-responsive"><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">string=</span><span class="s">&quot;Payment Options&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;writeoff_amount&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;payment_option&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<p >建议表单上有两列字段。为此，只需将包含字段的 <code >&lt;group&gt;</code> 元素放在顶层的 <code >&lt;group&gt;</code> 元素中即可</p><p >要使 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">view extension</span></a> 更简单, 建议在 <code >&lt;group&gt;</code> 元素上放置一个 <code >name</code> 属性，可以很容易在正确的地方添加 。</p></section><section id="id23"><h6 >特殊情况: 小计</h6><p >一些类被定义为在发票形式中呈现小计：</p><img src="../_images/screenshot-00.png" class="img-responsive"><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">class=</span><span class="s">&quot;oe_subtotal_footer&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;amount_untaxed&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;amount_tax&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;amount_total&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_subtotal_footer_separator&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;residual&quot;</span> <span class="na">style=</span><span class="s">&quot;margin-top: 10px&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+</section><section id="id24"><h5 >占位符和内联字段</h5><p >有时字段标签使表单太复杂。可以省略字段标签，在字段中放置一个占位符。仅当字段为空时，占位符文本才可见。占位符应该告诉在字段中放置什么，它 <em >必须不能</em> 是一个例子，因为它们常常与填充数据混淆。</p><p >还可以通过一个明确的块元素，如 <code >&lt;div&gt;</code> 中呈现它们“内联”来将字段组合在一起。这允许对语义相关的字段进行分组，就好像它们是单个（复合）字段。</p><p >以下示例取自 <em >Leads</em> 表单, 同时显示占位符和内联字段 (邮编和城市).</p><table class="table"><thead ><tr ><th >Edit mode</th><th >View mode</th></tr></thead><tbody ><tr ><td ><img src="../_images/placeholder.png" class="img-responsive"></td><td ><img src="../_images/screenshot-01.png" class="img-responsive"></td></tr></tbody></table><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;group&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;street&quot;</span> <span class="na">string=</span><span class="s">&quot;Address&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;street&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Street...&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;street2&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;zip&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;ZIP&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;city&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_inline&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;City&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;state_id&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;State&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;country_id&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Country&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+</section><section id="id25"><h5 >图片</h5><p >图像，如头像，应显示在工作表的右侧。产品形式如下：</p><img src="../_images/screenshot-02.png" class="img-responsive"><p >上面的表单包含以sheet开头的&lt;sheet&gt;元素：</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;product_image&quot;</span> <span class="na">widget=</span><span class="s">&quot;image&quot;</span> <span class="na">class=</span><span class="s">&quot;oe_avatar oe_right&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="id26"><h5 >标签</h5><p >最多 <code class="py xref py-class">Many2many</code> 字段，类似，比较好呈现为标签列表。使用窗口
+小部件 <code >many2many_tags</code> ：</p><img src="../_images/screenshot-04.png" class="img-responsive"><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;category_id&quot;</span> <span class="na">widget=</span><span class="s">&quot;many2many_tags&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</section><section id="id27"><h3 >配置表单指南</h3><p >配置形式的示例：阶段，离开类型等等。这涉及每个应用程序配置下的所有菜单项（如销售/配置）</p><img src="../_images/nosheet.png" class="img-responsive"><ol ><li >没有标题（因为没有状态，没有工作流，没有按钮）</li><li >没有表单</li></ol></section><section id="id28"><h3 >对话框表单指南</h3><p >例如：从时机中“调度呼叫”</p><img src="../_images/wizard-popup.png" class="img-responsive"><ol ><li >避免分隔符（标题已经在弹出的标题栏中，所以另外一个分隔符不相关）</li><li >避免取消按钮（用户一般关闭弹出窗口得到相同的影响）</li><li >动作按钮必须突出显示（红色）</li><li >当有文本区域时，使用占位符，而不是标签或分隔符</li><li >像在常规窗体视图中，在&lt;header&gt;元素中放置按钮</li></ol></section><section id="id29"><h3 >配置向导指南</h3><p >例如：设置/配置/销售</p><ol ><li >总是在线（没有弹出）</li><li >没有表单</li><li >保持取消按钮（用户不能关闭窗口）</li><li >按钮“应用”必须是红色</li></ol></section><section id="reference-views-graph"><i id="id30"></i><h2 >图表</h2><p >图形视图用于可视化多个记录或记录组上的总数。根元素是 <code >&lt;graph&gt;</code> ，可以具有以下属性：</p><dl ><dt ><code >type</code></dt><dd ><code >bar</code> (默认), <code >pie</code> 和 <code >line</code> 使用的图形类型</dd><dt ><code >stacked</code></dt><dd >只用于 <code >bar</code> 图表。如果存在并设置为 <code >True</code>，则堆栈条在一个组内</dd></dl><p >图形视图中唯一允许的元素是 <code >field</code> ，它可以有以下属性：</p><dl ><dt ><code >name</code> (必填)</dt><dd >要在图形视图中使用的字段名称。用于分组（而不是总和）</dd><dt ><code >type</code></dt><dd ><p >指示该字段是否应用作分组标准或组内的总和值。可能的值为：</p><dl ><dt ><code >row</code> (默认)</dt><dd >组按指定字段。所有图形的类型支持至少是一个级别的分组，一些可能支持更多。对于数据透视图，每个组都有自  己的行</dd><dt ><code >col</code></dt><dd >仅由数据透视表使用，按列组创建</dd><dt ><code >measure</code></dt><dd >字段在组内聚合</dd></dl></dd><dt ><code >interval</code></dt><dd >日期和日期时间字段，按指定的时间间隔分组(<code >day</code> ，<code >week</code> ， <code >month</code> ， <code >quarter</code>
+或 <code >year</code> )而不是按特定的datetime上分组（固定二次决议）或日期（固定日决议）</dd></dl><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >图形视图聚合对数据库内容执行，非存储函数字段不能再图形视图中使用</p></div></section><section id="id31"><h3 >枢轴</h3><p >枢轴视图用于将聚合可视化为 <a href="http://en.wikipedia.org/wiki/Pivot_table" class="external reference">pivot table</a>。它的根元素是 <code >&lt;pivot&gt;</code>，它可以具有以下属性。</p><dl ><dt ><code >disable_linking</code></dt><dd >设置为 <code >True</code> 以将表单元格的链接删除到列表视图。</dd><dt ><code >display_quantity</code></dt><dd >默认情况下，设置为 <code >true</code> 以显示列数</dd></dl><p >在枢轴视图中允许的元素与图形视图中相同</p></section><section id="reference-views-kanban"><i id="id32"></i><h2 >看板</h2><p >看板视图是一个可视化的 <a href="http://en.wikipedia.org/wiki/Kanban_board" class="external reference">kanban board</a> ：它将记录显示为&quot;卡片&quot;，位于 <a href="#reference-views-list" class="internal reference"><span class="std std-ref">list view</span></a> 和一个不可编辑的 <a href="#reference-views-form" class="internal reference"><span class="std std-ref">form view</span></a>。记录可以按列分组以用于工作流可视化或操纵（例如，任务或工作进度管理）或未分组（仅用于可视化记录）</p><p >看板视图的根元素是 <code >&lt;kanban&gt;</code> ，可以使用以下属性：</p><dl ><dt ><code >default_group_by</code></dt><dd >如果通过动作或当前搜索未指定分组，是否应该将看板视图分组。应该是要分组的字段的名称，否则不指定分组</dd><dt ><code >default_order</code></dt><dd >按顺序排序，如果用户尚未对记录进行排序（通过列表视图）</dd><dt ><code >class</code></dt><dd >将HTML类添加到“看板”视图的根HTML元素中</dd><dt ><code >quick_create</code></dt><dd ><p >是否可以创建记录而不切换到表单视图。默认情况下，<code >quick_create</code> 在看板视图分组时启用，
+否则禁用。</p><p >如果设置为 <code >true</code> 则始终启用，否则为 <code >false</code> 则始终禁用。</p></dd></dl><p >视图元素的可能子元素为：</p><dl ><dt ><code >field</code></dt><dd ><p >声明要聚合或在看板 <em >逻辑</em> 中使用的字段。如果字段只显示在看板视图中，则不需要预先声明。</p><p >可能的属性包括：</p><dl ><dt ><code >name</code> (必填)</dt><dd >要提取的字段的名称</dd><dt ><code >sum</code>, <code >avg</code>, <code >min</code>, <code >max</code>, <code >count</code></dt><dd >显示相应的总数在看板列的顶部，该字段的值是总（字符串）的标签。仅支持每个字段的总动作。</dd></dl></dd><dt ><code >templates</code></dt><dd ><p >定义了一个列表 <a href="qweb.html#reference-qweb" class="internal reference"><span class="std std-ref">QWeb</span></a> 模板。为了能看的更清楚，卡片定义可以分割为多个模板，
+但是看版式图 <em >必须</em> 至少定义一个根模板 <code >kanban-box</code>，它将为每个记录渲染一次。</p><p >看板视图主要的使用标准 <a href="qweb.html#reference-qweb-javascript" class="internal reference"><span class="std std-ref">javascript qweb</span></a> 并提供以下的上下文
+变量：</p><dl ><dt ><code >instance</code></dt><dd >当前的 <a href="javascript.html#reference-javascript-client" class="internal reference"><span class="std std-ref">网络客户端(Web Client)</span></a> 实例</dd><dt ><code >widget</code></dt><dd >当前 <a href="#KanbanRecord" class="internal reference" title="KanbanRecord"><code class="js-class xref js">KanbanRecord()</code></a>，可以用来获取一些元信息。这些方法也可以直接在模板上下文中使用，
+不需要通过 <code >widget</code> 来访问</dd><dt ><code >record</code></dt><dd >具有所有请求字段作为其属性的对象。每个字段有两个属性 <code >value</code> 和 <code >raw_value</code>，前者根据当前的
+用户参数进行格式化，后者是从a <code class="py py-meth xref">read()</code> (对于根据用户的区域设置格式化的
+日期和日期时间字段 <a href="https://github.com/odoo/odoo/blob/a678bd4e/addons/web_kanban/static/src/js/kanban_record.js#L102" class="external reference">formatted according to user's locale</a>)</dd><dt ><code >formats</code></dt><dd ><code class="js-class xref js">web.formats()</code> 模块来操作和转换值</dd><dt ><code >read_only_mode</code></dt><dd ><p >不言自明</p><h3 >按钮和字段</h3><p >虽然大多数看板的模板是标准的 <a href="qweb.html#reference-qweb" class="internal reference"><span class="std std-ref">QWeb</span></a>，特别是看板进程的 <code >field</code> ， <code >button</code>
+和 <code >a</code> 元素：</p><ul ><li >默认字段由其格式化的值替换，除非它们匹配特定的看板视图的窗口小部件</li><li ><p >按钮和具有 <code >type</code> 属性的链接会执行Odoo相关的操作，而不是它们的标准HTML函数。可能的类型有：</p><dl ><dt ><code >action</code>, <code >object</code></dt><dd >标准行为 <a href="#reference-views-list-button" class="internal reference"><span class="std std-ref">Odoo buttons</span></a>，可以使用与标准Odoo按钮相
+关的大多数属性</dd><dt ><code >open</code></dt><dd >以只读模式在表单视图中打开卡的记录</dd><dt ><code >edit</code></dt><dd >在可编辑模式下以表单视图打开卡的记录</dd><dt ><code >delete</code></dt><dd >删除卡的记录并删除卡</dd></dl></li></ul></dd></dl></dd></dl></section><section id="javascript-api"><h3 >Javascript API</h3><section class="code-class"><h6 id="KanbanRecord"><code><em >class </em>KanbanRecord()</code></h6><p ><a href="javascript.html#Widget" class="internal alert-link reference" title="Widget"><code class="js-class xref js">Widget()</code></a> 处理单个记录到卡的渲染。在它自己的渲染模式上下文中作为 <code >widget</code> 可见。</p><section class="code-function"><h6 id="kanban_color"><code>kanban_color(<em>raw_value</em>)</code></h6><p >将颜色分割值转换为看板颜色类 <code class="samp">oe_kanban_color_<em >color_index</em></code>。内置的CSS提供了一个
+<code >color_index</code> 为9的类。</p></section><section class="code-function"><h6 id="kanban_getcolor"><code>kanban_getcolor(<em>raw_value</em>)</code></h6><p >将颜色分割值转换为颜色索引（默认情况下介于0到9之间）。颜色分割值可以是数字或字符串。</p></section><section class="code-function"><h6 id="kanban_image"><code>kanban_image(<em>model, field, id[, cache][, options]</em>)</code></h6><p >生成指向指定字段的URL作为图片访问。</p><div class="code-fields"><div class="code-field"><div class="code-field-name">Arguments</div><div class="code-field-body"><ul ><li ><strong >model</strong> (<code >String</code>) -- 模型托管图像</li><li ><strong >field</strong> (<code >String</code>) -- 保存图像数据的字段的名称</li><li ><strong >id</strong> -- 包含要显示的图像的记录的标识符</li><li ><strong >cache</strong> (<code >Number</code>) -- 应覆盖浏览器默认的缓存持续时间（以秒为单位）。 <code >0</code> 表示完全禁用缓存</li></ul></div></div><div class="code-field"><div class="code-field-name">Returns</div><div class="code-field-body">图片网址</div></div></div></section><section class="code-function"><h6 id="kanban_text_ellipsis"><code>kanban_text_ellipsis(<em>string</em>[, <em>size=160</em>])</code></h6><p >剪辑超出指定大小的文本，并向其添加省略号。可以用于显示潜在非常长的字段（例如描述）的初始部分</p></section></section></section><section id="reference-views-calendar"><i id="id33"></i><h2 >日历</h2><p >日历视图将记录显示为每日，每周或每月日历中的事件。它们的根元素是 <code >&lt;calendar&gt;</code> 。日历视图上的可用属性包括：</p><dl ><dt ><code >date_start</code> (必填)</dt><dd >保存事件的开始日期记录的字段名称</dd><dt ><code >date_stop</code></dt><dd >保存事件的结束日期记录字段的名称，如果提供了 <code >date_stop</code> 记录，则记录在日历中直接可移动（通
+过拖放）</dd><dt ><code >date_delay</code></dt><dd >替代 <code >date_stop</code>，提供事件的持续事件，而不是结束日期</dd><dt ><code >color</code></dt><dd >用于 <em >颜色分割</em> 记录字段的名称。同一色段中的记录在日历中被分配相同的高亮颜色，颜色是随机地分配</dd><dt ><code >event_open_popup</code></dt><dd >在对话框中打开事件，而不是切换到表单视图，默认情况下禁用</dd><dt ><code >quick_add</code></dt><dd >在点击时启用快速事件创建：只询问用户一个 <code >name</code>，并试图创建一个新的事件，只有那个和点击的事件时
+间。如果快速创建失败，则返回到完整表单对话框</dd><dt ><code >display</code></dt><dd >用于事件显示的格式字符串，字段名称应该在括号中 <code >[</code> and <code >]</code></dd><dt ><code >all_day</code></dt><dd >记录上的布尔字段的名称，其指示相应的事件是否被标记为day-long（并且持续时间是不相关的）</dd><dt ><code >mode</code></dt><dd >加载日历时默认显示模式。
+可能的属性有: <code >day</code>, <code >week</code>, <code >month</code></dd></dl></section><section id="reference-views-gantt"><i id="id34"></i><h2 >甘特</h2><p >甘特视图适用于当地显示甘特图（用于调度）</p><p >甘特视图的根元素 <code >&lt;gantt/&gt;</code>，它没有子元素，但是可以采取以下属性：</p><dl ><dt ><code >date_start</code> (必填)</dt><dd >为每个记录提供事件的开始日期时间的字段名称。</dd><dt ><code >date_stop</code></dt><dd ><p >为每个记录提供时间的结束持续时间的字段名称。可以替换为 <code >date_delay</code> 。必须提供 <code >date_stop</code>
+和 <code >date_delay</code> 中的一个（且只有一个）</p><p >如果记录的字段为 <code >False</code> ，则假定它是一个“点事件”，结束日期将设置为开始日期</p></dd><dt ><code >date_delay</code></dt><dd >提供时间持续时间的字段的名称</dd><dt ><code >duration_unit</code></dt><dd >其中之一 <code >minute</code>, <code >hour</code> (默认), <code >day</code>, <code >week</code>, <code >month</code>, <code >year</code></dd><dt ><code >default_group_by</code></dt><dd >要对任务进行分组的字段名</dd><dt ><code >type</code></dt><dd ><p ><code >gantt</code> 经典甘特视图（默认）</p><p ><code >consolidate</code> 第一个子项的值被合并在甘特的任务中</p><p ><code >planning</code> 子项显示在甘特的任务中</p></dd><dt ><code >consolidation</code></dt><dd >字段名称以在记录单元中显示合并值</dd><dt ><code >consolidation_max</code></dt><dd ><p >具有 &quot;group by&quot; 字段作为键的字典和在以红色显示单元格之间可以达到的最大合并值(例如 <code >{&quot;user_id&quot;:
+100}</code>)</p><div role="alert" class="alert-warning alert"><p class="alert-title">Warning</p><p >字典定义必须使用双引号 <code >{'user_id': 100}</code> 不是有效的值</p></div></dd><dt ><code >string</code></dt><dd >要显示在合并值旁边的字符串，如果未指定，则将使用合并字段的标签</dd><dt ><code >fold_last_level</code></dt><dd >如果设置了值，则折叠最后一个分组级别</dd><dt ><code >round_dnd_dates</code></dt><dd >可以将任务的开始和结束日期四舍五入为最接近的刻度</dd><dt ><code >drag_resize</code></dt><dd >调整任务大小，默认为 <code >true</code></dd></dl></section><section id="reference-views-diagram"><i id="id35"></i><h2 >图表</h2><p >图表视图可用于显示记录的有向图。根元素是 <code >&lt;diagram&gt;</code> 不带任何属性。</p><p >图表视图的可能子项为：</p><dl ><dt ><code >node</code> (必填，1)</dt><dd ><p >定义图形的节点。其属性是：</p><dl ><dt ><code >object</code></dt><dd >节点的Odoo模型</dd><dt ><code >shape</code></dt><dd >条件形状映射类似于颜色和字体 <a href="#reference-views-list" class="internal reference"><span class="std std-ref">the listview</span></a>。唯一有效的形状是
+<code >矩形</code> (默认形状是省略号)</dd><dt ><code >bgcolor</code></dt><dd >与 <code >shape</code> 相同，但有条件地为节点映射背景颜色。默认背景颜色是白色，唯一有效的替代是 <code >grey</code> 。</dd></dl></dd><dt ><code >arrow</code> (必填，1)</dt><dd ><p >定义图像的有向边。其属性是：</p><dl ><dt ><code >object</code> (必填)</dt><dd >边缘的Odoo模型</dd><dt ><code >source</code> (必填)</dt><dd ><code class="py xref py-class">Many2one</code> 指向的边缘模型的字段的边缘的源节点记录</dd><dt ><code >destination</code> (不可或缺)</dt><dd ><code class="py xref py-class">Many2one</code> 字段的边缘模型指向边缘的节点记录</dd><dt ><code >label</code></dt><dd >Python 属性列表 (引用字符串)。相应的属性的值将被连接并显示为边的标签</dd></dl></dd><dt ><code >label</code></dt><dd >图表的说明， <code >string</code> 属性定义了笔记的内容，每个 <code >label</code> 作为图表标题中的段落输出，容易看见，但没有特别强调</dd></dl></section><section id="reference-views-search"><i id="id36"></i><h2 >搜索</h2><p >搜索视图与以前的视图类型不同，它们不显示 <em >内容</em> ：虽然它们适用于特定的模型，它们用于过滤其它视图的内容(通常聚合视图，例如： ref:[UNKNOWN NODE title_reference] 或 <a href="#reference-views-graph" class="internal reference"><span class="std std-ref">图表</span></a> )。除了在用例中的差别之外，它们以相同的方式定义</p><p >搜索视图的根元素是 <code >&lt;search&gt;</code> 。它不需要属性。</p><p >搜索视图的可能的子元素是：</p><dl ><dt ><code >field</code></dt><dd ><p >字段使用用户提供的值定义域或上下文。当生成搜索域时，字段域使用 <strong >AND</strong> 与另一个域和过滤器组合。</p><p >字段可以具有以下属性：</p><dl ><dt ><code >name</code></dt><dd >要过滤的字段的名称</dd><dt ><code >string</code></dt><dd >字段的标签</dd><dt ><code >operator</code></dt><dd ><p >默认情况下，字段生成以下形式的域 <code class="samp">[(<em >name</em>，<em >operator</em>, <em >provided_value</em>)]</code> 其中
+<code >name</code> 是字段的名称，<code >provided_value</code> 用户，可能被过滤或变换 (例如， 用户期望提供选择
+字段的值的 <em >label</em> ，而不是值本身).</p><p ><code >operator</code> 属性允许覆盖默认的操作符，这取决于字段的类型(例如， <code >=</code> 用于浮动字段，
+<code >ilike</code> 用于char字段)</p></dd><dt ><code >filter_domain</code></dt><dd ><p >完整的域用作字段的搜索域，可以使用 <code >self</code> 变量在自定义域中写入提供的值。可以用于生成比
+<code >operator</code> 本身更加灵活的域 (例如同时搜索多个字段)</p><p >如果提供了 <code >operator</code> 和 <code >filter_domain</code> ，<code >filter_domain</code> 优先。</p></dd><dt ><code >context</code></dt><dd ><p >允许添加上下文键， 包括用户提供的值 (对于 <code >domain</code> 是可用的 <code >self</code> 变量)。默认情况下，
+字段不生成域</p><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><p >域和上下文是包含性的，并且如果指定了 <code >上下文</code>，则都会生成。要仅生成上下文值，请将</p></div><p ><code >filter_domain</code> 设置为空列表：<code >filter_domain=&quot;[]&quot;</code></p></dd><dt ><code >groups</code></dt><dd >使该字段仅对特定用户可用</dd><dt ><code >widget</code></dt><dd >使用特定的搜索小部件的字段 (标准Odoo 8.0 中的唯一用例是一个 <code >selection</code> 小部件
+<code class="py xref py-class">Many2one</code> fields)</dd><dt ><code >domain</code></dt><dd >如果字段可以提供自动完成(例如 <code class="py xref py-class">Many2one</code>)，过滤可能的完成结果</dd></dl></dd><dt ><code >filter</code></dt><dd ><p >过滤器是搜索视图中的预定义切换，它只能启用或禁用。它的主要目的是将数据添加到搜索上下文（传递到数据视
+图进行搜索/过滤的上下文），或者将新的部分添加到搜索过滤器</p><p >过滤器可以具有以下属性：</p><dl ><dt ><code >string</code> (必填)</dt><dd >过滤器的标签</dd><dt ><code >domain</code></dt><dd >一个 Odoo <a href="orm.html#reference-orm-domains" class="internal reference"><span class="std std-ref">domain</span></a> ，将作为搜索域的一部分附加到操作域中</dd><dt ><code >context</code></dt><dd >一个Python字典，合并到操作域中以生成搜索域</dd><dt ><code >name</code></dt><dd >过滤器的逻辑名，可 <span class="std xref std-ref">默认情况下启动</span>，也可 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">继承</span></a></dd><dt ><code >help</code></dt><dd >过滤器的更长的说明文本，可以显示为工具提示</dd><dt ><code >groups</code></dt><dd >是过滤器仅适用于特定用户</dd></dl><div role="alert" class="alert-info alert"><p class="alert-title">Note</p><div class="versionadded"><p ><span class="versionmodified">New in version 7.0.</span></p></div><p >过滤器的顺序 (没有分离它们的非过滤器) 被视为包含合成的：它们将由 <code >OR</code> 构成，而不是通常的
+<code >AND</code>。</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;filter</span> <span class="na">domain=</span><span class="s">&quot;[(&#39;state&#39;, &#39;=&#39;, &#39;draft&#39;)]&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;filter</span> <span class="na">domain=</span><span class="s">&quot;[(&#39;state&#39;, &#39;=&#39;, &#39;done&#39;)]&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >如果选择了两个过滤器，将选择 <code >state</code> 是 <code >draft</code> 或 <code >done</code> 的记录，但是</p><div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;filter</span> <span class="na">domain=</span><span class="s">&quot;[(&#39;state&#39;, &#39;=&#39;, &#39;draft&#39;)]&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;separator/&gt;</span>
+<span class="nt">&lt;filter</span> <span class="na">domain=</span><span class="s">&quot;[(&#39;delay&#39;, &#39;&lt;&#39;, 15)]&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p >如果两个过滤器都被选择，将选择 <code >state</code> 是 <code >draft</code> <strong >and</strong> <code >delay</code> 在15以下的记录。</p></div></dd><dt ><code >separator</code></dt><dd >可用于在简单搜索视图中分离过滤器组</dd><dt ><code >group</code></dt><dd >可以用于分离过滤器组，在复杂搜索视图中比 <code >separator</code> 更易读</dd></dl></section><section id="reference-views-search-defaults"><i id="id37"></i><h3 >搜索默认值</h3><p >搜索字段和过滤器可以通过操作 <code >context</code> 使用 ： samp:[UNKNOWN NODE title_reference] keys来配置。对于字段，值应该是在字段中设置的值，对于过滤器，它是一个布尔值。例如：假设 <code >foo</code> 是一个字段， <code >bar</code> 是一个动作上下文的过滤器：</p><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">&#39;search_default_foo&#39;</span><span class="p">:</span> <span class="s1">&#39;acro&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;search_default_bar&#39;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p >将自动启用 <code >bar</code> 过滤器并搜索 <em >acro</em> 的 <code >foo</code> 字段</p></section><section id="qweb"><i id="reference-views-qweb"></i><h2 >QWeb</h2><p >QWeb 视图是标准的 ： ref:[UNKNOWN NODE title_reference] 模板在视图的 <code >arch</code> 。它们没有特定的根元素。</p><p >QWeb视图只能包含一个模板<a href="#template-inherit" class="footnote-ref" id="id38">4</a>，而模板名称 <em >必须</em> 匹配视图的完整(包括模块名称)
+<a href="../glossary.html#term-external-id" class="internal reference"><span class="std std-term xref">external id</span></a>.</p><p ><a href="data.html#reference-data-template" class="internal reference"><span class="std std-ref">模板(template)</span></a> 应该用作定义QWeb视图的快捷方式。</p><div class="footnote" id="backwards-compatibility"><span class="footnote-label"><a class="footnote-backref" href="#id19">[1]</a></span> 用于向后兼容的原因</div><div class="footnote" id="hasclass"><span class="footnote-label"><a class="footnote-backref" href="#id7">[2]</a></span> 添加了一个扩展函数，用于在QWeb视图中进行更简单的匹配： <code >hasclass(*classes)</code> 如果
+上下文节点具有所有指定的类</div><div class="footnote" id="treehistory"><span class="footnote-label"><a class="footnote-backref" href="#id9">[3]</a></span> 由于历史原因，它的起源于树形视图，稍后被重新用于更多的表/列表类型显示</div><div class="footnote" id="template-inherit"><span class="footnote-label"><a class="footnote-backref" href="#id38">[4]</a></span> 或者没有模板，如果它是继承的视图，则 <a href="#reference-views-inheritance" class="internal reference"><span class="std std-ref">它应该只包含xpath元素</span></a></div></section>
+
+          </article>
+        </div>
+        
+        <div id="mask"></div>
+      </main>
+    </div>
+  </div>
+
+  <div class="floating_action_container">
+    <a id="floating_action" class="ripple" href="#">
+      <i class="mdi-action-explore"></i>
+    </a>
+    <div id="floating_action_menu">
+      <span class="bubble"></span>
+      <ul class="list-group content">
+        <li class="list-group-item ripple"><a>Cras justo odio</a></li>
+        <li class="list-group-item ripple"><a>Dapibus ac facilisis in</a></li>
+        <li class="list-group-item ripple"><a>Morbi leo risus</a></li>
+        <li class="list-group-item ripple"><a>Porta ac consectetur ac</a></li>
+        <li class="list-group-item ripple"><a>Vestibulum at eros</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div id="footer" class="container">
+      <span class="o_logo o_logo_inverse center-block o_footer_logo"></span>
+      <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-6">
+          <div class="row">
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Community</span>
+              <ul>
+                <li><a href="https://github.com/odoo/odoo">Github</a></li>
+                <li><a href="http://www.odoo.com/page/download">Download</a></li>
+                <li class="divider"></li>
+                <li><a href="http://runbot.odoo.com/runbot/repo/git-github-com-odoo-enterprise-7">Runbot</a></li>
+                <li><a href="https://github.com/odoo/odoo/wiki/Translations">Translations</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/odoo-community">Mailing Lists</a></li>
+                <li><a href="http://www.odoo.com/forum/help-1">Forum</a></li>
+              </ul>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+              <span class="menu_title">Services</span>
+              <ul>
+                <li><a href="http://www.odoo.com/pricing">Editions</a></li>
+                <li><a href="http://www.odoo.com/pricing-online">Cloud Pricing</a></li>
+                <li><a href="http://www.odoo.com/page/upgrade">Upgrade</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/partners">Find a partner</a></li>
+                <li><a href="http://www.odoo.com/page/become-a-partner">Become a partner</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/education-program">Education</a></li>
+                <li class="divider"></li>
+                <li><a href="http://www.odoo.com/page/security">Security</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb64">
+              <span class="menu_title">About us</span>
+              <ul>
+                <li><a href="http://www.odoo.com/page/about-us">Our company</a></li>
+                <li><a href="http://www.odoo.com/page/contactus">Contact</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/event">Events</a></li>
+                <li><a href="http://www.odoo.com/blog/">Blog</a></li>
+                <li><a href="http://www.odoo.com/blog/6">Customers</a></li>
+                <li class="divider" />
+                <li><a href="http://www.odoo.com/jobs">Jobs</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-lg-5 col-lg-offset-1">
+          <p>
+            <small>
+              Odoo is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.
+              <br/><br/>
+              Odoo's unique value proposition is to be at the same time very easy to use and fully integrated.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="o_footer_bottom">
+      <div class="container">
+        <a class="small" href="http://www.odoo.com/page/website-builder">Website made with <span class="o_logo o_logo_inverse o_logo_15"></span></a>
+        <div class="social-links pull-right">
+          <a href="http://www.odoo.com/web/about/facebook"><i class="fa fa-facebook"></i></a>
+          <a href="http://www.odoo.com/web/about/twitter"><i class="fa fa-twitter"></i></a>
+          <a href="http://www.odoo.com/web/about/linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="mailto:info@odoo.com"><i class="fa fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>
